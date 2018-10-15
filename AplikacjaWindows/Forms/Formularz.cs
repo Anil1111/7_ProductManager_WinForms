@@ -8,45 +8,43 @@ namespace AplikacjaWindows.Forms
 {
 	public partial class Formularz : Form
 	{
-		private TowaryDBEntities _te = new TowaryDBEntities();
-		public Formularz()
+		public TowaryDBEntities _context;
+		public Formularz(TowaryDBEntities context)
 		{
 			InitializeComponent();
+			_context = context;
 		}
 
 		private void Formularz_Load(object sender, EventArgs e)
 		{
-			towaryBindingSource.DataSource = _te.Towaries.AsNoTracking().ToList();
-		}
-
-		private void TowaryListBox_SelectedIndexChanged(object sender, EventArgs e)
-		{
-
+			towaryBindingSource.DataSource = _context.Towaries.ToList();
 		}
 
 		private void DodajTowarBtn_Click(object sender, EventArgs e)
 		{
-			using (AddEditTowarForm addEditTowarForm = new AddEditTowarForm(null))
+			using (AddEditTowarForm addEditTowarForm = new AddEditTowarForm(null, _context))
 			{
 				if (addEditTowarForm.ShowDialog() == DialogResult.Yes)
 				{
-					towaryBindingSource.DataSource = _te.Towaries.AsNoTracking().ToList();
+					towaryBindingSource.DataSource = _context.Towaries.ToList();
 				}
 			}
 		}
 
 		private void EdytujTowarBtn_Click(object sender, EventArgs e)
 		{
+
 			if (towaryBindingSource == null)
 			{
 				return;
 			}
-			using (AddEditTowarForm editEditTowarForm = new AddEditTowarForm((Towary)towaryBindingSource.Current))
+			using (AddEditTowarForm editEditTowarForm = new AddEditTowarForm((Towary)towaryBindingSource.Current, _context))
 			{
 				if (editEditTowarForm.ShowDialog() == DialogResult.Yes)
 				{
-					towaryBindingSource.DataSource = _te.Towaries.AsNoTracking().ToList();
+					towaryBindingSource.DataSource = _context.Towaries.ToList();
 				}
+
 			}
 		}
 
@@ -55,12 +53,11 @@ namespace AplikacjaWindows.Forms
 			if (towaryBindingSource.Current != null)
 			{
 				if (MessageBox.Show("Jesteś pewien?", "Message", MessageBoxButtons.YesNo, MessageBoxIcon.Question) ==
-				    DialogResult.Yes)
+					DialogResult.Yes)
 				{
-					_te.Towaries.Remove((Towary) towaryBindingSource.Current);
-					_te.SaveChanges();
-
-					towaryBindingSource.DataSource = _te.Towaries.AsNoTracking().ToList();
+					_context.Towaries.Remove((Towary)towaryBindingSource.Current);
+					_context.SaveChanges();
+					towaryBindingSource.DataSource = _context.Towaries.ToList();
 				}
 			}
 		}

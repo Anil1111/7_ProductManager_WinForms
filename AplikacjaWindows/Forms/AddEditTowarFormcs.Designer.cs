@@ -40,6 +40,8 @@
 			this.label4 = new System.Windows.Forms.Label();
 			this.MasaAddBox = new System.Windows.Forms.TextBox();
 			this.JmBox = new System.Windows.Forms.ComboBox();
+			this.CreateDate = new System.Windows.Forms.TextBox();
+			this.EditDate = new System.Windows.Forms.TextBox();
 			((System.ComponentModel.ISupportInitialize)(this.towaryBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
@@ -130,11 +132,30 @@
 			// JmBox
 			// 
 			this.JmBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "JM", true));
+			this.JmBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.JmBox.FormattingEnabled = true;
 			this.JmBox.Location = new System.Drawing.Point(12, 161);
 			this.JmBox.Name = "JmBox";
 			this.JmBox.Size = new System.Drawing.Size(121, 21);
 			this.JmBox.TabIndex = 11;
+			// 
+			// CreateDate
+			// 
+			this.CreateDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Data_Utworzenia", true));
+			this.CreateDate.Location = new System.Drawing.Point(12, 223);
+			this.CreateDate.Name = "CreateDate";
+			this.CreateDate.Size = new System.Drawing.Size(23, 20);
+			this.CreateDate.TabIndex = 12;
+			this.CreateDate.Visible = false;
+			// 
+			// EditDate
+			// 
+			this.EditDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Data_Modyfikacji", true));
+			this.EditDate.Location = new System.Drawing.Point(41, 223);
+			this.EditDate.Name = "EditDate";
+			this.EditDate.Size = new System.Drawing.Size(21, 20);
+			this.EditDate.TabIndex = 13;
+			this.EditDate.Visible = false;
 			// 
 			// AddEditTowarForm
 			// 
@@ -144,6 +165,8 @@
 			this.CancelButton = this.CancelAddButton;
 			this.ClientSize = new System.Drawing.Size(213, 308);
 			this.ControlBox = false;
+			this.Controls.Add(this.EditDate);
+			this.Controls.Add(this.CreateDate);
 			this.Controls.Add(this.JmBox);
 			this.Controls.Add(this.MasaAddBox);
 			this.Controls.Add(this.label4);
@@ -176,5 +199,7 @@
 		private System.Windows.Forms.TextBox MasaAddBox;
 		private System.Windows.Forms.BindingSource towaryBindingSource;
 		private System.Windows.Forms.ComboBox JmBox;
+		private System.Windows.Forms.TextBox CreateDate;
+		private System.Windows.Forms.TextBox EditDate;
 	}
 }

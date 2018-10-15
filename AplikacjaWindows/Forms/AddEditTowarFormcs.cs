@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Linq;
 using System.Windows.Forms;
 using AplikacjaWindows.Helpers;
 
@@ -8,25 +9,27 @@ namespace AplikacjaWindows.Forms
 {
 	public partial class AddEditTowarForm : Form
 	{
-		private TowaryDBEntities towaryDbEntities;
-		public AddEditTowarForm(Towary towar)
+		private readonly TowaryDBEntities _context;
+
+		public AddEditTowarForm(Towary towar, TowaryDBEntities context)
 		{
 			InitializeComponent();
+			_context = context;
 
-			towaryDbEntities = new TowaryDBEntities();
 			JmBox.DataSource = Enum.GetValues(typeof(JednostkiMasy));
 
 			if (towar == null)
 			{
 				AddButtonYes.Text = "Dodaj nowy";
 				towaryBindingSource.DataSource = new Towary();
-				towaryDbEntities.Towaries.Add((Towary)towaryBindingSource.Current);
+				_context.Towaries.Add((Towary)towaryBindingSource.Current);
 			}
 			else
 			{
 				AddButtonYes.Text = "Edytuj";
 				towaryBindingSource.DataSource = towar;
-				towaryDbEntities.Towaries.Attach((Towary) towaryBindingSource.Current);
+				_context.Towaries.Attach((Towary) towaryBindingSource.Current);
+				towar.Data_Modyfikacji = DateTime.Now;
 			}
 		}
 
@@ -42,10 +45,11 @@ namespace AplikacjaWindows.Forms
 					e.Cancel = true;
 				}
 
-				towaryDbEntities.SaveChanges();
-
+				_context.SaveChanges();
+				
 				e.Cancel = false;
 			}
+
 			e.Cancel = false;
 		}
 	}
