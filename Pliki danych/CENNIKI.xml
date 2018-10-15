@@ -1,0 +1,23 @@
+<?xml version="1.0" standalone="yes"?>
+<Cenniki>
+ <Cennik>
+  <Nazwa>Promocja wiosenna</Nazwa>
+  <Data_Od>3/21/2016 12:00:00 AM</Data_Od>
+  <Data_Do>6/22/2016 12:00:00 AM</Data_Do>
+ </Cennik>
+ <Cennik>
+  <Nazwa>Promocja letnia</Nazwa>
+  <Data_Od>6/22/2016 12:00:00 AM</Data_Od>
+  <Data_Do>9/23/2016 12:00:00 AM</Data_Do>
+ </Cennik>
+  <Cennik>
+  <Nazwa>Promocja jesienna</Nazwa>
+  <Data_Od>9/23/2016 12:00:00 AM</Data_Od>
+  <Data_Do>12/22/2016 12:00:00 AM</Data_Do>
+ </Cennik>
+  <Cennik>
+  <Nazwa>Promocja zimowa</Nazwa>
+  <Data_Od>12/22/2016 12:00:00 AM</Data_Od>
+  <Data_Do>3/21/2017 12:00:00 AM</Data_Do>
+ </Cennik>
+</Cenniki>

@@ -1,0 +1,216 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="TowaryDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Cenniki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Data_Od" Type="datetime" />
+          <Property Name="Data_Do" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Ceny">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CennikId" Type="int" />
+          <Property Name="TowarId" Type="int" />
+          <Property Name="Cena" Type="decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Rabat" Type="decimal" Precision="5" Scale="2" />
+        </EntityType>
+        <EntityType Name="Towary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Kod" Type="varchar" MaxLength="7" Nullable="false" />
+          <Property Name="Nazwa" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Masa" Type="decimal" Precision="14" Scale="3" />
+          <Property Name="JM" Type="varchar" MaxLength="50" />
+          <Property Name="Data_Utworzenia" Type="datetime" />
+          <Property Name="Data_Modyfikacji" Type="datetime" />
+        </EntityType>
+        <Association Name="FK_Ceny_Cenniki">
+          <End Role="Cenniki" Type="Self.Cenniki" Multiplicity="0..1" />
+          <End Role="Ceny" Type="Self.Ceny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cenniki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ceny">
+              <PropertyRef Name="CennikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ceny_ToTable">
+          <End Role="Towary" Type="Self.Towary" Multiplicity="0..1" />
+          <End Role="Ceny" Type="Self.Ceny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Towary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ceny">
+              <PropertyRef Name="TowarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TowaryDBModelStoreContainer">
+          <EntitySet Name="Cenniki" EntityType="Self.Cenniki" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ceny" EntityType="Self.Ceny" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Towary" EntityType="Self.Towary" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Ceny_Cenniki" Association="Self.FK_Ceny_Cenniki">
+            <End Role="Cenniki" EntitySet="Cenniki" />
+            <End Role="Ceny" EntitySet="Ceny" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ceny_ToTable" Association="Self.FK_Ceny_ToTable">
+            <End Role="Towary" EntitySet="Towary" />
+            <End Role="Ceny" EntitySet="Ceny" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TowaryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Cenniki">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Data_Od" Type="DateTime" Precision="3" />
+          <Property Name="Data_Do" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cenies" Relationship="Self.FK_Ceny_Cenniki" FromRole="Cenniki" ToRole="Ceny" />
+        </EntityType>
+        <EntityType Name="Ceny">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CennikId" Type="Int32" />
+          <Property Name="TowarId" Type="Int32" />
+          <Property Name="Cena" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+          <Property Name="Rabat" Type="Decimal" Precision="5" Scale="2" />
+          <NavigationProperty Name="Cenniki" Relationship="Self.FK_Ceny_Cenniki" FromRole="Ceny" ToRole="Cenniki" />
+          <NavigationProperty Name="Towary" Relationship="Self.FK_Ceny_ToTable" FromRole="Ceny" ToRole="Towary" />
+        </EntityType>
+        <EntityType Name="Towary">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Kod" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Masa" Type="Decimal" Precision="14" Scale="3" />
+          <Property Name="JM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Data_Utworzenia" Type="DateTime" Precision="3" />
+          <Property Name="Data_Modyfikacji" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="Cenies" Relationship="Self.FK_Ceny_ToTable" FromRole="Towary" ToRole="Ceny" />
+        </EntityType>
+        <Association Name="FK_Ceny_Cenniki">
+          <End Role="Cenniki" Type="Self.Cenniki" Multiplicity="0..1" />
+          <End Role="Ceny" Type="Self.Ceny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Cenniki">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ceny">
+              <PropertyRef Name="CennikId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Ceny_ToTable">
+          <End Role="Towary" Type="Self.Towary" Multiplicity="0..1" />
+          <End Role="Ceny" Type="Self.Ceny" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Towary">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Ceny">
+              <PropertyRef Name="TowarId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="TowaryDBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Cennikis" EntityType="Self.Cenniki" />
+          <EntitySet Name="Cenies" EntityType="Self.Ceny" />
+          <EntitySet Name="Towaries" EntityType="Self.Towary" />
+          <AssociationSet Name="FK_Ceny_Cenniki" Association="Self.FK_Ceny_Cenniki">
+            <End Role="Cenniki" EntitySet="Cennikis" />
+            <End Role="Ceny" EntitySet="Cenies" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Ceny_ToTable" Association="Self.FK_Ceny_ToTable">
+            <End Role="Towary" EntitySet="Towaries" />
+            <End Role="Ceny" EntitySet="Cenies" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TowaryDBModelStoreContainer" CdmEntityContainer="TowaryDBEntities">
+          <EntitySetMapping Name="Cennikis">
+            <EntityTypeMapping TypeName="TowaryDBModel.Cenniki">
+              <MappingFragment StoreEntitySet="Cenniki">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Data_Od" ColumnName="Data_Od" />
+                <ScalarProperty Name="Data_Do" ColumnName="Data_Do" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Cenies">
+            <EntityTypeMapping TypeName="TowaryDBModel.Ceny">
+              <MappingFragment StoreEntitySet="Ceny">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CennikId" ColumnName="CennikId" />
+                <ScalarProperty Name="TowarId" ColumnName="TowarId" />
+                <ScalarProperty Name="Cena" ColumnName="Cena" />
+                <ScalarProperty Name="Rabat" ColumnName="Rabat" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Towaries">
+            <EntityTypeMapping TypeName="TowaryDBModel.Towary">
+              <MappingFragment StoreEntitySet="Towary">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Kod" ColumnName="Kod" />
+                <ScalarProperty Name="Nazwa" ColumnName="Nazwa" />
+                <ScalarProperty Name="Masa" ColumnName="Masa" />
+                <ScalarProperty Name="JM" ColumnName="JM" />
+                <ScalarProperty Name="Data_Utworzenia" ColumnName="Data_Utworzenia" />
+                <ScalarProperty Name="Data_Modyfikacji" ColumnName="Data_Modyfikacji" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

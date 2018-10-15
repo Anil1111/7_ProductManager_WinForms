@@ -1,0 +1,8 @@
+Informacje!
+Korzystajac z posiadanej przez siebie wiedzy wykonaj podstawowe zadanie programistyczne:
+
+ Majac do wyboru jedeno z trzech zrodel danych (plik .csv, .xml lub .mdf), stworz prosty 
+interfejs uzytkownika, za posrednictwm ktorego zrealizujesz funkcje CRUD, umozliwiajace 
+bezpieczne zarzadzanie danymi w pamieci trwalej komputera.
+
+Powodzenia.

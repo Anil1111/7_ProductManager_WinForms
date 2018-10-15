@@ -1,0 +1,27 @@
+<?xml version="1.0" standalone="yes"?>
+<Towary>
+ <Towar>
+  <Kod>200-001</Kod>
+  <Nazwa>Wieprzowina</Nazwa>
+  <Masa>100.000</Masa>
+  <JM>kg</JM>
+  <Data_Utworzenia>3/1/2016 12:00:00 AM</Data_Utworzenia>
+  <Data_Modyfikacji>NULL</Data_Modyfikacji>
+ </Towar>
+ <Towar>
+  <Kod>200-002</Kod>
+  <Nazwa>Wołowina</Nazwa>
+  <Masa>250.000</Masa>
+  <JM>kg</JM>
+  <Data_Utworzenia>3/1/2016 12:00:00 AM</Data_Utworzenia>
+  <Data_Modyfikacji>NULL</Data_Modyfikacji>
+ </Towar>
+ <Towar>
+  <Kod>200-003</Kod>
+  <Nazwa>Dziczyzna</Nazwa>
+  <Masa>370.000</Masa>
+  <JM>kg</JM>
+  <Data_Utworzenia>3/1/2016 12:00:00 AM</Data_Utworzenia>
+  <Data_Modyfikacji>NULL</Data_Modyfikacji>
+ </Towar>
+</Towary>
