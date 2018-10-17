@@ -7,6 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Windows.Forms;
+
 namespace AplikacjaWindows
 {
     using System;
@@ -21,7 +25,12 @@ namespace AplikacjaWindows
         }
     
         public int Id { get; set; }
+	    [Required]
+		[RegularExpression("[0-9][0-9][0-9]-[0-9][0-9][0-9]")]
         public string Kod { get; set; }
+		[MaxLength(255)]
+		
+		[Column("TowarNazwa")]
         public string Nazwa { get; set; }
         public Nullable<decimal> Masa { get; set; }
         public string JM { get; set; }

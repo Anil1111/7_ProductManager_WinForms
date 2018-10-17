@@ -1,0 +1,74 @@
+C:\Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe
+C:\Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.pdb
+C:\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csprojResolveAssemblyReference.cache
+C:\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Properties.Resources.resources
+C:\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.GenerateResource.Cache
+C:\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Formularz.resources
+C:\Users\l.szczepaniak.7T\Desktop\Rekrutacja1\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Users\l.szczepaniak.7T\Desktop\Rekrutacja1\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Users\l.szczepaniak.7T\Desktop\Rekrutacja1\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Users\l.szczepaniak\Desktop\Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Users\l.szczepaniak\Desktop\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Users\l.szczepaniak\Desktop\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Source Files\Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Source Files\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Source Files\Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.pdb
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csprojAssemblyReference.cache
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Properties.Resources.resources
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.GenerateResource.cache
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CoreCompileInputs.cache
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.dll
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.SqlServer.dll
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.xml
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.SqlServer.xml
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.Formularz.resources
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CopyComplete
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditTowarForm.resources
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\AplikacjaWindows.pdb
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.dll
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.SqlServer.dll
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.xml
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\EntityFramework.SqlServer.xml
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csprojAssemblyReference.cache
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditTowarForm.resources
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.Formularz.resources
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Properties.Resources.resources
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.GenerateResource.cache
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CoreCompileInputs.cache
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CopyComplete
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Dev\REKRUTACJA - WZGLĘDNIE DZIALAJACA\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe.config
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\AplikacjaWindows.exe
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\AplikacjaWindows.pdb
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\EntityFramework.dll
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\EntityFramework.xml
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.csprojAssemblyReference.cache
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditTowarForm.resources
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.Formularz.resources
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.Properties.Resources.resources
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.GenerateResource.cache
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CoreCompileInputs.cache
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CopyComplete
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditCennikiForm.resources
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditCenyForm.resources
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\itextsharp.dll
+C:\Users\PAT\Desktop\Zadanie - Rekrutacja 16 10 12 26\AplikacjaWindows\bin\Debug\itextsharp.xml
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\itextsharp.dll
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\bin\Debug\itextsharp.xml
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditCennikiForm.resources
+C:\Dev\Zadanie - Rekrutacja\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditCenyForm.resources

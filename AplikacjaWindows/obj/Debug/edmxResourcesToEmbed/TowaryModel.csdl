@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TowaryDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Cenniki">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Data_Od" Type="DateTime" Precision="3" />
+    <Property Name="Data_Do" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cenies" Relationship="Self.FK_Ceny_Cenniki" FromRole="Cenniki" ToRole="Ceny" />
+  </EntityType>
+  <EntityType Name="Ceny">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CennikId" Type="Int32" />
+    <Property Name="TowarId" Type="Int32" />
+    <Property Name="Cena" Type="Decimal" Precision="10" Scale="2" Nullable="false" />
+    <Property Name="Rabat" Type="Decimal" Precision="5" Scale="2" />
+    <NavigationProperty Name="Cenniki" Relationship="Self.FK_Ceny_Cenniki" FromRole="Ceny" ToRole="Cenniki" />
+    <NavigationProperty Name="Towary" Relationship="Self.FK_Ceny_ToTable" FromRole="Ceny" ToRole="Towary" />
+  </EntityType>
+  <EntityType Name="Towary">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kod" Type="String" MaxLength="7" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Nazwa" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Masa" Type="Decimal" Precision="14" Scale="3" />
+    <Property Name="JM" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Data_Utworzenia" Type="DateTime" Precision="3" />
+    <Property Name="Data_Modyfikacji" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="Cenies" Relationship="Self.FK_Ceny_ToTable" FromRole="Towary" ToRole="Ceny" />
+  </EntityType>
+  <Association Name="FK_Ceny_Cenniki">
+    <End Role="Cenniki" Type="Self.Cenniki" Multiplicity="0..1" />
+    <End Role="Ceny" Type="Self.Ceny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Cenniki">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ceny">
+        <PropertyRef Name="CennikId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Ceny_ToTable">
+    <End Role="Towary" Type="Self.Towary" Multiplicity="0..1" />
+    <End Role="Ceny" Type="Self.Ceny" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Towary">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="Ceny">
+        <PropertyRef Name="TowarId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TowaryDBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Cennikis" EntityType="Self.Cenniki" />
+    <EntitySet Name="Cenies" EntityType="Self.Ceny" />
+    <EntitySet Name="Towaries" EntityType="Self.Towary" />
+    <AssociationSet Name="FK_Ceny_Cenniki" Association="Self.FK_Ceny_Cenniki">
+      <End Role="Cenniki" EntitySet="Cennikis" />
+      <End Role="Ceny" EntitySet="Cenies" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Ceny_ToTable" Association="Self.FK_Ceny_ToTable">
+      <End Role="Towary" EntitySet="Towaries" />
+      <End Role="Ceny" EntitySet="Cenies" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

@@ -28,12 +28,10 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.components = new System.ComponentModel.Container();
 			this.AddButtonYes = new System.Windows.Forms.Button();
 			this.CancelAddButton = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
 			this.NameAddBox = new System.Windows.Forms.TextBox();
-			this.towaryBindingSource = new System.Windows.Forms.BindingSource(this.components);
 			this.label2 = new System.Windows.Forms.Label();
 			this.KodAddBox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
@@ -42,7 +40,6 @@
 			this.JmBox = new System.Windows.Forms.ComboBox();
 			this.CreateDate = new System.Windows.Forms.TextBox();
 			this.EditDate = new System.Windows.Forms.TextBox();
-			((System.ComponentModel.ISupportInitialize)(this.towaryBindingSource)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// AddButtonYes
@@ -54,6 +51,7 @@
 			this.AddButtonYes.TabIndex = 0;
 			this.AddButtonYes.Text = "Dodaj";
 			this.AddButtonYes.UseVisualStyleBackColor = true;
+			this.AddButtonYes.Click += new System.EventHandler(this.AddButtonYes_Click);
 			// 
 			// CancelAddButton
 			// 
@@ -64,11 +62,12 @@
 			this.CancelAddButton.TabIndex = 1;
 			this.CancelAddButton.Text = "Anuluj";
 			this.CancelAddButton.UseVisualStyleBackColor = true;
+			this.CancelAddButton.Click += new System.EventHandler(this.CancelAddButton_Click);
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(9, 28);
+			this.label1.Location = new System.Drawing.Point(9, 13);
 			this.label1.Name = "label1";
 			this.label1.Size = new System.Drawing.Size(40, 13);
 			this.label1.TabIndex = 2;
@@ -76,20 +75,15 @@
 			// 
 			// NameAddBox
 			// 
-			this.NameAddBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Nazwa", true));
-			this.NameAddBox.Location = new System.Drawing.Point(12, 44);
+			this.NameAddBox.Location = new System.Drawing.Point(12, 29);
 			this.NameAddBox.Name = "NameAddBox";
 			this.NameAddBox.Size = new System.Drawing.Size(100, 20);
 			this.NameAddBox.TabIndex = 3;
 			// 
-			// towaryBindingSource
-			// 
-			this.towaryBindingSource.DataSource = typeof(AplikacjaWindows.Towary);
-			// 
 			// label2
 			// 
 			this.label2.AutoSize = true;
-			this.label2.Location = new System.Drawing.Point(9, 67);
+			this.label2.Location = new System.Drawing.Point(9, 52);
 			this.label2.Name = "label2";
 			this.label2.Size = new System.Drawing.Size(26, 13);
 			this.label2.TabIndex = 4;
@@ -97,8 +91,7 @@
 			// 
 			// KodAddBox
 			// 
-			this.KodAddBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Kod", true));
-			this.KodAddBox.Location = new System.Drawing.Point(12, 83);
+			this.KodAddBox.Location = new System.Drawing.Point(12, 68);
 			this.KodAddBox.Name = "KodAddBox";
 			this.KodAddBox.Size = new System.Drawing.Size(100, 20);
 			this.KodAddBox.TabIndex = 5;
@@ -106,7 +99,7 @@
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(9, 106);
+			this.label3.Location = new System.Drawing.Point(9, 91);
 			this.label3.Name = "label3";
 			this.label3.Size = new System.Drawing.Size(33, 13);
 			this.label3.TabIndex = 6;
@@ -115,7 +108,7 @@
 			// label4
 			// 
 			this.label4.AutoSize = true;
-			this.label4.Location = new System.Drawing.Point(9, 145);
+			this.label4.Location = new System.Drawing.Point(9, 130);
 			this.label4.Name = "label4";
 			this.label4.Size = new System.Drawing.Size(21, 13);
 			this.label4.TabIndex = 7;
@@ -123,39 +116,33 @@
 			// 
 			// MasaAddBox
 			// 
-			this.MasaAddBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Masa", true));
-			this.MasaAddBox.Location = new System.Drawing.Point(12, 122);
+			this.MasaAddBox.Location = new System.Drawing.Point(12, 107);
 			this.MasaAddBox.Name = "MasaAddBox";
 			this.MasaAddBox.Size = new System.Drawing.Size(100, 20);
 			this.MasaAddBox.TabIndex = 9;
 			// 
 			// JmBox
 			// 
-			this.JmBox.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "JM", true));
 			this.JmBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.JmBox.FormattingEnabled = true;
-			this.JmBox.Location = new System.Drawing.Point(12, 161);
+			this.JmBox.Location = new System.Drawing.Point(12, 146);
 			this.JmBox.Name = "JmBox";
 			this.JmBox.Size = new System.Drawing.Size(121, 21);
 			this.JmBox.TabIndex = 11;
 			// 
 			// CreateDate
 			// 
-			this.CreateDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Data_Utworzenia", true));
 			this.CreateDate.Location = new System.Drawing.Point(12, 223);
 			this.CreateDate.Name = "CreateDate";
 			this.CreateDate.Size = new System.Drawing.Size(23, 20);
 			this.CreateDate.TabIndex = 12;
-			this.CreateDate.Visible = false;
 			// 
 			// EditDate
 			// 
-			this.EditDate.DataBindings.Add(new System.Windows.Forms.Binding("Text", this.towaryBindingSource, "Data_Modyfikacji", true));
 			this.EditDate.Location = new System.Drawing.Point(41, 223);
 			this.EditDate.Name = "EditDate";
 			this.EditDate.Size = new System.Drawing.Size(21, 20);
 			this.EditDate.TabIndex = 13;
-			this.EditDate.Visible = false;
 			// 
 			// AddEditTowarForm
 			// 
@@ -177,10 +164,12 @@
 			this.Controls.Add(this.label1);
 			this.Controls.Add(this.CancelAddButton);
 			this.Controls.Add(this.AddButtonYes);
+			this.MaximumSize = new System.Drawing.Size(229, 347);
+			this.MinimumSize = new System.Drawing.Size(229, 347);
 			this.Name = "AddEditTowarForm";
+			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FORMULARZ TOWAROWY";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddTowarForm_FormClosing);
-			((System.ComponentModel.ISupportInitialize)(this.towaryBindingSource)).EndInit();
+			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEditTowarForm_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -197,7 +186,6 @@
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.TextBox MasaAddBox;
-		private System.Windows.Forms.BindingSource towaryBindingSource;
 		private System.Windows.Forms.ComboBox JmBox;
 		private System.Windows.Forms.TextBox CreateDate;
 		private System.Windows.Forms.TextBox EditDate;

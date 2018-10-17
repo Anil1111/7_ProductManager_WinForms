@@ -7,6 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AplikacjaWindows
 {
     using System;
@@ -18,9 +21,11 @@ namespace AplikacjaWindows
         public Nullable<int> CennikId { get; set; }
         public Nullable<int> TowarId { get; set; }
         public decimal Cena { get; set; }
+		[Range(1,100)]
         public Nullable<decimal> Rabat { get; set; }
-    
+		[NotMapped]
         public virtual Cenniki Cenniki { get; set; }
-        public virtual Towary Towary { get; set; }
+	    [NotMapped]
+		public virtual Towary Towary { get; set; }
     }
 }

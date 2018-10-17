@@ -7,6 +7,8 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace AplikacjaWindows
 {
     using System;
@@ -21,6 +23,7 @@ namespace AplikacjaWindows
         }
     
         public int Id { get; set; }
+		[Column("CennikNazwa")]
         public string Nazwa { get; set; }
         public Nullable<System.DateTime> Data_Od { get; set; }
         public Nullable<System.DateTime> Data_Do { get; set; }
