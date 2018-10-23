@@ -34,7 +34,6 @@ namespace AplikacjaWindows.Forms
 
 		private void DodajTowarBtn_Click(object sender, EventArgs e)
 		{
-
 			using (var addform = new AddEditTowarForm(null))
 			{
 				if (addform.ShowDialog() == DialogResult.Yes)

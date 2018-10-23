@@ -25,17 +25,17 @@ namespace AplikacjaWindows
         }
     
         public int Id { get; set; }
-	    [Required]
-		[RegularExpression("[0-9][0-9][0-9]-[0-9][0-9][0-9]")]
-		[MaxLength(7)]
+	    [Required(ErrorMessage = "Kod jest wymagany")]
+		[RegularExpression("[0-9][0-9][0-9]-[0-9][0-9][0-9]",ErrorMessage ="Z³y kod. Prawid³owy Format kodu: XXX-XXX")]
+		[MaxLength(7, ErrorMessage = "Maksymalna d³ugoœæ kodu: 7")]
         public string Kod { get; set; }
-		[Required]
-		[MaxLength(255)]
+		[Required(ErrorMessage = "Nazwa jest wymagana")]
+		[MaxLength(255, ErrorMessage="Za d³uga nazwa. Maksymalna iloœæ znaków: 255")]
         public string Nazwa { get; set; }
-	    [Required]
-		[Range(0,10000000)]
+	    [Required(ErrorMessage = "Masa wymagana")]
+		[Range(0,10000000000000000000,ErrorMessage = "Masa musi byæ wiêksza od 0")]
 		public Nullable<decimal> Masa { get; set; }
-	    [Required]
+	    [Required(ErrorMessage = "Proszê wybraæ JM")]
 		public string JM { get; set; }
 	    [Required]
 		public Nullable<System.DateTime> Data_Utworzenia { get; set; }

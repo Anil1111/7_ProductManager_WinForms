@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace AplikacjaWindows.Interfaces
 {
-	public interface ICreator
+	public interface IDatabaseManager
 	{
 
-		void Create();
-		void Edit(object obj);
-		void Delete(object obj);
+		void CreateRecord(object obj);
+		void UpdateRecord(object obj);
+		void DeleteRecord(object obj);
 
 	}
 }

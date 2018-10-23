@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Data.Entity.Validation;
 using System.Windows.Forms;
 using AplikacjaWindows.Helpers;
 using AplikacjaWindows.Layers.BLL;
@@ -8,9 +7,7 @@ namespace AplikacjaWindows.Forms
 {
 	public partial class AddEditTowarForm : Form
 	{
-		private Towary _towar;
-
-		private int _closeDisabler = 0;
+		private readonly Towary _towar;
 
 		public AddEditTowarForm(Towary towar)
 		{
@@ -18,18 +15,19 @@ namespace AplikacjaWindows.Forms
 
 			_towar = towar;
 
-			JmBox.DataSource = Enum.GetValues(typeof(JednostkiMasy));  //Pobranie do rozwijanej listy jednostek masy
+			JmBox.DataSource = Enum.GetValues(typeof(JednostkiMasy)); //Pobranie do rozwijanej listy jednostek masy
 
 			if (towar != null)
 			{
 				AddButtonYes.Text = "Edytuj";
+
 				//Wypełnienie pól danymi edytowanego towaru
 				NameAddBox.Text = towar.Nazwa;
 				KodAddBox.Text = towar.Kod;
 				MasaAddBox.Text = towar.Masa.ToString();
 				JmBox.Text = towar.JM;
 				CreateDate.Text = towar.Data_Utworzenia.ToString();
-				EditDate.Text = DateTime.Now.ToString("d");
+				EditDate.Text = DateTime.Now.ToString();
 			}
 			else
 			{
@@ -39,59 +37,58 @@ namespace AplikacjaWindows.Forms
 
 		private void AddButtonYes_Click(object sender, EventArgs e)
 		{
+			if (AddButtonYes.Text == "Dodaj")
+			{
+				AddProduct();
+			}
+			else if (AddButtonYes.Text == "Edytuj")
+			{
+				EditProduct();
+			}
+		}
+
+		private void AddProduct()
+		{
 			try
 			{
-				_closeDisabler = 0;
-				if (AddButtonYes.Text == "Dodaj")
+				new ProductBLL().AddProduct(new Towary
 				{
-					var name = NameAddBox.Text;
-					var kod = KodAddBox.Text;
-					var masa = Decimal.Parse(MasaAddBox.Text);
-					var jm = JmBox.Text;
-					var dataUtworzenia = DateTime.Parse(CreateDate.Text = DateTime.Now.ToString("d"));
-					DateTime? dataModyfikacji = null;
-
-					ProductBLL addProduct = new ProductBLL();
-					addProduct.AddProduct(kod,name,masa,jm,dataUtworzenia,dataModyfikacji);
-				}
-				else if (AddButtonYes.Text == "Edytuj")
-				{
-					//Zaktualizowanie wartości pól obiektu Towar
-					_towar.Nazwa = NameAddBox.Text;
-					_towar.Kod = KodAddBox.Text;
-					_towar.Masa = Decimal.Parse(MasaAddBox.Text);
-					_towar.JM = JmBox.Text;
-					_towar.Data_Utworzenia = DateTime.Parse(CreateDate.Text);
-					_towar.Data_Modyfikacji = DateTime.Parse(EditDate.Text = DateTime.Now.ToString("d"));
-
-					ProductBLL editProduct = new ProductBLL();
-					editProduct.EditProduct(_towar);
-				}
-			}
-			catch (DbEntityValidationException exception)
-			{
-				MessageBox.Show("Nieprawidłowy format danych " + exception.Message, "Błąd", MessageBoxButtons.OK);
-				_closeDisabler = 1;
+					Kod = KodAddBox.Text,
+					Nazwa = NameAddBox.Text,
+					Masa = decimal.Parse(MasaAddBox.Text),
+					JM = JmBox.Text,
+					Data_Utworzenia = DateTime.Now,
+					Data_Modyfikacji = null
+				});
 			}
 			catch (FormatException exception)
 			{
-				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd", MessageBoxButtons.OK);
-				_closeDisabler = 1;
+				MessageBox.Show("Zły format danych, Kod: XXX-XXX, Masa: Liczby powyżej 0, Pola nie mogą być puste",
+					"Błąd",
+					MessageBoxButtons.OK);
 			}
 		}
 
-		private void AddEditTowarForm_FormClosing(object sender, FormClosingEventArgs e)
+		private void EditProduct()
 		{
-			if (_closeDisabler == 1)
+			try
 			{
-				e.Cancel = true;
-			}
-			else e.Cancel = false;
-		}
+				//Zaktualizowanie wartości pól obiektu _towar
+				_towar.Nazwa = NameAddBox.Text;
+				_towar.Kod = KodAddBox.Text;
+				_towar.Masa = decimal.Parse(MasaAddBox.Text);
+				_towar.JM = JmBox.Text;
+				_towar.Data_Utworzenia = DateTime.Parse(CreateDate.Text);
+				_towar.Data_Modyfikacji = DateTime.Parse(EditDate.Text = DateTime.Now.ToString("d"));
 
-		private void CancelAddButton_Click(object sender, EventArgs e)
-		{
-			_closeDisabler = 0;
+				new ProductBLL().EditProduct(_towar);
+			}
+			catch (FormatException exception)
+			{
+				MessageBox.Show("Zły format danych, Kod: XXX-XXX, Masa: Liczby powyżej 0, Pola nie mogą być puste",
+					"Błąd",
+					MessageBoxButtons.OK);
+			}
 		}
 	}
 }

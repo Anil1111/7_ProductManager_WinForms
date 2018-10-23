@@ -1,70 +1,87 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data.Entity;
 using System.Data.Entity.Migrations;
+using System.Data.Entity.Validation;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
-using System.Threading.Tasks;
+using System.Runtime.Remoting.Channels;
+using System.Windows.Forms;
+using AplikacjaWindows.Interfaces;
+
 
 namespace AplikacjaWindows.Layers.DAL
 {
-	public class ProductsTableAdapter
+	public class ProductsTableAdapter : IDatabaseManager
 	{
-		private readonly TowaryDBEntities _context;
-
-		public ProductsTableAdapter(TowaryDBEntities context)
-		{
-			_context = context;
-		}
-
 		public IEnumerable<Towary> GetProducts()
-		{
-			return _context.Towaries.ToList();
-		}
-
-		public IQueryable<Towary> GetProductByID(int id)
-		{
-			return _context.Towaries.Where(x => x.Id == id);
-		}
-
-		///TODO;
-		public IEnumerable<Towary> GetProductsByPriceList(int priceListID)
-		{
-			return null;
-		}
-
-		public void CreateProductRecord(Towary product)
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				context.Towaries.Add(product);
-				context.SaveChanges();
+				return context.Towaries.ToList();
 			}
 		}
 
-		public void UpdateProductRecord(Towary product)
+		public void CreateRecord(object product)
 		{
-			_context.Towaries.AddOrUpdate(product);
-			_context.SaveChanges();
+			using (TowaryDBEntities context = new TowaryDBEntities())
+			{
+				try
+				{
+					context.Towaries.Add((Towary)product);
+					context.SaveChanges();
+				}
+				catch (DbEntityValidationException exception)
+				{
+					foreach (var e in exception.EntityValidationErrors)
+					{
+						foreach (var x in e.ValidationErrors)
+						{
+							MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+						}
+					}
+				}
+				catch (FormatException exception)
+				{
+
+					MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd", MessageBoxButtons.OK);
+				}
+			}
 		}
 
-		public void DeleteProductRecord(int productID)
+		public void UpdateRecord(object product)
 		{
+			using (TowaryDBEntities context = new TowaryDBEntities())
+			{
+				try
+				{
+					context.Towaries.AddOrUpdate((Towary)product);
+					context.SaveChanges();
+				}
+				catch (DbEntityValidationException exception)
+				{
+					foreach (var e in exception.EntityValidationErrors)
+					{
+						foreach (var x in e.ValidationErrors)
+						{
+							MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+						}
+					}
+				}
+				catch (FormatException exception)
+				{
+					MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd", MessageBoxButtons.OK);
 
-			Towary product = GetProductByID(productID).FirstOrDefault();
-			_context.Towaries.Attach(product);
-			_context.Towaries.Remove(product);
-			_context.SaveChanges();
+				}
+			}
 		}
 
-		public void DeleteProductRecord(Towary product)
+		public void DeleteRecord(object product)
 		{
-			_context.Towaries.Attach(product);
-			_context.Towaries.Remove(product);
-			_context.SaveChanges();
+			using (TowaryDBEntities context = new TowaryDBEntities())
+			{
+				context.Towaries.Attach((Towary)product);
+				context.Towaries.Remove((Towary)product);
+				context.SaveChanges();
+			}
 		}
-
-
 	}
 }

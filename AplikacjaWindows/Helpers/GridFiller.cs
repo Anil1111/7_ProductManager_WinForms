@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
+using AplikacjaWindows.Layers.BLL;
 
 namespace AplikacjaWindows.Helpers
 {
@@ -12,18 +13,13 @@ namespace AplikacjaWindows.Helpers
 		public static void FillTowaryGrid(DataGridView grid)
 		{
 			grid.AutoGenerateColumns = false;
-
-			using (TowaryDBEntities context = new TowaryDBEntities())
-			{
-
-				grid.DataSource = context.Towaries.ToList();
+			grid.DataSource = new ProductBLL().GetProducts();
 
 				var index = 1;
 				foreach (DataGridViewRow rows in grid.Rows)
 				{
 					rows.HeaderCell.Value = index++.ToString();
 				}
-			}
 		}
 
 		public static void FillCenyGrid(DataGridView grid)
@@ -32,7 +28,8 @@ namespace AplikacjaWindows.Helpers
 
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				grid.DataSource = context.Cenies.ToList();
+				grid.DataSource = context.Cenies.Include(x => x.Towary).Include(x => x.Cenniki).ToList();
+
 
 				var index = 1;
 				foreach (DataGridViewRow rows in grid.Rows)

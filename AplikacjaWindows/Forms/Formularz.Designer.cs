@@ -37,16 +37,17 @@
 			this.EdytujCeneBtn = new System.Windows.Forms.Button();
 			this.DodajCeneBtn = new System.Windows.Forms.Button();
 			this.CenyGrid = new System.Windows.Forms.DataGridView();
-			this.CenaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CennikID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.TowarId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Towary = new System.Windows.Forms.TabPage();
 			this.UsunTowarBtn = new System.Windows.Forms.Button();
 			this.EdytujTowarBtn = new System.Windows.Forms.Button();
 			this.DodajTowarBtn = new System.Windows.Forms.Button();
 			this.TowaryGrid = new System.Windows.Forms.DataGridView();
+			this.Kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Masa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.JM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Utworzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Modyfikacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TabControl = new System.Windows.Forms.TabControl();
 			this.Podsumowanie = new System.Windows.Forms.TabPage();
 			this.Wydruk = new System.Windows.Forms.Button();
@@ -61,12 +62,10 @@
 			this.PromocjaOd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PromocjaDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CenaZRabatem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Masa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.JM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Utworzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Modyfikacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NazwaCennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.NazwaTowar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Cenniki.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CennikiGrid)).BeginInit();
 			this.Ceny.SuspendLayout();
@@ -221,10 +220,9 @@
 			this.CenyGrid.AllowUserToResizeRows = false;
 			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.CenyGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.CenaID,
-            this.CennikID,
-            this.TowarId,
             this.Cena,
+            this.NazwaCennik,
+            this.NazwaTowar,
             this.Rabat});
 			this.CenyGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.CenyGrid.Location = new System.Drawing.Point(3, 93);
@@ -233,41 +231,6 @@
 			this.CenyGrid.RowHeadersWidth = 50;
 			this.CenyGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CenyGrid.TabIndex = 1;
-			// 
-			// CenaID
-			// 
-			this.CenaID.DataPropertyName = "Id";
-			this.CenaID.HeaderText = "CenaID";
-			this.CenaID.Name = "CenaID";
-			this.CenaID.ReadOnly = true;
-			// 
-			// CennikID
-			// 
-			this.CennikID.DataPropertyName = "CennikId";
-			this.CennikID.HeaderText = "CennikID";
-			this.CennikID.Name = "CennikID";
-			this.CennikID.ReadOnly = true;
-			// 
-			// TowarId
-			// 
-			this.TowarId.DataPropertyName = "TowarId";
-			this.TowarId.HeaderText = "TowarId";
-			this.TowarId.Name = "TowarId";
-			this.TowarId.ReadOnly = true;
-			// 
-			// Cena
-			// 
-			this.Cena.DataPropertyName = "Cena";
-			this.Cena.HeaderText = "Cena";
-			this.Cena.Name = "Cena";
-			this.Cena.ReadOnly = true;
-			// 
-			// Rabat
-			// 
-			this.Rabat.DataPropertyName = "Rabat";
-			this.Rabat.HeaderText = "Rabat";
-			this.Rabat.Name = "Rabat";
-			this.Rabat.ReadOnly = true;
 			// 
 			// Towary
 			// 
@@ -334,6 +297,48 @@
 			this.TowaryGrid.RowHeadersWidth = 50;
 			this.TowaryGrid.Size = new System.Drawing.Size(1045, 391);
 			this.TowaryGrid.TabIndex = 0;
+			// 
+			// Kod
+			// 
+			this.Kod.DataPropertyName = "Kod";
+			this.Kod.HeaderText = "Kod";
+			this.Kod.Name = "Kod";
+			this.Kod.ReadOnly = true;
+			// 
+			// Nazwa
+			// 
+			this.Nazwa.DataPropertyName = "Nazwa";
+			this.Nazwa.HeaderText = "Nazwa";
+			this.Nazwa.Name = "Nazwa";
+			this.Nazwa.ReadOnly = true;
+			// 
+			// Masa
+			// 
+			this.Masa.DataPropertyName = "Masa";
+			this.Masa.HeaderText = "Masa";
+			this.Masa.Name = "Masa";
+			this.Masa.ReadOnly = true;
+			// 
+			// JM
+			// 
+			this.JM.DataPropertyName = "JM";
+			this.JM.HeaderText = "JM";
+			this.JM.Name = "JM";
+			this.JM.ReadOnly = true;
+			// 
+			// Data_Utworzenia
+			// 
+			this.Data_Utworzenia.DataPropertyName = "Data_Utworzenia";
+			this.Data_Utworzenia.HeaderText = "Data Utworzenia";
+			this.Data_Utworzenia.Name = "Data_Utworzenia";
+			this.Data_Utworzenia.ReadOnly = true;
+			// 
+			// Data_Modyfikacji
+			// 
+			this.Data_Modyfikacji.DataPropertyName = "Data_Modyfikacji";
+			this.Data_Modyfikacji.HeaderText = "Data Modyfikacji";
+			this.Data_Modyfikacji.Name = "Data_Modyfikacji";
+			this.Data_Modyfikacji.ReadOnly = true;
 			// 
 			// TabControl
 			// 
@@ -465,47 +470,33 @@
 			this.CenaZRabatem.Name = "CenaZRabatem";
 			this.CenaZRabatem.ReadOnly = true;
 			// 
-			// Kod
+			// Cena
 			// 
-			this.Kod.DataPropertyName = "Kod";
-			this.Kod.HeaderText = "Kod";
-			this.Kod.Name = "Kod";
-			this.Kod.ReadOnly = true;
+			this.Cena.DataPropertyName = "Cena";
+			this.Cena.HeaderText = "Cena";
+			this.Cena.Name = "Cena";
+			this.Cena.ReadOnly = true;
 			// 
-			// Nazwa
+			// NazwaCennik
 			// 
-			this.Nazwa.DataPropertyName = "Nazwa";
-			this.Nazwa.HeaderText = "Nazwa";
-			this.Nazwa.Name = "Nazwa";
-			this.Nazwa.ReadOnly = true;
+			this.NazwaCennik.DataPropertyName = "nazwa";
+			this.NazwaCennik.HeaderText = "Cennik";
+			this.NazwaCennik.Name = "NazwaCennik";
+			this.NazwaCennik.ReadOnly = true;
 			// 
-			// Masa
+			// NazwaTowar
 			// 
-			this.Masa.DataPropertyName = "Masa";
-			this.Masa.HeaderText = "Masa";
-			this.Masa.Name = "Masa";
-			this.Masa.ReadOnly = true;
+			this.NazwaTowar.DataPropertyName = "nazwa1";
+			this.NazwaTowar.HeaderText = "Towar";
+			this.NazwaTowar.Name = "NazwaTowar";
+			this.NazwaTowar.ReadOnly = true;
 			// 
-			// JM
+			// Rabat
 			// 
-			this.JM.DataPropertyName = "JM";
-			this.JM.HeaderText = "JM";
-			this.JM.Name = "JM";
-			this.JM.ReadOnly = true;
-			// 
-			// Data_Utworzenia
-			// 
-			this.Data_Utworzenia.DataPropertyName = "Data_Utworzenia";
-			this.Data_Utworzenia.HeaderText = "Data Utworzenia";
-			this.Data_Utworzenia.Name = "Data_Utworzenia";
-			this.Data_Utworzenia.ReadOnly = true;
-			// 
-			// Data_Modyfikacji
-			// 
-			this.Data_Modyfikacji.DataPropertyName = "Data_Modyfikacji";
-			this.Data_Modyfikacji.HeaderText = "Data Modyfikacji";
-			this.Data_Modyfikacji.Name = "Data_Modyfikacji";
-			this.Data_Modyfikacji.ReadOnly = true;
+			this.Rabat.DataPropertyName = "Rabat";
+			this.Rabat.HeaderText = "Rabat";
+			this.Rabat.Name = "Rabat";
+			this.Rabat.ReadOnly = true;
 			// 
 			// Formularz
 			// 
@@ -550,11 +541,6 @@
 		private System.Windows.Forms.Button DodajTowarBtn;
 		private System.Windows.Forms.DataGridView TowaryGrid;
 		private System.Windows.Forms.TabControl TabControl;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CenaID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CennikID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn TowarId;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Rabat;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CennikIDc;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CennikNazwa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Od;
@@ -578,6 +564,10 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn JM;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Utworzenia;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Modyfikacji;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NazwaCennik;
+		private System.Windows.Forms.DataGridViewTextBoxColumn NazwaTowar;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Rabat;
 	}
 }
 

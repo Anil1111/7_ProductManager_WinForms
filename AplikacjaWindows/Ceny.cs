@@ -23,10 +23,10 @@ namespace AplikacjaWindows
 	    [Required]
 		public Nullable<int> TowarId { get; set; }
 	    [Required]
-		[Range(1,10000000000)]
+		[Range(0.01,10000000000000000000)]
 		public decimal Cena { get; set; }
 	    [Required]
-		[Range(1,100)]
+		[Range(0,100)]
         public Nullable<decimal> Rabat { get; set; }
 		[NotMapped]
         public virtual Cenniki Cenniki { get; set; }

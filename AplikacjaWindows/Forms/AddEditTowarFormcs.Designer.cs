@@ -62,7 +62,6 @@
 			this.CancelAddButton.TabIndex = 1;
 			this.CancelAddButton.Text = "Anuluj";
 			this.CancelAddButton.UseVisualStyleBackColor = true;
-			this.CancelAddButton.Click += new System.EventHandler(this.CancelAddButton_Click);
 			// 
 			// label1
 			// 
@@ -171,7 +170,6 @@
 			this.Name = "AddEditTowarForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FORMULARZ TOWAROWY";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEditTowarForm_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
