@@ -47,13 +47,6 @@
 			this.EdytujTowarBtn = new System.Windows.Forms.Button();
 			this.DodajTowarBtn = new System.Windows.Forms.Button();
 			this.TowaryGrid = new System.Windows.Forms.DataGridView();
-			this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Masa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.JM = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Utworzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Modyfikacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TabControl = new System.Windows.Forms.TabControl();
 			this.Podsumowanie = new System.Windows.Forms.TabPage();
 			this.Wydruk = new System.Windows.Forms.Button();
@@ -68,6 +61,12 @@
 			this.PromocjaOd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PromocjaDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CenaZRabatem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Masa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.JM = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Utworzenia = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Modyfikacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Cenniki.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CennikiGrid)).BeginInit();
 			this.Ceny.SuspendLayout();
@@ -127,6 +126,8 @@
 			// 
 			this.CennikiGrid.AllowUserToAddRows = false;
 			this.CennikiGrid.AllowUserToDeleteRows = false;
+			this.CennikiGrid.AllowUserToResizeColumns = false;
+			this.CennikiGrid.AllowUserToResizeRows = false;
 			this.CennikiGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.CennikiGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CennikIDc,
@@ -216,6 +217,8 @@
 			// 
 			this.CenyGrid.AllowUserToAddRows = false;
 			this.CenyGrid.AllowUserToDeleteRows = false;
+			this.CenyGrid.AllowUserToResizeColumns = false;
+			this.CenyGrid.AllowUserToResizeRows = false;
 			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.CenyGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CenaID,
@@ -227,6 +230,7 @@
 			this.CenyGrid.Location = new System.Drawing.Point(3, 93);
 			this.CenyGrid.Name = "CenyGrid";
 			this.CenyGrid.ReadOnly = true;
+			this.CenyGrid.RowHeadersWidth = 50;
 			this.CenyGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CenyGrid.TabIndex = 1;
 			// 
@@ -313,10 +317,10 @@
 			// 
 			this.TowaryGrid.AllowUserToAddRows = false;
 			this.TowaryGrid.AllowUserToDeleteRows = false;
-			this.TowaryGrid.AllowUserToOrderColumns = true;
+			this.TowaryGrid.AllowUserToResizeColumns = false;
+			this.TowaryGrid.AllowUserToResizeRows = false;
 			this.TowaryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.TowaryGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.ID,
             this.Kod,
             this.Nazwa,
             this.Masa,
@@ -327,57 +331,9 @@
 			this.TowaryGrid.Location = new System.Drawing.Point(3, 93);
 			this.TowaryGrid.Name = "TowaryGrid";
 			this.TowaryGrid.ReadOnly = true;
+			this.TowaryGrid.RowHeadersWidth = 50;
 			this.TowaryGrid.Size = new System.Drawing.Size(1045, 391);
 			this.TowaryGrid.TabIndex = 0;
-			// 
-			// ID
-			// 
-			this.ID.DataPropertyName = "Id";
-			this.ID.HeaderText = "ID";
-			this.ID.Name = "ID";
-			this.ID.ReadOnly = true;
-			// 
-			// Kod
-			// 
-			this.Kod.DataPropertyName = "Kod";
-			this.Kod.HeaderText = "Kod";
-			this.Kod.Name = "Kod";
-			this.Kod.ReadOnly = true;
-			// 
-			// Nazwa
-			// 
-			this.Nazwa.DataPropertyName = "Nazwa";
-			this.Nazwa.HeaderText = "Nazwa";
-			this.Nazwa.Name = "Nazwa";
-			this.Nazwa.ReadOnly = true;
-			// 
-			// Masa
-			// 
-			this.Masa.DataPropertyName = "Masa";
-			this.Masa.HeaderText = "Masa";
-			this.Masa.Name = "Masa";
-			this.Masa.ReadOnly = true;
-			// 
-			// JM
-			// 
-			this.JM.DataPropertyName = "JM";
-			this.JM.HeaderText = "JM";
-			this.JM.Name = "JM";
-			this.JM.ReadOnly = true;
-			// 
-			// Data_Utworzenia
-			// 
-			this.Data_Utworzenia.DataPropertyName = "Data_Utworzenia";
-			this.Data_Utworzenia.HeaderText = "Data Utworzenia";
-			this.Data_Utworzenia.Name = "Data_Utworzenia";
-			this.Data_Utworzenia.ReadOnly = true;
-			// 
-			// Data_Modyfikacji
-			// 
-			this.Data_Modyfikacji.DataPropertyName = "Data_Modyfikacji";
-			this.Data_Modyfikacji.HeaderText = "Data Modyfikacji";
-			this.Data_Modyfikacji.Name = "Data_Modyfikacji";
-			this.Data_Modyfikacji.ReadOnly = true;
 			// 
 			// TabControl
 			// 
@@ -419,7 +375,8 @@
 			// 
 			this.PodsumowanieGrid.AllowUserToAddRows = false;
 			this.PodsumowanieGrid.AllowUserToDeleteRows = false;
-			this.PodsumowanieGrid.AllowUserToOrderColumns = true;
+			this.PodsumowanieGrid.AllowUserToResizeColumns = false;
+			this.PodsumowanieGrid.AllowUserToResizeRows = false;
 			this.PodsumowanieGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.PodsumowanieGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TowarNazwa,
@@ -508,6 +465,48 @@
 			this.CenaZRabatem.Name = "CenaZRabatem";
 			this.CenaZRabatem.ReadOnly = true;
 			// 
+			// Kod
+			// 
+			this.Kod.DataPropertyName = "Kod";
+			this.Kod.HeaderText = "Kod";
+			this.Kod.Name = "Kod";
+			this.Kod.ReadOnly = true;
+			// 
+			// Nazwa
+			// 
+			this.Nazwa.DataPropertyName = "Nazwa";
+			this.Nazwa.HeaderText = "Nazwa";
+			this.Nazwa.Name = "Nazwa";
+			this.Nazwa.ReadOnly = true;
+			// 
+			// Masa
+			// 
+			this.Masa.DataPropertyName = "Masa";
+			this.Masa.HeaderText = "Masa";
+			this.Masa.Name = "Masa";
+			this.Masa.ReadOnly = true;
+			// 
+			// JM
+			// 
+			this.JM.DataPropertyName = "JM";
+			this.JM.HeaderText = "JM";
+			this.JM.Name = "JM";
+			this.JM.ReadOnly = true;
+			// 
+			// Data_Utworzenia
+			// 
+			this.Data_Utworzenia.DataPropertyName = "Data_Utworzenia";
+			this.Data_Utworzenia.HeaderText = "Data Utworzenia";
+			this.Data_Utworzenia.Name = "Data_Utworzenia";
+			this.Data_Utworzenia.ReadOnly = true;
+			// 
+			// Data_Modyfikacji
+			// 
+			this.Data_Modyfikacji.DataPropertyName = "Data_Modyfikacji";
+			this.Data_Modyfikacji.HeaderText = "Data Modyfikacji";
+			this.Data_Modyfikacji.Name = "Data_Modyfikacji";
+			this.Data_Modyfikacji.ReadOnly = true;
+			// 
 			// Formularz
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -562,13 +561,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Do;
 		private System.Windows.Forms.TabPage Podsumowanie;
 		private System.Windows.Forms.DataGridView PodsumowanieGrid;
-		private System.Windows.Forms.DataGridViewTextBoxColumn ID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Masa;
-		private System.Windows.Forms.DataGridViewTextBoxColumn JM;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Utworzenia;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Modyfikacji;
 		private System.Windows.Forms.Button Wydruk;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TowarNazwa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn KodTowaru;
@@ -580,6 +572,12 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaOd;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaDo;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CenaZRabatem;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Masa;
+		private System.Windows.Forms.DataGridViewTextBoxColumn JM;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Utworzenia;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Modyfikacji;
 	}
 }
 

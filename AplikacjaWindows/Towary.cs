@@ -27,14 +27,18 @@ namespace AplikacjaWindows
         public int Id { get; set; }
 	    [Required]
 		[RegularExpression("[0-9][0-9][0-9]-[0-9][0-9][0-9]")]
+		[MaxLength(7)]
         public string Kod { get; set; }
+		[Required]
 		[MaxLength(255)]
-		
-		[Column("TowarNazwa")]
         public string Nazwa { get; set; }
-        public Nullable<decimal> Masa { get; set; }
-        public string JM { get; set; }
-	    public Nullable<System.DateTime> Data_Utworzenia { get; set; } = DateTime.Now;
+	    [Required]
+		[Range(0,10000000)]
+		public Nullable<decimal> Masa { get; set; }
+	    [Required]
+		public string JM { get; set; }
+	    [Required]
+		public Nullable<System.DateTime> Data_Utworzenia { get; set; } = DateTime.Now;
         public Nullable<System.DateTime> Data_Modyfikacji { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

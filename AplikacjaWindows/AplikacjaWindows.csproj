@@ -111,6 +111,12 @@
     <Compile Include="Helpers\GridFiller.cs" />
     <Compile Include="Helpers\JednostkiMasy.cs" />
     <Compile Include="Interfaces\ICreator.cs" />
+    <Compile Include="Layers\BLL\PriceBLL.cs" />
+    <Compile Include="Layers\BLL\PriceListBLL.cs" />
+    <Compile Include="Layers\BLL\ProductBLL.cs" />
+    <Compile Include="Layers\DAL\PriceListsTableAdapter.cs" />
+    <Compile Include="Layers\DAL\PricesTableAdapter.cs" />
+    <Compile Include="Layers\DAL\ProductsTableAdapter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Towary.cs">

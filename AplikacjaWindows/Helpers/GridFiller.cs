@@ -9,37 +9,56 @@ namespace AplikacjaWindows.Helpers
 {
 	public static class GridFiller
 	{
-		public static void FillTowaryGrid(DataGridView towaryGrid)
+		public static void FillTowaryGrid(DataGridView grid)
 		{
-			towaryGrid.AutoGenerateColumns = false;
+			grid.AutoGenerateColumns = false;
 
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				towaryGrid.DataSource = context.Towaries.ToList();
+
+				grid.DataSource = context.Towaries.ToList();
+
+				var index = 1;
+				foreach (DataGridViewRow rows in grid.Rows)
+				{
+					rows.HeaderCell.Value = index++.ToString();
+				}
 			}
 		}
 
-		public static void FillCenyGrid(DataGridView cenyGrid)
+		public static void FillCenyGrid(DataGridView grid)
 		{
-			cenyGrid.AutoGenerateColumns = false;
+			grid.AutoGenerateColumns = false;
 
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				cenyGrid.DataSource = context.Cenies.ToList();
+				grid.DataSource = context.Cenies.ToList();
+
+				var index = 1;
+				foreach (DataGridViewRow rows in grid.Rows)
+				{
+					rows.HeaderCell.Value = index++.ToString();
+				}
 			}
 		}
 
-		public static void FillCennikiGrid(DataGridView cennikiGrid)
+		public static void FillCennikiGrid(DataGridView grid)
 		{
-			cennikiGrid.AutoGenerateColumns = false;
+			grid.AutoGenerateColumns = false;
 
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				cennikiGrid.DataSource = context.Cennikis.ToList();
+				grid.DataSource = context.Cennikis.ToList();
+
+				var index = 1;
+				foreach (DataGridViewRow rows in grid.Rows)
+				{
+					rows.HeaderCell.Value = index++.ToString();
+				}
 			}
 		}
 
-		public static void FillSummaryGrid(DataGridView summaryGrid)
+		public static void FillSummaryGrid(DataGridView grid)
 		{
 			try
 			{
@@ -52,21 +71,28 @@ namespace AplikacjaWindows.Helpers
 						con);
 				DataTable dt = new DataTable();
 				sda.Fill(dt);
-				summaryGrid.AutoGenerateColumns = false;
-				summaryGrid.DataSource = dt;
+				grid.AutoGenerateColumns = false;
+				grid.DataSource = dt;
+
+				var index = 1;
+				foreach (DataGridViewRow rows in grid.Rows)
+				{
+					rows.HeaderCell.Value = index++.ToString();
+				}
+
 			}
 			catch (Exception exception)
 			{
 				MessageBox.Show("Błąd z polaczeniem do bazy danych", "Błąd", MessageBoxButtons.OK);
 			}
 
-			foreach (DataGridViewRow row in summaryGrid.Rows)
+			foreach (DataGridViewRow row in grid.Rows)
 			{
 				try
 				{
-					row.Cells[summaryGrid.Columns["CenaZRabatem"].Index].Value =
-						(1 - Convert.ToDouble(row.Cells[summaryGrid.Columns["RabatTowaru"].Index].Value) / 100) *
-						Convert.ToDouble(row.Cells[summaryGrid.Columns["CenaTowaruX"].Index].Value);
+					row.Cells[grid.Columns["CenaZRabatem"].Index].Value =
+						(1 - Convert.ToDouble(row.Cells[grid.Columns["RabatTowaru"].Index].Value) / 100) *
+						Convert.ToDouble(row.Cells[grid.Columns["CenaTowaruX"].Index].Value);
 				}
 				catch (Exception exception)
 				{
