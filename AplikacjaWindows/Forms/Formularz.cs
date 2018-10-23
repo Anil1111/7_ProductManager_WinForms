@@ -8,6 +8,7 @@ using System.Linq;
 using System.Windows.Forms;
 using AplikacjaWindows.Creators;
 using AplikacjaWindows.Helpers;
+using AplikacjaWindows.Layers.BLL;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
@@ -47,7 +48,7 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
-				using (var addform = new AddEditTowarForm((Towary)TowaryGrid.CurrentRow.DataBoundItem/*, _context*/))
+				using (var addform = new AddEditTowarForm((Towary)TowaryGrid.CurrentRow.DataBoundItem))
 				{
 					if (addform.ShowDialog() == DialogResult.Yes)
 					{
@@ -69,14 +70,11 @@ namespace AplikacjaWindows.Forms
 
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć towar: {towarToDel.Nazwa}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
-				{
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Towaries.Attach(towarToDel);
-						context.Towaries.Remove(towarToDel);
-						context.SaveChanges();
+				{					
+						ProductBLL removeProduct = new ProductBLL();
+						removeProduct.DeleteProduct(towarToDel);
+
 						GridFiller.FillTowaryGrid(TowaryGrid);
-					}
 				}
 			}
 			catch (NullReferenceException exception)

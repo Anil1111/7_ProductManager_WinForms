@@ -8,5 +8,8 @@ namespace AplikacjaWindows.Layers.BLL
 {
 	class PriceListBLL
 	{
+
+
+
 	}
 }

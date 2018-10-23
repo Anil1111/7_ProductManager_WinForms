@@ -38,7 +38,7 @@ namespace AplikacjaWindows
 	    [Required]
 		public string JM { get; set; }
 	    [Required]
-		public Nullable<System.DateTime> Data_Utworzenia { get; set; } = DateTime.Now;
+		public Nullable<System.DateTime> Data_Utworzenia { get; set; }
         public Nullable<System.DateTime> Data_Modyfikacji { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

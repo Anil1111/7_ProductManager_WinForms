@@ -29,21 +29,32 @@ namespace AplikacjaWindows.Layers.DAL
 		}
 
 		///TODO;
-		 public IEnumerable<Towary> GetProductsByPriceList(int priceListID)
-		 {
-			 
-			 return null;
-		 }
+		public IEnumerable<Towary> GetProductsByPriceList(int priceListID)
+		{
+			return null;
+		}
 
 		public void CreateProductRecord(Towary product)
 		{
-			_context.Towaries.Add(product);
-			_context.SaveChanges();
+			using (TowaryDBEntities context = new TowaryDBEntities())
+			{
+				context.Towaries.Add(product);
+				context.SaveChanges();
+			}
 		}
 
 		public void UpdateProductRecord(Towary product)
 		{
 			_context.Towaries.AddOrUpdate(product);
+			_context.SaveChanges();
+		}
+
+		public void DeleteProductRecord(int productID)
+		{
+
+			Towary product = GetProductByID(productID).FirstOrDefault();
+			_context.Towaries.Attach(product);
+			_context.Towaries.Remove(product);
 			_context.SaveChanges();
 		}
 

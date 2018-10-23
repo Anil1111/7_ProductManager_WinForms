@@ -136,6 +136,7 @@
 			this.CreateDate.Name = "CreateDate";
 			this.CreateDate.Size = new System.Drawing.Size(23, 20);
 			this.CreateDate.TabIndex = 12;
+			this.CreateDate.Visible = false;
 			// 
 			// EditDate
 			// 
@@ -143,6 +144,7 @@
 			this.EditDate.Name = "EditDate";
 			this.EditDate.Size = new System.Drawing.Size(21, 20);
 			this.EditDate.TabIndex = 13;
+			this.EditDate.Visible = false;
 			// 
 			// AddEditTowarForm
 			// 

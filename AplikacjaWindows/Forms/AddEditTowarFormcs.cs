@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Data.Entity;
-using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
-using System.Linq;
 using System.Windows.Forms;
 using AplikacjaWindows.Helpers;
+using AplikacjaWindows.Layers.BLL;
 
 namespace AplikacjaWindows.Forms
 {
@@ -17,25 +15,21 @@ namespace AplikacjaWindows.Forms
 		public AddEditTowarForm(Towary towar)
 		{
 			InitializeComponent();
+
 			_towar = towar;
 
-			JmBox.DataSource = Enum.GetValues(typeof(JednostkiMasy));
-
-			CreateDate.Visible = false;
-			EditDate.Visible = false;
-
+			JmBox.DataSource = Enum.GetValues(typeof(JednostkiMasy));  //Pobranie do rozwijanej listy jednostek masy
 
 			if (towar != null)
 			{
 				AddButtonYes.Text = "Edytuj";
+				//Wypełnienie pól danymi edytowanego towaru
 				NameAddBox.Text = towar.Nazwa;
 				KodAddBox.Text = towar.Kod;
 				MasaAddBox.Text = towar.Masa.ToString();
 				JmBox.Text = towar.JM;
 				CreateDate.Text = towar.Data_Utworzenia.ToString();
-				CreateDate.Enabled = false;
 				EditDate.Text = DateTime.Now.ToString("d");
-				EditDate.Enabled = false;
 			}
 			else
 			{
@@ -50,42 +44,33 @@ namespace AplikacjaWindows.Forms
 				_closeDisabler = 0;
 				if (AddButtonYes.Text == "Dodaj")
 				{
-					Towary towar = new Towary();
+					var name = NameAddBox.Text;
+					var kod = KodAddBox.Text;
+					var masa = Decimal.Parse(MasaAddBox.Text);
+					var jm = JmBox.Text;
+					var dataUtworzenia = DateTime.Parse(CreateDate.Text = DateTime.Now.ToString("d"));
+					DateTime? dataModyfikacji = null;
 
-					towar.Nazwa = NameAddBox.Text;
-					towar.Kod = KodAddBox.Text;
-					towar.Masa = Decimal.Parse(MasaAddBox.Text);
-					towar.JM = JmBox.Text;
-					towar.Data_Utworzenia = DateTime.Parse(CreateDate.Text = DateTime.Now.ToString("d"));
-					towar.Data_Modyfikacji = null;
-					towar.Cenies = null;
-
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Towaries.Add(towar);
-						context.SaveChanges();
-					}
+					ProductBLL addProduct = new ProductBLL();
+					addProduct.AddProduct(kod,name,masa,jm,dataUtworzenia,dataModyfikacji);
 				}
 				else if (AddButtonYes.Text == "Edytuj")
 				{
+					//Zaktualizowanie wartości pól obiektu Towar
 					_towar.Nazwa = NameAddBox.Text;
 					_towar.Kod = KodAddBox.Text;
 					_towar.Masa = Decimal.Parse(MasaAddBox.Text);
 					_towar.JM = JmBox.Text;
 					_towar.Data_Utworzenia = DateTime.Parse(CreateDate.Text);
 					_towar.Data_Modyfikacji = DateTime.Parse(EditDate.Text = DateTime.Now.ToString("d"));
-					_towar.Cenies = null;
 
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Towaries.AddOrUpdate(_towar);
-						context.SaveChanges();
-					}
+					ProductBLL editProduct = new ProductBLL();
+					editProduct.EditProduct(_towar);
 				}
 			}
 			catch (DbEntityValidationException exception)
 			{
-				MessageBox.Show("Nieprawidłowy format danych ", "Błąd", MessageBoxButtons.OK);
+				MessageBox.Show("Nieprawidłowy format danych " + exception.Message, "Błąd", MessageBoxButtons.OK);
 				_closeDisabler = 1;
 			}
 			catch (FormatException exception)
