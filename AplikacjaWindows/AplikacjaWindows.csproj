@@ -77,6 +77,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ViewModels\PricesViewModel.cs" />
     <Compile Include="Creators\PdfCreator.cs" />
     <Compile Include="Forms\AddEditCennikiForm.cs">
       <SubType>Form</SubType>
@@ -138,6 +139,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>TowaryModel.edmx</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\SummaryViewModel.cs" />
     <EmbeddedResource Include="Forms\AddEditCennikiForm.resx">
       <DependentUpon>AddEditCennikiForm.cs</DependentUpon>
     </EmbeddedResource>

@@ -5,6 +5,7 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Windows.Forms;
 using AplikacjaWindows.Layers.BLL;
+using AplikacjaWindows.ViewModels;
 
 namespace AplikacjaWindows.Helpers
 {
@@ -15,11 +16,11 @@ namespace AplikacjaWindows.Helpers
 			grid.AutoGenerateColumns = false;
 			grid.DataSource = new ProductBLL().GetProducts();
 
-				var index = 1;
-				foreach (DataGridViewRow rows in grid.Rows)
-				{
-					rows.HeaderCell.Value = index++.ToString();
-				}
+			var index = 1;
+			foreach (DataGridViewRow rows in grid.Rows)
+			{
+				rows.HeaderCell.Value = index++.ToString();
+			}
 		}
 
 		public static void FillCenyGrid(DataGridView grid)
@@ -28,8 +29,18 @@ namespace AplikacjaWindows.Helpers
 
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				grid.DataSource = context.Cenies.Include(x => x.Towary).Include(x => x.Cenniki).ToList();
+				var prices = (from a in context.Cenies
 
+							  select new PricesViewModel
+							  {
+								  CenaId = a.Id,
+								  Cena = a.Cena,
+								  Rabat = a.Rabat,
+								  CennikNazwa = a.Cenniki.Nazwa,
+								  TowarNazwa = a.Towary.Nazwa
+							  }).ToList();
+
+				grid.DataSource = prices;
 
 				var index = 1;
 				foreach (DataGridViewRow rows in grid.Rows)
@@ -59,17 +70,26 @@ namespace AplikacjaWindows.Helpers
 		{
 			try
 			{
-				SqlConnection con =
-					new SqlConnection(
-						@"data source=PAT-LAPTOP\SQLEXPRESS;initial catalog=TowaryDB;integrated security=True");
-				SqlDataAdapter sda =
-					new SqlDataAdapter(
-						@"SELECT * FROM CENY FULL OUTER JOIN Towary ON Ceny.TowarId = Towary.Id FULL OUTER JOIN Cenniki ON Ceny.CennikId = Cenniki.Id",
-						con);
-				DataTable dt = new DataTable();
-				sda.Fill(dt);
-				grid.AutoGenerateColumns = false;
-				grid.DataSource = dt;
+				using (TowaryDBEntities context = new TowaryDBEntities())
+				{
+					var result = (from a in context.Cenies
+
+								  select new SummaryViewModel()
+								  {
+									  ProductName = a.Towary.Nazwa,
+									  ProductCode = a.Towary.Kod,
+									  ProductPrice = a.Cena,
+									  Discount = a.Rabat,
+									  ProductWeight = a.Towary.Masa,
+									  UnitWeight = a.Towary.JM,
+									  Promotion = a.Cenniki.Nazwa,
+									  PromoStart = a.Cenniki.Data_Od,
+									  PromoEnd = a.Cenniki.Data_Do
+								  }).ToList();
+
+					grid.AutoGenerateColumns = false;
+					grid.DataSource = result;
+				}
 
 				var index = 1;
 				foreach (DataGridViewRow rows in grid.Rows)
@@ -88,8 +108,8 @@ namespace AplikacjaWindows.Helpers
 				try
 				{
 					row.Cells[grid.Columns["CenaZRabatem"].Index].Value =
-						(1 - Convert.ToDouble(row.Cells[grid.Columns["RabatTowaru"].Index].Value) / 100) *
-						Convert.ToDouble(row.Cells[grid.Columns["CenaTowaruX"].Index].Value);
+						(1 - Convert.ToDouble(row.Cells[grid.Columns["Discount"].Index].Value) / 100) *
+						Convert.ToDouble(row.Cells[grid.Columns["ProductPrice"].Index].Value);
 				}
 				catch (Exception exception)
 				{

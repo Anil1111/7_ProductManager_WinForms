@@ -52,20 +52,21 @@
 			this.Podsumowanie = new System.Windows.Forms.TabPage();
 			this.Wydruk = new System.Windows.Forms.Button();
 			this.PodsumowanieGrid = new System.Windows.Forms.DataGridView();
+			this.CenaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Towar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TowarNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KodTowaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.RabatTowaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MasaTowaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.JMasy = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CenaTowaruX = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.ProductPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Promocja = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PromocjaOd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PromocjaDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CenaZRabatem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NazwaCennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.NazwaTowar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Cenniki.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CennikiGrid)).BeginInit();
 			this.Ceny.SuspendLayout();
@@ -214,20 +215,19 @@
 			// 
 			// CenyGrid
 			// 
-			this.CenyGrid.AllowUserToAddRows = false;
 			this.CenyGrid.AllowUserToDeleteRows = false;
 			this.CenyGrid.AllowUserToResizeColumns = false;
 			this.CenyGrid.AllowUserToResizeRows = false;
 			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.CenyGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.CenaID,
             this.Cena,
-            this.NazwaCennik,
-            this.NazwaTowar,
-            this.Rabat});
+            this.Rabat,
+            this.Cennik,
+            this.Towar});
 			this.CenyGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.CenyGrid.Location = new System.Drawing.Point(3, 93);
 			this.CenyGrid.Name = "CenyGrid";
-			this.CenyGrid.ReadOnly = true;
 			this.CenyGrid.RowHeadersWidth = 50;
 			this.CenyGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CenyGrid.TabIndex = 1;
@@ -386,10 +386,10 @@
 			this.PodsumowanieGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TowarNazwa,
             this.KodTowaru,
-            this.RabatTowaru,
             this.MasaTowaru,
             this.JMasy,
-            this.CenaTowaruX,
+            this.ProductPrice,
+            this.Discount,
             this.Promocja,
             this.PromocjaOd,
             this.PromocjaDo,
@@ -401,65 +401,96 @@
 			this.PodsumowanieGrid.Size = new System.Drawing.Size(1045, 419);
 			this.PodsumowanieGrid.TabIndex = 0;
 			// 
+			// CenaID
+			// 
+			this.CenaID.DataPropertyName = "CenaID";
+			this.CenaID.HeaderText = "Cena ID";
+			this.CenaID.Name = "CenaID";
+			this.CenaID.Visible = false;
+			// 
+			// Cena
+			// 
+			this.Cena.DataPropertyName = "cena";
+			this.Cena.HeaderText = "Cena";
+			this.Cena.Name = "Cena";
+			// 
+			// Rabat
+			// 
+			this.Rabat.DataPropertyName = "rabat";
+			this.Rabat.HeaderText = "Rabat";
+			this.Rabat.Name = "Rabat";
+			// 
+			// Cennik
+			// 
+			this.Cennik.DataPropertyName = "CennikNazwa";
+			this.Cennik.HeaderText = "Cennik";
+			this.Cennik.Name = "Cennik";
+			// 
+			// Towar
+			// 
+			this.Towar.DataPropertyName = "TowarNazwa";
+			this.Towar.HeaderText = "Towar";
+			this.Towar.Name = "Towar";
+			// 
 			// TowarNazwa
 			// 
-			this.TowarNazwa.DataPropertyName = "Nazwa";
+			this.TowarNazwa.DataPropertyName = "ProductName";
 			this.TowarNazwa.HeaderText = "Nazwa Towaru";
 			this.TowarNazwa.Name = "TowarNazwa";
 			this.TowarNazwa.ReadOnly = true;
 			// 
 			// KodTowaru
 			// 
-			this.KodTowaru.DataPropertyName = "Kod";
+			this.KodTowaru.DataPropertyName = "ProductCode";
 			this.KodTowaru.HeaderText = "Kod";
 			this.KodTowaru.Name = "KodTowaru";
 			this.KodTowaru.ReadOnly = true;
 			// 
-			// RabatTowaru
-			// 
-			this.RabatTowaru.DataPropertyName = "Rabat";
-			this.RabatTowaru.HeaderText = "Rabat";
-			this.RabatTowaru.Name = "RabatTowaru";
-			this.RabatTowaru.ReadOnly = true;
-			// 
 			// MasaTowaru
 			// 
-			this.MasaTowaru.DataPropertyName = "Masa";
+			this.MasaTowaru.DataPropertyName = "ProductWeight";
 			this.MasaTowaru.HeaderText = "Masa";
 			this.MasaTowaru.Name = "MasaTowaru";
 			this.MasaTowaru.ReadOnly = true;
 			// 
 			// JMasy
 			// 
-			this.JMasy.DataPropertyName = "JM";
+			this.JMasy.DataPropertyName = "UnitWeight";
 			this.JMasy.HeaderText = "JM";
 			this.JMasy.Name = "JMasy";
 			this.JMasy.ReadOnly = true;
 			// 
-			// CenaTowaruX
+			// ProductPrice
 			// 
-			this.CenaTowaruX.DataPropertyName = "Cena";
-			this.CenaTowaruX.HeaderText = "Cena Towaru";
-			this.CenaTowaruX.Name = "CenaTowaruX";
-			this.CenaTowaruX.ReadOnly = true;
+			this.ProductPrice.DataPropertyName = "ProductPrice";
+			this.ProductPrice.HeaderText = "Cena Towaru";
+			this.ProductPrice.Name = "ProductPrice";
+			this.ProductPrice.ReadOnly = true;
+			// 
+			// Discount
+			// 
+			this.Discount.DataPropertyName = "Discount";
+			this.Discount.HeaderText = "Rabat";
+			this.Discount.Name = "Discount";
+			this.Discount.ReadOnly = true;
 			// 
 			// Promocja
 			// 
-			this.Promocja.DataPropertyName = "Nazwa1";
+			this.Promocja.DataPropertyName = "Promotion";
 			this.Promocja.HeaderText = "Promocja";
 			this.Promocja.Name = "Promocja";
 			this.Promocja.ReadOnly = true;
 			// 
 			// PromocjaOd
 			// 
-			this.PromocjaOd.DataPropertyName = "Data_od";
+			this.PromocjaOd.DataPropertyName = "PromoStart";
 			this.PromocjaOd.HeaderText = "Promocja od";
 			this.PromocjaOd.Name = "PromocjaOd";
 			this.PromocjaOd.ReadOnly = true;
 			// 
 			// PromocjaDo
 			// 
-			this.PromocjaDo.DataPropertyName = "Data_do";
+			this.PromocjaDo.DataPropertyName = "PromoEnd";
 			this.PromocjaDo.HeaderText = "Promocja Do";
 			this.PromocjaDo.Name = "PromocjaDo";
 			this.PromocjaDo.ReadOnly = true;
@@ -469,34 +500,6 @@
 			this.CenaZRabatem.HeaderText = "Cena z Rabatem";
 			this.CenaZRabatem.Name = "CenaZRabatem";
 			this.CenaZRabatem.ReadOnly = true;
-			// 
-			// Cena
-			// 
-			this.Cena.DataPropertyName = "Cena";
-			this.Cena.HeaderText = "Cena";
-			this.Cena.Name = "Cena";
-			this.Cena.ReadOnly = true;
-			// 
-			// NazwaCennik
-			// 
-			this.NazwaCennik.DataPropertyName = "nazwa";
-			this.NazwaCennik.HeaderText = "Cennik";
-			this.NazwaCennik.Name = "NazwaCennik";
-			this.NazwaCennik.ReadOnly = true;
-			// 
-			// NazwaTowar
-			// 
-			this.NazwaTowar.DataPropertyName = "nazwa1";
-			this.NazwaTowar.HeaderText = "Towar";
-			this.NazwaTowar.Name = "NazwaTowar";
-			this.NazwaTowar.ReadOnly = true;
-			// 
-			// Rabat
-			// 
-			this.Rabat.DataPropertyName = "Rabat";
-			this.Rabat.HeaderText = "Rabat";
-			this.Rabat.Name = "Rabat";
-			this.Rabat.ReadOnly = true;
 			// 
 			// Formularz
 			// 
@@ -548,26 +551,27 @@
 		private System.Windows.Forms.TabPage Podsumowanie;
 		private System.Windows.Forms.DataGridView PodsumowanieGrid;
 		private System.Windows.Forms.Button Wydruk;
-		private System.Windows.Forms.DataGridViewTextBoxColumn TowarNazwa;
-		private System.Windows.Forms.DataGridViewTextBoxColumn KodTowaru;
-		private System.Windows.Forms.DataGridViewTextBoxColumn RabatTowaru;
-		private System.Windows.Forms.DataGridViewTextBoxColumn MasaTowaru;
-		private System.Windows.Forms.DataGridViewTextBoxColumn JMasy;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CenaTowaruX;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Promocja;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaOd;
-		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaDo;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CenaZRabatem;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Masa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn JM;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Utworzenia;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Modyfikacji;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CenaID;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
-		private System.Windows.Forms.DataGridViewTextBoxColumn NazwaCennik;
-		private System.Windows.Forms.DataGridViewTextBoxColumn NazwaTowar;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Rabat;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Cennik;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Towar;
+		private System.Windows.Forms.DataGridViewTextBoxColumn TowarNazwa;
+		private System.Windows.Forms.DataGridViewTextBoxColumn KodTowaru;
+		private System.Windows.Forms.DataGridViewTextBoxColumn MasaTowaru;
+		private System.Windows.Forms.DataGridViewTextBoxColumn JMasy;
+		private System.Windows.Forms.DataGridViewTextBoxColumn ProductPrice;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Discount;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Promocja;
+		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaOd;
+		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaDo;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CenaZRabatem;
 	}
 }
 

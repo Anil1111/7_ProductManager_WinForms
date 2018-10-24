@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Linq;
@@ -16,6 +17,14 @@ namespace AplikacjaWindows.Layers.DAL
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
 				return context.Cenies.ToList();
+			}
+		}
+
+		public Ceny GetRecordByID(int id)
+		{
+			using (TowaryDBEntities context = new TowaryDBEntities())
+			{
+				return context.Cenies.First(x => x.Id == id);
 			}
 		}
 

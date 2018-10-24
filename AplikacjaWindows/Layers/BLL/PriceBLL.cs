@@ -27,6 +27,11 @@ namespace AplikacjaWindows.Layers.BLL
 			return Adapter.GetAllRecords();
 		}
 
+		public Ceny GetPriceByID(int id)
+		{
+			return Adapter.GetRecordByID(id);
+		}
+
 		public void AddPrice(Ceny cena)
 		{
 			Adapter.CreateRecord(cena);

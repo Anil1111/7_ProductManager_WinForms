@@ -69,10 +69,10 @@ namespace AplikacjaWindows.Forms
 
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć towar: {towarToDel.Nazwa}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
-				{					
-						new ProductBLL().DeleteProduct(towarToDel);
+				{
+					new ProductBLL().DeleteProduct(towarToDel);
 
-						GridFiller.FillTowaryGrid(TowaryGrid);
+					GridFiller.FillTowaryGrid(TowaryGrid);
 				}
 			}
 			catch (NullReferenceException exception)
@@ -98,7 +98,9 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
-				using (var addform = new AddEditCenyForm((Ceny)CenyGrid.CurrentRow.DataBoundItem/*, _context*/))
+				var selectedPrice = GetSelectedPrice(); //Złapanie zaznaczonej ceny z DataGridView
+
+				using (var addform = new AddEditCenyForm(selectedPrice))
 				{
 					if (addform.ShowDialog() == DialogResult.Yes)
 					{
@@ -140,7 +142,7 @@ namespace AplikacjaWindows.Forms
 
 		private void DodajCennikBtn_Click(object sender, EventArgs e)
 		{
-			using (var addform = new AddEditCennikiForm(null/*, _context*/))
+			using (var addform = new AddEditCennikiForm(null))
 			{
 				if (addform.ShowDialog() == DialogResult.Yes)
 				{
@@ -194,13 +196,27 @@ namespace AplikacjaWindows.Forms
 		private void Wydruk_Click(object sender, EventArgs e)
 		{
 			PdfCreator pdfCreator = new PdfCreator();
-			
+
 			pdfCreator.CreatePdf(PodsumowanieGrid, "Test");
 		}
 
 		private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			GridFiller.FillSummaryGrid(PodsumowanieGrid);
+		}
+
+		private Ceny GetSelectedPrice()
+		{
+			try
+			{
+				int priceID = Int32.Parse(CenyGrid.CurrentRow.Cells[0].Value.ToString());
+				return new PriceBLL().GetPriceByID(priceID);
+			}
+			catch (NullReferenceException)
+			{
+				MessageBox.Show("Nieoczekiwany błąd", "Błąd", MessageBoxButtons.OK);
+				return null;
+			}
 		}
 	}
 }

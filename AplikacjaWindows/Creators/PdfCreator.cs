@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -37,7 +38,16 @@ namespace AplikacjaWindows.Creators
 			{
 				foreach (DataGridViewCell cell in row.Cells)
 				{
-					pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
+					try
+					{
+						pdftable.AddCell(new Phrase(cell.Value.ToString(), text));
+					}
+					catch (NullReferenceException)
+					{
+					continue;
+					}
+
+					
 				}
 			}
 
@@ -47,14 +57,23 @@ namespace AplikacjaWindows.Creators
 
 			if (saveFileDialog.ShowDialog() == DialogResult.OK)
 			{
-				using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+				try
 				{
-					Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0);
-					PdfWriter.GetInstance(pdfDoc, stream);
-					pdfDoc.Open();
-					pdfDoc.Add(pdftable);
-					pdfDoc.Close();
-					stream.Close();
+					using (FileStream stream = new FileStream(saveFileDialog.FileName, FileMode.Create))
+					{
+						Document pdfDoc = new Document(PageSize.A4, 10f, 10f, 10f, 0);
+						PdfWriter.GetInstance(pdfDoc, stream);
+
+						pdfDoc.Open();
+						pdfDoc.Add(pdftable);
+						pdfDoc.Close();
+						stream.Close();
+					}
+				}
+				catch (IOException exception)
+				{
+					MessageBox.Show("Plik jest obecnie w użyciu, zamknij plik i spróbuj ponownie", "Błąd",
+						MessageBoxButtons.OK);
 				}
 			}
 		}
