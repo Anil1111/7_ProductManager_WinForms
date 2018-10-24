@@ -70,8 +70,7 @@ namespace AplikacjaWindows.Forms
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć towar: {towarToDel.Nazwa}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{					
-						ProductBLL removeProduct = new ProductBLL();
-						removeProduct.DeleteProduct(towarToDel);
+						new ProductBLL().DeleteProduct(towarToDel);
 
 						GridFiller.FillTowaryGrid(TowaryGrid);
 				}

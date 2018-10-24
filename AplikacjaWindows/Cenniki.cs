@@ -7,9 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace AplikacjaWindows
 {
     using System;
@@ -24,12 +21,9 @@ namespace AplikacjaWindows
         }
     
         public int Id { get; set; }
-	    [Required]
-		public string Nazwa { get; set; }
-	    [Required]
-		public Nullable<System.DateTime> Data_Od { get; set; }
-	    [Required]
-		public Nullable<System.DateTime> Data_Do { get; set; }
+        public string Nazwa { get; set; }
+        public Nullable<System.DateTime> Data_Od { get; set; }
+        public Nullable<System.DateTime> Data_Do { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Ceny> Cenies { get; set; }

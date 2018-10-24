@@ -20,7 +20,7 @@ namespace AplikacjaWindows.Layers.BLL
 
 		public IEnumerable<Towary> GetProducts()
 		{
-			return Adapter.GetProducts();
+			return Adapter.GetAllRecords();
 		}
 
 		public void AddProduct(Towary product)

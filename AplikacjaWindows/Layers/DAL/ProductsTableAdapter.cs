@@ -5,14 +5,13 @@ using System.Data.Entity.Validation;
 using System.Linq;
 using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
-using AplikacjaWindows.Interfaces;
 
 
 namespace AplikacjaWindows.Layers.DAL
 {
-	public class ProductsTableAdapter : IDatabaseManager
+	public class ProductsTableAdapter
 	{
-		public IEnumerable<Towary> GetProducts()
+		public IEnumerable<Towary> GetAllRecords()
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
@@ -20,13 +19,13 @@ namespace AplikacjaWindows.Layers.DAL
 			}
 		}
 
-		public void CreateRecord(object product)
+		public void CreateRecord(Towary product)
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
 				try
 				{
-					context.Towaries.Add((Towary)product);
+					context.Towaries.Add(product);
 					context.SaveChanges();
 				}
 				catch (DbEntityValidationException exception)
@@ -47,13 +46,13 @@ namespace AplikacjaWindows.Layers.DAL
 			}
 		}
 
-		public void UpdateRecord(object product)
+		public void UpdateRecord(Towary product)
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
 				try
 				{
-					context.Towaries.AddOrUpdate((Towary)product);
+					context.Towaries.AddOrUpdate(product);
 					context.SaveChanges();
 				}
 				catch (DbEntityValidationException exception)
@@ -74,12 +73,12 @@ namespace AplikacjaWindows.Layers.DAL
 			}
 		}
 
-		public void DeleteRecord(object product)
+		public void DeleteRecord(Towary product)
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				context.Towaries.Attach((Towary)product);
-				context.Towaries.Remove((Towary)product);
+				context.Towaries.Attach(product);
+				context.Towaries.Remove(product);
 				context.SaveChanges();
 			}
 		}

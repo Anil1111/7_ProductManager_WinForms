@@ -7,9 +7,6 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-
 namespace AplikacjaWindows
 {
     using System;
@@ -18,19 +15,12 @@ namespace AplikacjaWindows
     public partial class Ceny
     {
         public int Id { get; set; }
-	    [Required]
-		public Nullable<int> CennikId { get; set; }
-	    [Required]
-		public Nullable<int> TowarId { get; set; }
-	    [Required]
-		[Range(0.01,10000000000000000000)]
-		public decimal Cena { get; set; }
-	    [Required]
-		[Range(0,100)]
+        public Nullable<int> CennikId { get; set; }
+        public Nullable<int> TowarId { get; set; }
+        public decimal Cena { get; set; }
         public Nullable<decimal> Rabat { get; set; }
-		[NotMapped]
+    
         public virtual Cenniki Cenniki { get; set; }
-	    [NotMapped]
-		public virtual Towary Towary { get; set; }
+        public virtual Towary Towary { get; set; }
     }
 }
