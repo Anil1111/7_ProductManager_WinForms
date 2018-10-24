@@ -86,7 +86,8 @@
 			// 
 			// CennikAddBox
 			// 
-			this.CennikAddBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.CennikAddBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.CennikAddBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.CennikAddBox.FormattingEnabled = true;
 			this.CennikAddBox.Location = new System.Drawing.Point(15, 26);
 			this.CennikAddBox.Name = "CennikAddBox";
@@ -95,7 +96,8 @@
 			// 
 			// TowarAddBox
 			// 
-			this.TowarAddBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.TowarAddBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.TowarAddBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
 			this.TowarAddBox.FormattingEnabled = true;
 			this.TowarAddBox.Location = new System.Drawing.Point(15, 64);
 			this.TowarAddBox.Name = "TowarAddBox";
@@ -153,7 +155,7 @@
 			this.MinimumSize = new System.Drawing.Size(201, 264);
 			this.Name = "AddEditCenyForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "AddEditCenyForm";
+			this.Text = "Cena";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEditCenyForm_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.RabatAddBox)).EndInit();
 			this.ResumeLayout(false);

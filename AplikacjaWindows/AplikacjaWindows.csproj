@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModels\PricesViewModel.cs" />
-    <Compile Include="Creators\PdfCreator.cs" />
+    <Compile Include="Helpers\PdfCreator.cs" />
     <Compile Include="Forms\AddEditCennikiForm.cs">
       <SubType>Form</SubType>
     </Compile>

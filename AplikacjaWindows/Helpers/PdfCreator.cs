@@ -1,15 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlTypes;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace AplikacjaWindows.Creators
+namespace AplikacjaWindows.Helpers
 {
 	public class PdfCreator
 	{
@@ -46,8 +41,6 @@ namespace AplikacjaWindows.Creators
 					{
 					continue;
 					}
-
-					
 				}
 			}
 

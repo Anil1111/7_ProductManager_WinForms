@@ -169,7 +169,7 @@
 			this.MinimumSize = new System.Drawing.Size(229, 347);
 			this.Name = "AddEditTowarForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "FORMULARZ TOWAROWY";
+			this.Text = "Towar";
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

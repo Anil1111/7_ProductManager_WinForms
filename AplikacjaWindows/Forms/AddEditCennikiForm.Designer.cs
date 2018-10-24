@@ -128,7 +128,7 @@
 			this.MinimumSize = new System.Drawing.Size(260, 247);
 			this.Name = "AddEditCennikiForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-			this.Text = "AddEditCennikiForm";
+			this.Text = "Cennik";
 			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEditCennikiForm_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();

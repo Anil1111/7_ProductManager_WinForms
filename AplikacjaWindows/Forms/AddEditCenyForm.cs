@@ -87,7 +87,14 @@ namespace AplikacjaWindows.Forms
 			}
 			catch (FormatException exception)
 			{
-				MessageBox.Show("Zły format pola Rabat lub Cena. Dopuszczalne tylko liczby " + exception.Message, "Błąd", MessageBoxButtons.OK);
+				MessageBox.Show("Zły format pola Rabat lub Cena. Dopuszczalne tylko liczby " + exception.Message,
+					"Błąd", MessageBoxButtons.OK);
+				_closeDisabler = 1;
+			}
+			catch (NullReferenceException exception)
+			{
+				MessageBox.Show("Nie znaleziono towaru lub cennika" + exception.Message,
+					"Błąd", MessageBoxButtons.OK);
 				_closeDisabler = 1;
 			}
 		}

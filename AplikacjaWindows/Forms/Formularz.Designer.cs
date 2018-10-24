@@ -37,6 +37,11 @@
 			this.EdytujCeneBtn = new System.Windows.Forms.Button();
 			this.DodajCeneBtn = new System.Windows.Forms.Button();
 			this.CenyGrid = new System.Windows.Forms.DataGridView();
+			this.CenaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Towar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Towary = new System.Windows.Forms.TabPage();
 			this.UsunTowarBtn = new System.Windows.Forms.Button();
 			this.EdytujTowarBtn = new System.Windows.Forms.Button();
@@ -52,11 +57,6 @@
 			this.Podsumowanie = new System.Windows.Forms.TabPage();
 			this.Wydruk = new System.Windows.Forms.Button();
 			this.PodsumowanieGrid = new System.Windows.Forms.DataGridView();
-			this.CenaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Towar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TowarNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KodTowaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.MasaTowaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -128,6 +128,8 @@
 			this.CennikiGrid.AllowUserToDeleteRows = false;
 			this.CennikiGrid.AllowUserToResizeColumns = false;
 			this.CennikiGrid.AllowUserToResizeRows = false;
+			this.CennikiGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.CennikiGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.CennikiGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.CennikiGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CennikIDc,
@@ -218,6 +220,8 @@
 			this.CenyGrid.AllowUserToDeleteRows = false;
 			this.CenyGrid.AllowUserToResizeColumns = false;
 			this.CenyGrid.AllowUserToResizeRows = false;
+			this.CenyGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.CenyGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.CenyGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CenaID,
@@ -231,6 +235,37 @@
 			this.CenyGrid.RowHeadersWidth = 50;
 			this.CenyGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CenyGrid.TabIndex = 1;
+			// 
+			// CenaID
+			// 
+			this.CenaID.DataPropertyName = "CenaID";
+			this.CenaID.HeaderText = "Cena ID";
+			this.CenaID.Name = "CenaID";
+			this.CenaID.Visible = false;
+			// 
+			// Cena
+			// 
+			this.Cena.DataPropertyName = "cena";
+			this.Cena.HeaderText = "Cena";
+			this.Cena.Name = "Cena";
+			// 
+			// Rabat
+			// 
+			this.Rabat.DataPropertyName = "rabat";
+			this.Rabat.HeaderText = "Rabat";
+			this.Rabat.Name = "Rabat";
+			// 
+			// Cennik
+			// 
+			this.Cennik.DataPropertyName = "CennikNazwa";
+			this.Cennik.HeaderText = "Cennik";
+			this.Cennik.Name = "Cennik";
+			// 
+			// Towar
+			// 
+			this.Towar.DataPropertyName = "TowarNazwa";
+			this.Towar.HeaderText = "Towar";
+			this.Towar.Name = "Towar";
 			// 
 			// Towary
 			// 
@@ -282,6 +317,8 @@
 			this.TowaryGrid.AllowUserToDeleteRows = false;
 			this.TowaryGrid.AllowUserToResizeColumns = false;
 			this.TowaryGrid.AllowUserToResizeRows = false;
+			this.TowaryGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.TowaryGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.TowaryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.TowaryGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Kod,
@@ -382,6 +419,8 @@
 			this.PodsumowanieGrid.AllowUserToDeleteRows = false;
 			this.PodsumowanieGrid.AllowUserToResizeColumns = false;
 			this.PodsumowanieGrid.AllowUserToResizeRows = false;
+			this.PodsumowanieGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.PodsumowanieGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
 			this.PodsumowanieGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
 			this.PodsumowanieGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TowarNazwa,
@@ -400,37 +439,6 @@
 			this.PodsumowanieGrid.ReadOnly = true;
 			this.PodsumowanieGrid.Size = new System.Drawing.Size(1045, 419);
 			this.PodsumowanieGrid.TabIndex = 0;
-			// 
-			// CenaID
-			// 
-			this.CenaID.DataPropertyName = "CenaID";
-			this.CenaID.HeaderText = "Cena ID";
-			this.CenaID.Name = "CenaID";
-			this.CenaID.Visible = false;
-			// 
-			// Cena
-			// 
-			this.Cena.DataPropertyName = "cena";
-			this.Cena.HeaderText = "Cena";
-			this.Cena.Name = "Cena";
-			// 
-			// Rabat
-			// 
-			this.Rabat.DataPropertyName = "rabat";
-			this.Rabat.HeaderText = "Rabat";
-			this.Rabat.Name = "Rabat";
-			// 
-			// Cennik
-			// 
-			this.Cennik.DataPropertyName = "CennikNazwa";
-			this.Cennik.HeaderText = "Cennik";
-			this.Cennik.Name = "Cennik";
-			// 
-			// Towar
-			// 
-			this.Towar.DataPropertyName = "TowarNazwa";
-			this.Towar.HeaderText = "Towar";
-			this.Towar.Name = "Towar";
 			// 
 			// TowarNazwa
 			// 
