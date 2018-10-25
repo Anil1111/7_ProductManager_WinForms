@@ -78,6 +78,7 @@
 			this.NameAddBox.Name = "NameAddBox";
 			this.NameAddBox.Size = new System.Drawing.Size(100, 20);
 			this.NameAddBox.TabIndex = 3;
+			this.NameAddBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameAddBox_Validating);
 			// 
 			// label2
 			// 
@@ -94,6 +95,7 @@
 			this.CodeAddBox.Name = "CodeAddBox";
 			this.CodeAddBox.Size = new System.Drawing.Size(100, 20);
 			this.CodeAddBox.TabIndex = 5;
+			this.CodeAddBox.Validating += new System.ComponentModel.CancelEventHandler(this.CodeAddBox_Validating);
 			// 
 			// label3
 			// 
@@ -119,6 +121,7 @@
 			this.WeightAddBox.Name = "WeightAddBox";
 			this.WeightAddBox.Size = new System.Drawing.Size(100, 20);
 			this.WeightAddBox.TabIndex = 9;
+			this.WeightAddBox.Validating += new System.ComponentModel.CancelEventHandler(this.WeightAddBox_Validating);
 			// 
 			// UnitWeightBox
 			// 
