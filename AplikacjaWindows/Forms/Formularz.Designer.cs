@@ -23,6 +23,7 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Formularz));
 			this.Cenniki = new System.Windows.Forms.TabPage();
 			this.UsunCennikBtn = new System.Windows.Forms.Button();
 			this.EdytujCennikBtn = new System.Windows.Forms.Button();
@@ -55,7 +56,7 @@
 			this.Data_Modyfikacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TabControl = new System.Windows.Forms.TabControl();
 			this.Podsumowanie = new System.Windows.Forms.TabPage();
-			this.Wydruk = new System.Windows.Forms.Button();
+			this.ExportPDF = new System.Windows.Forms.Button();
 			this.PodsumowanieGrid = new System.Windows.Forms.DataGridView();
 			this.TowarNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.KodTowaru = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -67,6 +68,9 @@
 			this.PromocjaOd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PromocjaDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CenaZRabatem = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.PrintButton = new System.Windows.Forms.Button();
+			this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
+			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
 			this.Cenniki.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CennikiGrid)).BeginInit();
 			this.Ceny.SuspendLayout();
@@ -393,7 +397,8 @@
 			// 
 			// Podsumowanie
 			// 
-			this.Podsumowanie.Controls.Add(this.Wydruk);
+			this.Podsumowanie.Controls.Add(this.PrintButton);
+			this.Podsumowanie.Controls.Add(this.ExportPDF);
 			this.Podsumowanie.Controls.Add(this.PodsumowanieGrid);
 			this.Podsumowanie.Location = new System.Drawing.Point(4, 22);
 			this.Podsumowanie.Name = "Podsumowanie";
@@ -403,15 +408,15 @@
 			this.Podsumowanie.Text = "Podsumowanie";
 			this.Podsumowanie.UseVisualStyleBackColor = true;
 			// 
-			// Wydruk
+			// ExportPDF
 			// 
-			this.Wydruk.Location = new System.Drawing.Point(8, 6);
-			this.Wydruk.Name = "Wydruk";
-			this.Wydruk.Size = new System.Drawing.Size(1040, 47);
-			this.Wydruk.TabIndex = 1;
-			this.Wydruk.Text = "ZAPISZ PLIK PDF";
-			this.Wydruk.UseVisualStyleBackColor = true;
-			this.Wydruk.Click += new System.EventHandler(this.Wydruk_Click);
+			this.ExportPDF.Location = new System.Drawing.Point(794, 6);
+			this.ExportPDF.Name = "ExportPDF";
+			this.ExportPDF.Size = new System.Drawing.Size(254, 47);
+			this.ExportPDF.TabIndex = 1;
+			this.ExportPDF.Text = "ZAPISZ PLIK PDF";
+			this.ExportPDF.UseVisualStyleBackColor = true;
+			this.ExportPDF.Click += new System.EventHandler(this.Wydruk_Click);
 			// 
 			// PodsumowanieGrid
 			// 
@@ -434,10 +439,10 @@
             this.PromocjaDo,
             this.CenaZRabatem});
 			this.PodsumowanieGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.PodsumowanieGrid.Location = new System.Drawing.Point(3, 65);
+			this.PodsumowanieGrid.Location = new System.Drawing.Point(3, 59);
 			this.PodsumowanieGrid.Name = "PodsumowanieGrid";
 			this.PodsumowanieGrid.ReadOnly = true;
-			this.PodsumowanieGrid.Size = new System.Drawing.Size(1045, 419);
+			this.PodsumowanieGrid.Size = new System.Drawing.Size(1045, 425);
 			this.PodsumowanieGrid.TabIndex = 0;
 			// 
 			// TowarNazwa
@@ -509,6 +514,31 @@
 			this.CenaZRabatem.Name = "CenaZRabatem";
 			this.CenaZRabatem.ReadOnly = true;
 			// 
+			// PrintButton
+			// 
+			this.PrintButton.Location = new System.Drawing.Point(9, 6);
+			this.PrintButton.Name = "PrintButton";
+			this.PrintButton.Size = new System.Drawing.Size(150, 47);
+			this.PrintButton.TabIndex = 2;
+			this.PrintButton.Text = "Wydrukuj";
+			this.PrintButton.UseVisualStyleBackColor = true;
+			this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+			// 
+			// printPreviewDialog1
+			// 
+			this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
+			this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+			this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
+			this.printPreviewDialog1.Document = this.printDocument1;
+			this.printPreviewDialog1.Enabled = true;
+			this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
+			this.printPreviewDialog1.Name = "printPreviewDialog1";
+			this.printPreviewDialog1.Visible = false;
+			// 
+			// printDocument1
+			// 
+			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+			// 
 			// Formularz
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -558,7 +588,7 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Do;
 		private System.Windows.Forms.TabPage Podsumowanie;
 		private System.Windows.Forms.DataGridView PodsumowanieGrid;
-		private System.Windows.Forms.Button Wydruk;
+		private System.Windows.Forms.Button ExportPDF;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Kod;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Nazwa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Masa;
@@ -580,6 +610,9 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaOd;
 		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaDo;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CenaZRabatem;
+		private System.Windows.Forms.Button PrintButton;
+		private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
+		private System.Drawing.Printing.PrintDocument printDocument1;
 	}
 }
 

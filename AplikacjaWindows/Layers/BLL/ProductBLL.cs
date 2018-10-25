@@ -1,4 +1,6 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using System.Windows.Forms;
 using AplikacjaWindows.Layers.DAL;
 
 namespace AplikacjaWindows.Layers.BLL
@@ -35,7 +37,31 @@ namespace AplikacjaWindows.Layers.BLL
 
 		public void DeleteProduct(Towary product)
 		{
-			Adapter.DeleteRecord(product);
+			try
+			{
+				Adapter.DeleteRecord(product);
+			}
+			catch (System.Data.Entity.Infrastructure.DbUpdateException exception)
+			{
+				if (MessageBox.Show(
+						"Wybrany towar zawiera powiązanie w cennikach lub cenach. Kliknij OK, aby usunąć te powiązania i usunąć towar, Anuluj aby zakończyć proces usuwania",
+						"Błąd", MessageBoxButtons.OKCancel) == DialogResult.OK)
+				{
+					var prices = new PricesTableAdapter().GetAllRecords();
+					var allPricesRelatedToProduct = prices.Where(x => x.TowarId == product.Id).Select(x => x);
+
+					foreach (var element in allPricesRelatedToProduct)
+					{
+						new PricesTableAdapter().DeleteRecord(element);
+					}
+					Adapter.DeleteRecord(product);
+					MessageBox.Show("Usuwanie zakonczone pomyślnie", "Sukces", MessageBoxButtons.OK);
+				}
+				else
+				{
+					MessageBox.Show("Usuwanie zakonczone niepowodzeniem", "Niepowodzenie", MessageBoxButtons.OK);
+				}
+			}
 		}
 
 

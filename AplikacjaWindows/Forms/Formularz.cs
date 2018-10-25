@@ -3,6 +3,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics.Tracing;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -10,6 +11,7 @@ using AplikacjaWindows.Helpers;
 using AplikacjaWindows.Layers.BLL;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
+using Rectangle = System.Drawing.Rectangle;
 
 namespace AplikacjaWindows.Forms
 {
@@ -72,12 +74,14 @@ namespace AplikacjaWindows.Forms
 					new ProductBLL().DeleteProduct(towarToDel);
 
 					GridFiller.FillTowaryGrid(TowaryGrid);
+					GridFiller.FillCenyGrid(CenyGrid);
 				}
 			}
 			catch (NullReferenceException exception)
 			{
 				MessageBox.Show(exception.Message, "Błąd", MessageBoxButtons.OK);
 			}
+
 		}
 
 		//@@@@@@@@@@@@@@@ CENY @@@@@@@@@@@@@@@@@\\
@@ -177,13 +181,10 @@ namespace AplikacjaWindows.Forms
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć Cennik: {cennikToDel.Nazwa}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Cennikis.Attach(cennikToDel);
-						context.Cennikis.Remove(cennikToDel);
-						context.SaveChanges();
-						GridFiller.FillCennikiGrid(CennikiGrid);
-					}
+					new PriceListBLL().DeletePriceList(cennikToDel);
+
+					GridFiller.FillCennikiGrid(CennikiGrid);
+					GridFiller.FillCenyGrid(CenyGrid);
 				}
 			}
 			catch (NullReferenceException exception)
@@ -198,7 +199,10 @@ namespace AplikacjaWindows.Forms
 
 			pdfCreator.CreatePdf(PodsumowanieGrid, "Test");
 		}
-
+		private void PrintButton_Click(object sender, EventArgs e)
+		{
+			PrintSummary();
+		}
 		private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
 			GridFiller.FillSummaryGrid(PodsumowanieGrid);
@@ -216,6 +220,24 @@ namespace AplikacjaWindows.Forms
 				MessageBox.Show("Nieoczekiwany błąd", "Błąd", MessageBoxButtons.OK);
 				return null;
 			}
+		}
+
+		public Bitmap bmp;
+		private void PrintSummary()
+		{
+			int height = PodsumowanieGrid.Height;
+			PodsumowanieGrid.Height = PodsumowanieGrid.RowCount * PodsumowanieGrid.RowTemplate.Height *2;
+			bmp = new Bitmap(PodsumowanieGrid.Width, PodsumowanieGrid.Height);
+			PodsumowanieGrid.DrawToBitmap(bmp, new Rectangle(0,0, PodsumowanieGrid.Width, PodsumowanieGrid.Height));
+			PodsumowanieGrid.Height = height;
+			printDocument1.DefaultPageSettings.Landscape = true;
+			printPreviewDialog1.ShowDialog();
+
+		}
+
+		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		{
+			e.Graphics.DrawImage(bmp, 0, 0);
 		}
 	}
 }
