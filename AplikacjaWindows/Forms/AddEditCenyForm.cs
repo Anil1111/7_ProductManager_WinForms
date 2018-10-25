@@ -1,8 +1,6 @@
 ﻿using System;
-using System.Data.Entity.Migrations;
-using System.Data.Entity.Validation;
-using System.Linq;
 using System.Windows.Forms;
+using AplikacjaWindows.Layers.BLL;
 
 namespace AplikacjaWindows.Forms
 {
@@ -10,107 +8,85 @@ namespace AplikacjaWindows.Forms
 	{
 		private Ceny _cena;
 
-		private int _closeDisabler = 0;
 		public AddEditCenyForm(Ceny cena)
 		{
 			InitializeComponent();
 
 			_cena = cena;
 
-			using (TowaryDBEntities context = new TowaryDBEntities())
+			CennikAddBox.DataSource = new PriceListBLL().GetPriceLists();
+			CennikAddBox.DisplayMember = "Nazwa";
+			CennikAddBox.ValueMember = "Id";
+
+			TowarAddBox.DataSource = new ProductBLL().GetProducts();
+			TowarAddBox.DisplayMember = "Nazwa";
+			TowarAddBox.ValueMember = "Id";
+
+			if (cena != null)
 			{
+				AddButtonYes.Text = "Edytuj";
 
-				CennikAddBox.DataSource = context.Cennikis.ToList();
-				CennikAddBox.DisplayMember = "Nazwa";
-				CennikAddBox.ValueMember = "Id";
-
-				TowarAddBox.DataSource = context.Towaries.ToList();
-				TowarAddBox.DisplayMember = "Nazwa";
-				TowarAddBox.ValueMember = "Id";
-
-
-				if (cena != null)
-				{
-					AddButtonYes.Text = "Edytuj";
-
-					CennikAddBox.SelectedValue = cena.CennikId;
-					TowarAddBox.SelectedValue = cena.TowarId;
-					CenaAddBox.Text = cena.Cena.ToString();
-					RabatAddBox.Text = cena.Rabat.ToString();
-				}
-				else
-				{
-					AddButtonYes.Text = "Dodaj";
-				}
+				//Wypełnienie komórek danymi z edytowanego obiektu
+				CennikAddBox.SelectedValue = cena.CennikId;
+				TowarAddBox.SelectedValue = cena.TowarId;
+				CenaAddBox.Text = cena.Cena.ToString();
+				RabatAddBox.Text = cena.Rabat.ToString();
+			}
+			else
+			{
+				AddButtonYes.Text = "Dodaj";
 			}
 		}
 
 		private void AddButtonYes_Click(object sender, EventArgs e)
 		{
+			if (AddButtonYes.Text == "Dodaj")
+			{
+				AddPrice();
+			}
+			else if (AddButtonYes.Text == "Edytuj")
+			{
+				EditPrice();
+			}
+		}
+
+		private void AddPrice()
+		{
 			try
 			{
-				_closeDisabler = 0;
-				if (AddButtonYes.Text == "Dodaj")
+				if (Decimal.Parse(RabatAddBox.Text) == 0)
 				{
-					Ceny cena = new Ceny();
-
-					cena.CennikId = Int32.Parse(CennikAddBox.SelectedValue.ToString());
-					cena.TowarId = Int32.Parse(TowarAddBox.SelectedValue.ToString());
-					cena.Cena = Decimal.Parse(CenaAddBox.Text);
-					cena.Rabat = Decimal.Parse(RabatAddBox.Text);
-
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Cenies.Add(cena);
-						context.SaveChanges();
-					}
+					MessageBox.Show("Ustawiono Rabat = 0", "Komunikat", MessageBoxButtons.OK);
 				}
-				else if (AddButtonYes.Text == "Edytuj")
+
+				new PriceBLL().AddPrice(new Ceny
 				{
-					_cena.CennikId = Int32.Parse(CennikAddBox.SelectedValue.ToString());
-					_cena.TowarId = Int32.Parse(TowarAddBox.SelectedValue.ToString());
-					_cena.Cena = Decimal.Parse(CenaAddBox.Text);
-					_cena.Rabat = Decimal.Parse(RabatAddBox.Text);
-
-
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Cenies.AddOrUpdate(_cena);
-						context.SaveChanges();
-					}
-				}
-			}
-			catch (DbEntityValidationException exception)
-			{
-				MessageBox.Show("Nieprawidłowy format danych ", "Błąd", MessageBoxButtons.OK);
-				_closeDisabler = 1;
+					Cena = Decimal.Parse(CenaAddBox.Text),
+					Rabat = Decimal.Parse(RabatAddBox.Text),
+					CennikId = Int32.Parse(CennikAddBox.SelectedValue.ToString()),
+					TowarId = Int32.Parse(TowarAddBox.SelectedValue.ToString())
+				});
 			}
 			catch (FormatException exception)
 			{
-				MessageBox.Show("Zły format pola Rabat lub Cena. Dopuszczalne tylko liczby " + exception.Message,
-					"Błąd", MessageBoxButtons.OK);
-				_closeDisabler = 1;
-			}
-			catch (NullReferenceException exception)
-			{
-				MessageBox.Show("Nie znaleziono towaru lub cennika" + exception.Message,
-					"Błąd", MessageBoxButtons.OK);
-				_closeDisabler = 1;
+				MessageBox.Show("Zły format danych, Pola nie mogą być puste",
+					"Błąd",
+					MessageBoxButtons.OK);
 			}
 		}
-
-		private void AddEditCenyForm_FormClosing(object sender, FormClosingEventArgs e)
+		private void EditPrice()
 		{
-			if (_closeDisabler == 1)
+			_cena.CennikId = Int32.Parse(CennikAddBox.SelectedValue.ToString());
+			_cena.TowarId = Int32.Parse(TowarAddBox.SelectedValue.ToString());
+			_cena.Cena = Decimal.Parse(CenaAddBox.Text);
+			_cena.Rabat = Decimal.Parse(RabatAddBox.Text);
+
+			if (Decimal.Parse(RabatAddBox.Text) == 0)
 			{
-				e.Cancel = true;
+				MessageBox.Show("Ustawiono Rabat = 0", "Komunikat", MessageBoxButtons.OK);
 			}
-			else e.Cancel = false;
-		}
 
-		private void CancelAddButton_Click(object sender, EventArgs e)
-		{
-			_closeDisabler = 0;
+			new PriceBLL().EditPrice(_cena);
 		}
 	}
 }

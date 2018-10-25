@@ -47,7 +47,6 @@
 			this.CancelAddButton.TabIndex = 3;
 			this.CancelAddButton.Text = "Anuluj";
 			this.CancelAddButton.UseVisualStyleBackColor = true;
-			this.CancelAddButton.Click += new System.EventHandler(this.CancelAddButton_Click);
 			// 
 			// AddButtonYes
 			// 
@@ -129,7 +128,6 @@
 			this.Name = "AddEditCennikiForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cennik";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEditCennikiForm_FormClosing);
 			this.ResumeLayout(false);
 			this.PerformLayout();
 

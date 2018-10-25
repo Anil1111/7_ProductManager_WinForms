@@ -113,7 +113,6 @@
 			this.CancelAddButton.TabIndex = 23;
 			this.CancelAddButton.Text = "Anuluj";
 			this.CancelAddButton.UseVisualStyleBackColor = true;
-			this.CancelAddButton.Click += new System.EventHandler(this.CancelAddButton_Click);
 			// 
 			// AddButtonYes
 			// 
@@ -156,7 +155,6 @@
 			this.Name = "AddEditCenyForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cena";
-			this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.AddEditCenyForm_FormClosing);
 			((System.ComponentModel.ISupportInitialize)(this.RabatAddBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();

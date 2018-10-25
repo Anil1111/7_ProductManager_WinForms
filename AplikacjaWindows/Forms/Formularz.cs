@@ -101,7 +101,7 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
-				var selectedPrice = GetSelectedPrice(); //Złapanie zaznaczonej ceny z DataGridView
+				var selectedPrice = GetSelectedPrice(); //Złapanie zaznaczonej ceny z DataGridView po ID
 
 				using (var addform = new AddEditCenyForm(selectedPrice))
 				{
@@ -126,13 +126,8 @@ namespace AplikacjaWindows.Forms
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć cenę: {cenaToDel.Cena}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-					using (TowaryDBEntities context = new TowaryDBEntities())
-					{
-						context.Cenies.Attach(cenaToDel);
-						context.Cenies.Remove(cenaToDel);
-						context.SaveChanges();
+						new PriceBLL().DeletePrice(cenaToDel);
 						GridFiller.FillCenyGrid(CenyGrid);
-					}
 				}
 			}
 			catch (NullReferenceException exception)
