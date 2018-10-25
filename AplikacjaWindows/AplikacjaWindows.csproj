@@ -78,7 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ViewModels\PricesViewModel.cs" />
-    <Compile Include="Helpers\PdfCreator.cs" />
+    <Compile Include="Layers\BLL\Helpers\PdfCreator.cs" />
     <Compile Include="Forms\AddEditCennikiForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,8 +109,8 @@
     <Compile Include="Forms\Formularz.Designer.cs">
       <DependentUpon>Formularz.cs</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\GridFiller.cs" />
-    <Compile Include="Helpers\JednostkiMasy.cs" />
+    <Compile Include="Layers\BLL\Helpers\GridFiller.cs" />
+    <Compile Include="Layers\BLL\Helpers\UnitWeights.cs" />
     <Compile Include="Layers\BLL\PriceBLL.cs" />
     <Compile Include="Layers\BLL\PriceListBLL.cs" />
     <Compile Include="Layers\BLL\ProductBLL.cs" />
@@ -204,6 +204,7 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Helpers\" />
     <Folder Include="Project Items\" />
   </ItemGroup>
   <ItemGroup>

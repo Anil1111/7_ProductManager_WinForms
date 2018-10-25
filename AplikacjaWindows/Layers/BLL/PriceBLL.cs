@@ -50,7 +50,7 @@ namespace AplikacjaWindows.Layers.BLL
 					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 
 				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
@@ -73,7 +73,7 @@ namespace AplikacjaWindows.Layers.BLL
 					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
 

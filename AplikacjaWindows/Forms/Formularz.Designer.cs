@@ -1,5 +1,5 @@
 ﻿namespace AplikacjaWindows.Forms {
-    partial class Formularz {
+    partial class MainForm {
         /// <summary>
         /// Required designer variable.
         /// </summary>
@@ -23,27 +23,26 @@
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent() {
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Formularz));
+			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
 			this.Cenniki = new System.Windows.Forms.TabPage();
-			this.UsunCennikBtn = new System.Windows.Forms.Button();
-			this.EdytujCennikBtn = new System.Windows.Forms.Button();
-			this.DodajCennikBtn = new System.Windows.Forms.Button();
+			this.DeletePriceListBtn = new System.Windows.Forms.Button();
+			this.EditPriceListBtn = new System.Windows.Forms.Button();
+			this.AddPriceListBtn = new System.Windows.Forms.Button();
 			this.CennikiGrid = new System.Windows.Forms.DataGridView();
+			this.CennikIDc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CennikNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Od = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Do = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ceny = new System.Windows.Forms.TabPage();
-			this.UsunCeneBtn = new System.Windows.Forms.Button();
-			this.EdytujCeneBtn = new System.Windows.Forms.Button();
-			this.DodajCeneBtn = new System.Windows.Forms.Button();
+			this.DeletePriceBtn = new System.Windows.Forms.Button();
+			this.EditPriceBtn = new System.Windows.Forms.Button();
+			this.AddPriceBtn = new System.Windows.Forms.Button();
 			this.CenyGrid = new System.Windows.Forms.DataGridView();
-			this.CenaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Cennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Towar = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Towary = new System.Windows.Forms.TabPage();
-			this.UsunTowarBtn = new System.Windows.Forms.Button();
-			this.EdytujTowarBtn = new System.Windows.Forms.Button();
-			this.DodajTowarBtn = new System.Windows.Forms.Button();
-			this.TowaryGrid = new System.Windows.Forms.DataGridView();
+			this.DeleteProductBtn = new System.Windows.Forms.Button();
+			this.EditProductBtn = new System.Windows.Forms.Button();
+			this.AddProduktBtn = new System.Windows.Forms.Button();
+			this.ProductsGrid = new System.Windows.Forms.DataGridView();
 			this.Kod = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Nazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Masa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -52,6 +51,7 @@
 			this.Data_Modyfikacji = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.TabControl = new System.Windows.Forms.TabControl();
 			this.Podsumowanie = new System.Windows.Forms.TabPage();
+			this.PrintButton = new System.Windows.Forms.Button();
 			this.ExportPDF = new System.Windows.Forms.Button();
 			this.PodsumowanieGrid = new System.Windows.Forms.DataGridView();
 			this.TowarNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,19 +64,19 @@
 			this.PromocjaOd = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.PromocjaDo = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.CenaZRabatem = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.PrintButton = new System.Windows.Forms.Button();
-			this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
-			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
-			this.CennikIDc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CennikNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Od = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Do = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.printPreview = new System.Windows.Forms.PrintPreviewDialog();
+			this.printSummaryGrid = new System.Drawing.Printing.PrintDocument();
+			this.CenaID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Towar = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cena = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Rabat = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Cennik = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Cenniki.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CennikiGrid)).BeginInit();
 			this.Ceny.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CenyGrid)).BeginInit();
 			this.Towary.SuspendLayout();
-			((System.ComponentModel.ISupportInitialize)(this.TowaryGrid)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.ProductsGrid)).BeginInit();
 			this.TabControl.SuspendLayout();
 			this.Podsumowanie.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.PodsumowanieGrid)).BeginInit();
@@ -84,9 +84,9 @@
 			// 
 			// Cenniki
 			// 
-			this.Cenniki.Controls.Add(this.UsunCennikBtn);
-			this.Cenniki.Controls.Add(this.EdytujCennikBtn);
-			this.Cenniki.Controls.Add(this.DodajCennikBtn);
+			this.Cenniki.Controls.Add(this.DeletePriceListBtn);
+			this.Cenniki.Controls.Add(this.EditPriceListBtn);
+			this.Cenniki.Controls.Add(this.AddPriceListBtn);
 			this.Cenniki.Controls.Add(this.CennikiGrid);
 			this.Cenniki.Location = new System.Drawing.Point(4, 22);
 			this.Cenniki.Name = "Cenniki";
@@ -96,35 +96,35 @@
 			this.Cenniki.Text = "Cenniki";
 			this.Cenniki.UseVisualStyleBackColor = true;
 			// 
-			// UsunCennikBtn
+			// DeletePriceListBtn
 			// 
-			this.UsunCennikBtn.Location = new System.Drawing.Point(3, 64);
-			this.UsunCennikBtn.Name = "UsunCennikBtn";
-			this.UsunCennikBtn.Size = new System.Drawing.Size(75, 23);
-			this.UsunCennikBtn.TabIndex = 7;
-			this.UsunCennikBtn.Text = "Usuń";
-			this.UsunCennikBtn.UseVisualStyleBackColor = true;
-			this.UsunCennikBtn.Click += new System.EventHandler(this.UsunCennikBtn_Click);
+			this.DeletePriceListBtn.Location = new System.Drawing.Point(3, 64);
+			this.DeletePriceListBtn.Name = "DeletePriceListBtn";
+			this.DeletePriceListBtn.Size = new System.Drawing.Size(75, 23);
+			this.DeletePriceListBtn.TabIndex = 7;
+			this.DeletePriceListBtn.Text = "Usuń";
+			this.DeletePriceListBtn.UseVisualStyleBackColor = true;
+			this.DeletePriceListBtn.Click += new System.EventHandler(this.DeletePriceListBtn_Click);
 			// 
-			// EdytujCennikBtn
+			// EditPriceListBtn
 			// 
-			this.EdytujCennikBtn.Location = new System.Drawing.Point(3, 35);
-			this.EdytujCennikBtn.Name = "EdytujCennikBtn";
-			this.EdytujCennikBtn.Size = new System.Drawing.Size(75, 23);
-			this.EdytujCennikBtn.TabIndex = 6;
-			this.EdytujCennikBtn.Text = "Edytuj";
-			this.EdytujCennikBtn.UseVisualStyleBackColor = true;
-			this.EdytujCennikBtn.Click += new System.EventHandler(this.EdytujCennikBtn_Click);
+			this.EditPriceListBtn.Location = new System.Drawing.Point(3, 35);
+			this.EditPriceListBtn.Name = "EditPriceListBtn";
+			this.EditPriceListBtn.Size = new System.Drawing.Size(75, 23);
+			this.EditPriceListBtn.TabIndex = 6;
+			this.EditPriceListBtn.Text = "Edytuj";
+			this.EditPriceListBtn.UseVisualStyleBackColor = true;
+			this.EditPriceListBtn.Click += new System.EventHandler(this.EditPriceListBtn_Click);
 			// 
-			// DodajCennikBtn
+			// AddPriceListBtn
 			// 
-			this.DodajCennikBtn.Location = new System.Drawing.Point(3, 6);
-			this.DodajCennikBtn.Name = "DodajCennikBtn";
-			this.DodajCennikBtn.Size = new System.Drawing.Size(75, 23);
-			this.DodajCennikBtn.TabIndex = 5;
-			this.DodajCennikBtn.Text = "Dodaj";
-			this.DodajCennikBtn.UseVisualStyleBackColor = true;
-			this.DodajCennikBtn.Click += new System.EventHandler(this.DodajCennikBtn_Click);
+			this.AddPriceListBtn.Location = new System.Drawing.Point(3, 6);
+			this.AddPriceListBtn.Name = "AddPriceListBtn";
+			this.AddPriceListBtn.Size = new System.Drawing.Size(75, 23);
+			this.AddPriceListBtn.TabIndex = 5;
+			this.AddPriceListBtn.Text = "Dodaj";
+			this.AddPriceListBtn.UseVisualStyleBackColor = true;
+			this.AddPriceListBtn.Click += new System.EventHandler(this.AddPriceListBtn_Click);
 			// 
 			// CennikiGrid
 			// 
@@ -145,14 +145,45 @@
 			this.CennikiGrid.Location = new System.Drawing.Point(3, 93);
 			this.CennikiGrid.Name = "CennikiGrid";
 			this.CennikiGrid.ReadOnly = true;
+			this.CennikiGrid.RowHeadersWidth = 50;
+			this.CennikiGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.CennikiGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CennikiGrid.TabIndex = 2;
 			// 
+			// CennikIDc
+			// 
+			this.CennikIDc.DataPropertyName = "Id";
+			this.CennikIDc.HeaderText = "CennikID";
+			this.CennikIDc.Name = "CennikIDc";
+			this.CennikIDc.ReadOnly = true;
+			this.CennikIDc.Visible = false;
+			// 
+			// CennikNazwa
+			// 
+			this.CennikNazwa.DataPropertyName = "Nazwa";
+			this.CennikNazwa.HeaderText = "Nazwa";
+			this.CennikNazwa.Name = "CennikNazwa";
+			this.CennikNazwa.ReadOnly = true;
+			// 
+			// Data_Od
+			// 
+			this.Data_Od.DataPropertyName = "Data_Od";
+			this.Data_Od.HeaderText = "Data od";
+			this.Data_Od.Name = "Data_Od";
+			this.Data_Od.ReadOnly = true;
+			// 
+			// Data_Do
+			// 
+			this.Data_Do.DataPropertyName = "Data_Do";
+			this.Data_Do.HeaderText = "Data Do";
+			this.Data_Do.Name = "Data_Do";
+			this.Data_Do.ReadOnly = true;
+			// 
 			// Ceny
 			// 
-			this.Ceny.Controls.Add(this.UsunCeneBtn);
-			this.Ceny.Controls.Add(this.EdytujCeneBtn);
-			this.Ceny.Controls.Add(this.DodajCeneBtn);
+			this.Ceny.Controls.Add(this.DeletePriceBtn);
+			this.Ceny.Controls.Add(this.EditPriceBtn);
+			this.Ceny.Controls.Add(this.AddPriceBtn);
 			this.Ceny.Controls.Add(this.CenyGrid);
 			this.Ceny.Location = new System.Drawing.Point(4, 22);
 			this.Ceny.Name = "Ceny";
@@ -162,35 +193,35 @@
 			this.Ceny.Text = "Ceny";
 			this.Ceny.UseVisualStyleBackColor = true;
 			// 
-			// UsunCeneBtn
+			// DeletePriceBtn
 			// 
-			this.UsunCeneBtn.Location = new System.Drawing.Point(3, 64);
-			this.UsunCeneBtn.Name = "UsunCeneBtn";
-			this.UsunCeneBtn.Size = new System.Drawing.Size(75, 23);
-			this.UsunCeneBtn.TabIndex = 4;
-			this.UsunCeneBtn.Text = "Usuń";
-			this.UsunCeneBtn.UseVisualStyleBackColor = true;
-			this.UsunCeneBtn.Click += new System.EventHandler(this.UsunCeneBtn_Click);
+			this.DeletePriceBtn.Location = new System.Drawing.Point(3, 64);
+			this.DeletePriceBtn.Name = "DeletePriceBtn";
+			this.DeletePriceBtn.Size = new System.Drawing.Size(75, 23);
+			this.DeletePriceBtn.TabIndex = 4;
+			this.DeletePriceBtn.Text = "Usuń";
+			this.DeletePriceBtn.UseVisualStyleBackColor = true;
+			this.DeletePriceBtn.Click += new System.EventHandler(this.DeletePriceBtn_Click);
 			// 
-			// EdytujCeneBtn
+			// EditPriceBtn
 			// 
-			this.EdytujCeneBtn.Location = new System.Drawing.Point(3, 35);
-			this.EdytujCeneBtn.Name = "EdytujCeneBtn";
-			this.EdytujCeneBtn.Size = new System.Drawing.Size(75, 23);
-			this.EdytujCeneBtn.TabIndex = 3;
-			this.EdytujCeneBtn.Text = "Edytuj";
-			this.EdytujCeneBtn.UseVisualStyleBackColor = true;
-			this.EdytujCeneBtn.Click += new System.EventHandler(this.EdytujCeneBtn_Click);
+			this.EditPriceBtn.Location = new System.Drawing.Point(3, 35);
+			this.EditPriceBtn.Name = "EditPriceBtn";
+			this.EditPriceBtn.Size = new System.Drawing.Size(75, 23);
+			this.EditPriceBtn.TabIndex = 3;
+			this.EditPriceBtn.Text = "Edytuj";
+			this.EditPriceBtn.UseVisualStyleBackColor = true;
+			this.EditPriceBtn.Click += new System.EventHandler(this.EditPriceBtn_Click);
 			// 
-			// DodajCeneBtn
+			// AddPriceBtn
 			// 
-			this.DodajCeneBtn.Location = new System.Drawing.Point(3, 6);
-			this.DodajCeneBtn.Name = "DodajCeneBtn";
-			this.DodajCeneBtn.Size = new System.Drawing.Size(75, 23);
-			this.DodajCeneBtn.TabIndex = 2;
-			this.DodajCeneBtn.Text = "Dodaj";
-			this.DodajCeneBtn.UseVisualStyleBackColor = true;
-			this.DodajCeneBtn.Click += new System.EventHandler(this.DodajCeneBtn_Click);
+			this.AddPriceBtn.Location = new System.Drawing.Point(3, 6);
+			this.AddPriceBtn.Name = "AddPriceBtn";
+			this.AddPriceBtn.Size = new System.Drawing.Size(75, 23);
+			this.AddPriceBtn.TabIndex = 2;
+			this.AddPriceBtn.Text = "Dodaj";
+			this.AddPriceBtn.UseVisualStyleBackColor = true;
+			this.AddPriceBtn.Click += new System.EventHandler(this.AddPriceBtn_Click);
 			// 
 			// CenyGrid
 			// 
@@ -204,55 +235,25 @@
 			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.CenyGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CenaID,
+            this.Towar,
             this.Cena,
             this.Rabat,
-            this.Cennik,
-            this.Towar});
+            this.Cennik});
 			this.CenyGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.CenyGrid.Location = new System.Drawing.Point(3, 93);
 			this.CenyGrid.Name = "CenyGrid";
 			this.CenyGrid.ReadOnly = true;
 			this.CenyGrid.RowHeadersWidth = 50;
+			this.CenyGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.CenyGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CenyGrid.TabIndex = 1;
 			// 
-			// CenaID
-			// 
-			this.CenaID.DataPropertyName = "CenaID";
-			this.CenaID.HeaderText = "Cena ID";
-			this.CenaID.Name = "CenaID";
-			this.CenaID.Visible = false;
-			// 
-			// Cena
-			// 
-			this.Cena.DataPropertyName = "cena";
-			this.Cena.HeaderText = "Cena";
-			this.Cena.Name = "Cena";
-			// 
-			// Rabat
-			// 
-			this.Rabat.DataPropertyName = "rabat";
-			this.Rabat.HeaderText = "Rabat";
-			this.Rabat.Name = "Rabat";
-			// 
-			// Cennik
-			// 
-			this.Cennik.DataPropertyName = "CennikNazwa";
-			this.Cennik.HeaderText = "Cennik";
-			this.Cennik.Name = "Cennik";
-			// 
-			// Towar
-			// 
-			this.Towar.DataPropertyName = "TowarNazwa";
-			this.Towar.HeaderText = "Towar";
-			this.Towar.Name = "Towar";
-			// 
 			// Towary
 			// 
-			this.Towary.Controls.Add(this.UsunTowarBtn);
-			this.Towary.Controls.Add(this.EdytujTowarBtn);
-			this.Towary.Controls.Add(this.DodajTowarBtn);
-			this.Towary.Controls.Add(this.TowaryGrid);
+			this.Towary.Controls.Add(this.DeleteProductBtn);
+			this.Towary.Controls.Add(this.EditProductBtn);
+			this.Towary.Controls.Add(this.AddProduktBtn);
+			this.Towary.Controls.Add(this.ProductsGrid);
 			this.Towary.Location = new System.Drawing.Point(4, 22);
 			this.Towary.Name = "Towary";
 			this.Towary.Padding = new System.Windows.Forms.Padding(3);
@@ -261,61 +262,61 @@
 			this.Towary.Text = "Towary";
 			this.Towary.UseVisualStyleBackColor = true;
 			// 
-			// UsunTowarBtn
+			// DeleteProductBtn
 			// 
-			this.UsunTowarBtn.Location = new System.Drawing.Point(3, 64);
-			this.UsunTowarBtn.Name = "UsunTowarBtn";
-			this.UsunTowarBtn.Size = new System.Drawing.Size(75, 23);
-			this.UsunTowarBtn.TabIndex = 3;
-			this.UsunTowarBtn.Text = "Usuń";
-			this.UsunTowarBtn.UseVisualStyleBackColor = true;
-			this.UsunTowarBtn.Click += new System.EventHandler(this.UsunTowarBtn_Click);
+			this.DeleteProductBtn.Location = new System.Drawing.Point(3, 64);
+			this.DeleteProductBtn.Name = "DeleteProductBtn";
+			this.DeleteProductBtn.Size = new System.Drawing.Size(75, 23);
+			this.DeleteProductBtn.TabIndex = 3;
+			this.DeleteProductBtn.Text = "Usuń";
+			this.DeleteProductBtn.UseVisualStyleBackColor = true;
+			this.DeleteProductBtn.Click += new System.EventHandler(this.DeleteProductBtn_Click);
 			// 
-			// EdytujTowarBtn
+			// EditProductBtn
 			// 
-			this.EdytujTowarBtn.Location = new System.Drawing.Point(3, 35);
-			this.EdytujTowarBtn.Name = "EdytujTowarBtn";
-			this.EdytujTowarBtn.Size = new System.Drawing.Size(75, 23);
-			this.EdytujTowarBtn.TabIndex = 2;
-			this.EdytujTowarBtn.Text = "Edytuj";
-			this.EdytujTowarBtn.UseVisualStyleBackColor = true;
-			this.EdytujTowarBtn.Click += new System.EventHandler(this.EdytujTowarBtn_Click);
+			this.EditProductBtn.Location = new System.Drawing.Point(3, 35);
+			this.EditProductBtn.Name = "EditProductBtn";
+			this.EditProductBtn.Size = new System.Drawing.Size(75, 23);
+			this.EditProductBtn.TabIndex = 2;
+			this.EditProductBtn.Text = "Edytuj";
+			this.EditProductBtn.UseVisualStyleBackColor = true;
+			this.EditProductBtn.Click += new System.EventHandler(this.EditProductBtn_Click);
 			// 
-			// DodajTowarBtn
+			// AddProduktBtn
 			// 
-			this.DodajTowarBtn.Location = new System.Drawing.Point(3, 6);
-			this.DodajTowarBtn.Name = "DodajTowarBtn";
-			this.DodajTowarBtn.Size = new System.Drawing.Size(75, 23);
-			this.DodajTowarBtn.TabIndex = 1;
-			this.DodajTowarBtn.Text = "Dodaj";
-			this.DodajTowarBtn.UseVisualStyleBackColor = true;
-			this.DodajTowarBtn.Click += new System.EventHandler(this.DodajTowarBtn_Click);
+			this.AddProduktBtn.Location = new System.Drawing.Point(3, 6);
+			this.AddProduktBtn.Name = "AddProduktBtn";
+			this.AddProduktBtn.Size = new System.Drawing.Size(75, 23);
+			this.AddProduktBtn.TabIndex = 1;
+			this.AddProduktBtn.Text = "Dodaj";
+			this.AddProduktBtn.UseVisualStyleBackColor = true;
+			this.AddProduktBtn.Click += new System.EventHandler(this.AddProductBtn_Click);
 			// 
-			// TowaryGrid
+			// ProductsGrid
 			// 
-			this.TowaryGrid.AllowUserToAddRows = false;
-			this.TowaryGrid.AllowUserToDeleteRows = false;
-			this.TowaryGrid.AllowUserToOrderColumns = true;
-			this.TowaryGrid.AllowUserToResizeColumns = false;
-			this.TowaryGrid.AllowUserToResizeRows = false;
-			this.TowaryGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-			this.TowaryGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.TowaryGrid.ColumnHeadersHeight = 30;
-			this.TowaryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
-			this.TowaryGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+			this.ProductsGrid.AllowUserToAddRows = false;
+			this.ProductsGrid.AllowUserToDeleteRows = false;
+			this.ProductsGrid.AllowUserToOrderColumns = true;
+			this.ProductsGrid.AllowUserToResizeColumns = false;
+			this.ProductsGrid.AllowUserToResizeRows = false;
+			this.ProductsGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+			this.ProductsGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+			this.ProductsGrid.ColumnHeadersHeight = 30;
+			this.ProductsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+			this.ProductsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Kod,
             this.Nazwa,
             this.Masa,
             this.JM,
             this.Data_Utworzenia,
             this.Data_Modyfikacji});
-			this.TowaryGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
-			this.TowaryGrid.Location = new System.Drawing.Point(3, 93);
-			this.TowaryGrid.Name = "TowaryGrid";
-			this.TowaryGrid.ReadOnly = true;
-			this.TowaryGrid.RowHeadersWidth = 50;
-			this.TowaryGrid.Size = new System.Drawing.Size(1045, 391);
-			this.TowaryGrid.TabIndex = 0;
+			this.ProductsGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
+			this.ProductsGrid.Location = new System.Drawing.Point(3, 93);
+			this.ProductsGrid.Name = "ProductsGrid";
+			this.ProductsGrid.ReadOnly = true;
+			this.ProductsGrid.RowHeadersWidth = 50;
+			this.ProductsGrid.Size = new System.Drawing.Size(1045, 391);
+			this.ProductsGrid.TabIndex = 0;
 			// 
 			// Kod
 			// 
@@ -386,6 +387,16 @@
 			this.Podsumowanie.Text = "Podsumowanie";
 			this.Podsumowanie.UseVisualStyleBackColor = true;
 			// 
+			// PrintButton
+			// 
+			this.PrintButton.Location = new System.Drawing.Point(9, 6);
+			this.PrintButton.Name = "PrintButton";
+			this.PrintButton.Size = new System.Drawing.Size(150, 47);
+			this.PrintButton.TabIndex = 2;
+			this.PrintButton.Text = "Wydrukuj";
+			this.PrintButton.UseVisualStyleBackColor = true;
+			this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+			// 
 			// ExportPDF
 			// 
 			this.ExportPDF.Location = new System.Drawing.Point(794, 6);
@@ -394,18 +405,17 @@
 			this.ExportPDF.TabIndex = 1;
 			this.ExportPDF.Text = "ZAPISZ PLIK PDF";
 			this.ExportPDF.UseVisualStyleBackColor = true;
-			this.ExportPDF.Click += new System.EventHandler(this.Wydruk_Click);
+			this.ExportPDF.Click += new System.EventHandler(this.ExportPDF_Click);
 			// 
 			// PodsumowanieGrid
 			// 
 			this.PodsumowanieGrid.AllowUserToAddRows = false;
 			this.PodsumowanieGrid.AllowUserToDeleteRows = false;
-			this.PodsumowanieGrid.AllowUserToOrderColumns = true;
 			this.PodsumowanieGrid.AllowUserToResizeColumns = false;
 			this.PodsumowanieGrid.AllowUserToResizeRows = false;
 			this.PodsumowanieGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.PodsumowanieGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.PodsumowanieGrid.ColumnHeadersHeight = 30;
+			this.PodsumowanieGrid.ColumnHeadersHeight = 40;
 			this.PodsumowanieGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.PodsumowanieGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TowarNazwa,
@@ -422,6 +432,8 @@
 			this.PodsumowanieGrid.Location = new System.Drawing.Point(3, 59);
 			this.PodsumowanieGrid.Name = "PodsumowanieGrid";
 			this.PodsumowanieGrid.ReadOnly = true;
+			this.PodsumowanieGrid.RowHeadersWidth = 50;
+			this.PodsumowanieGrid.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
 			this.PodsumowanieGrid.Size = new System.Drawing.Size(1045, 425);
 			this.PodsumowanieGrid.TabIndex = 0;
 			// 
@@ -494,61 +506,58 @@
 			this.CenaZRabatem.Name = "CenaZRabatem";
 			this.CenaZRabatem.ReadOnly = true;
 			// 
-			// PrintButton
+			// printPreview
 			// 
-			this.PrintButton.Location = new System.Drawing.Point(9, 6);
-			this.PrintButton.Name = "PrintButton";
-			this.PrintButton.Size = new System.Drawing.Size(150, 47);
-			this.PrintButton.TabIndex = 2;
-			this.PrintButton.Text = "Wydrukuj";
-			this.PrintButton.UseVisualStyleBackColor = true;
-			this.PrintButton.Click += new System.EventHandler(this.PrintButton_Click);
+			this.printPreview.AutoScrollMargin = new System.Drawing.Size(0, 0);
+			this.printPreview.AutoScrollMinSize = new System.Drawing.Size(0, 0);
+			this.printPreview.ClientSize = new System.Drawing.Size(400, 300);
+			this.printPreview.Document = this.printSummaryGrid;
+			this.printPreview.Enabled = true;
+			this.printPreview.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreview.Icon")));
+			this.printPreview.Name = "printPreviewDialog1";
+			this.printPreview.Visible = false;
 			// 
-			// printPreviewDialog1
+			// printSummaryGrid
 			// 
-			this.printPreviewDialog1.AutoScrollMargin = new System.Drawing.Size(0, 0);
-			this.printPreviewDialog1.AutoScrollMinSize = new System.Drawing.Size(0, 0);
-			this.printPreviewDialog1.ClientSize = new System.Drawing.Size(400, 300);
-			this.printPreviewDialog1.Document = this.printDocument1;
-			this.printPreviewDialog1.Enabled = true;
-			this.printPreviewDialog1.Icon = ((System.Drawing.Icon)(resources.GetObject("printPreviewDialog1.Icon")));
-			this.printPreviewDialog1.Name = "printPreviewDialog1";
-			this.printPreviewDialog1.Visible = false;
+			this.printSummaryGrid.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printSummaryGrid_PrintPage);
 			// 
-			// printDocument1
+			// CenaID
 			// 
-			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
+			this.CenaID.DataPropertyName = "PriceID";
+			this.CenaID.HeaderText = "Cena ID";
+			this.CenaID.Name = "CenaID";
+			this.CenaID.ReadOnly = true;
+			this.CenaID.Visible = false;
 			// 
-			// CennikIDc
+			// Towar
 			// 
-			this.CennikIDc.DataPropertyName = "Id";
-			this.CennikIDc.HeaderText = "CennikID";
-			this.CennikIDc.Name = "CennikIDc";
-			this.CennikIDc.ReadOnly = true;
-			this.CennikIDc.Visible = false;
+			this.Towar.DataPropertyName = "ProductName";
+			this.Towar.HeaderText = "Towar";
+			this.Towar.Name = "Towar";
+			this.Towar.ReadOnly = true;
 			// 
-			// CennikNazwa
+			// Cena
 			// 
-			this.CennikNazwa.DataPropertyName = "Nazwa";
-			this.CennikNazwa.HeaderText = "Nazwa";
-			this.CennikNazwa.Name = "CennikNazwa";
-			this.CennikNazwa.ReadOnly = true;
+			this.Cena.DataPropertyName = "Price";
+			this.Cena.HeaderText = "Cena";
+			this.Cena.Name = "Cena";
+			this.Cena.ReadOnly = true;
 			// 
-			// Data_Od
+			// Rabat
 			// 
-			this.Data_Od.DataPropertyName = "Data_Od";
-			this.Data_Od.HeaderText = "Data od";
-			this.Data_Od.Name = "Data_Od";
-			this.Data_Od.ReadOnly = true;
+			this.Rabat.DataPropertyName = "Discount";
+			this.Rabat.HeaderText = "Rabat";
+			this.Rabat.Name = "Rabat";
+			this.Rabat.ReadOnly = true;
 			// 
-			// Data_Do
+			// Cennik
 			// 
-			this.Data_Do.DataPropertyName = "Data_Do";
-			this.Data_Do.HeaderText = "Data Do";
-			this.Data_Do.Name = "Data_Do";
-			this.Data_Do.ReadOnly = true;
+			this.Cennik.DataPropertyName = "PriceListName";
+			this.Cennik.HeaderText = "Cennik";
+			this.Cennik.Name = "Cennik";
+			this.Cennik.ReadOnly = true;
 			// 
-			// Formularz
+			// MainForm
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -557,7 +566,7 @@
 			this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
 			this.MaximizeBox = false;
 			this.MinimumSize = new System.Drawing.Size(973, 552);
-			this.Name = "Formularz";
+			this.Name = "MainForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "FORMULARZ TOWAROWY";
 			this.Load += new System.EventHandler(this.Formularz_Load);
@@ -566,7 +575,7 @@
 			this.Ceny.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.CenyGrid)).EndInit();
 			this.Towary.ResumeLayout(false);
-			((System.ComponentModel.ISupportInitialize)(this.TowaryGrid)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.ProductsGrid)).EndInit();
 			this.TabControl.ResumeLayout(false);
 			this.Podsumowanie.ResumeLayout(false);
 			((System.ComponentModel.ISupportInitialize)(this.PodsumowanieGrid)).EndInit();
@@ -576,20 +585,19 @@
 
 		#endregion
 		private System.Windows.Forms.TabPage Cenniki;
-		private System.Windows.Forms.Button UsunCennikBtn;
-		private System.Windows.Forms.Button EdytujCennikBtn;
-		private System.Windows.Forms.Button DodajCennikBtn;
+		private System.Windows.Forms.Button DeletePriceListBtn;
+		private System.Windows.Forms.Button EditPriceListBtn;
+		private System.Windows.Forms.Button AddPriceListBtn;
 		private System.Windows.Forms.DataGridView CennikiGrid;
 		private System.Windows.Forms.TabPage Ceny;
-		private System.Windows.Forms.Button UsunCeneBtn;
-		private System.Windows.Forms.Button EdytujCeneBtn;
-		private System.Windows.Forms.Button DodajCeneBtn;
-		private System.Windows.Forms.DataGridView CenyGrid;
+		private System.Windows.Forms.Button DeletePriceBtn;
+		private System.Windows.Forms.Button EditPriceBtn;
+		private System.Windows.Forms.Button AddPriceBtn;
 		private System.Windows.Forms.TabPage Towary;
-		private System.Windows.Forms.Button UsunTowarBtn;
-		private System.Windows.Forms.Button EdytujTowarBtn;
-		private System.Windows.Forms.Button DodajTowarBtn;
-		private System.Windows.Forms.DataGridView TowaryGrid;
+		private System.Windows.Forms.Button DeleteProductBtn;
+		private System.Windows.Forms.Button EditProductBtn;
+		private System.Windows.Forms.Button AddProduktBtn;
+		private System.Windows.Forms.DataGridView ProductsGrid;
 		private System.Windows.Forms.TabControl TabControl;
 		private System.Windows.Forms.TabPage Podsumowanie;
 		private System.Windows.Forms.DataGridView PodsumowanieGrid;
@@ -600,11 +608,6 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn JM;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Utworzenia;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Modyfikacji;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CenaID;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Rabat;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Cennik;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Towar;
 		private System.Windows.Forms.DataGridViewTextBoxColumn TowarNazwa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn KodTowaru;
 		private System.Windows.Forms.DataGridViewTextBoxColumn MasaTowaru;
@@ -616,12 +619,18 @@
 		private System.Windows.Forms.DataGridViewTextBoxColumn PromocjaDo;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CenaZRabatem;
 		private System.Windows.Forms.Button PrintButton;
-		private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
-		private System.Drawing.Printing.PrintDocument printDocument1;
+		private System.Windows.Forms.PrintPreviewDialog printPreview;
+		private System.Drawing.Printing.PrintDocument printSummaryGrid;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CennikIDc;
 		private System.Windows.Forms.DataGridViewTextBoxColumn CennikNazwa;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Od;
 		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Do;
+		private System.Windows.Forms.DataGridView CenyGrid;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CenaID;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Towar;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Cena;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Rabat;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Cennik;
 	}
 }
 

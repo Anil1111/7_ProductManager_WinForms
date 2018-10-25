@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
-using AplikacjaWindows.Helpers;
 using AplikacjaWindows.Layers.BLL;
+using AplikacjaWindows.Layers.BLL.Helpers;
 
 namespace AplikacjaWindows.Forms
 {
@@ -15,7 +15,7 @@ namespace AplikacjaWindows.Forms
 
 			_towar = towar;
 
-			JmBox.DataSource = Enum.GetValues(typeof(JednostkiMasy)); //Pobranie do rozwijanej listy jednostek masy
+			UnitWeightBox.DataSource = Enum.GetValues(typeof(UnitWeights)); //Pobranie do rozwijanej listy jednostek masy
 
 			if (towar != null)
 			{
@@ -23,11 +23,11 @@ namespace AplikacjaWindows.Forms
 
 				//Wypełnienie pól danymi edytowanego towaru
 				NameAddBox.Text = towar.Nazwa;
-				KodAddBox.Text = towar.Kod;
-				MasaAddBox.Text = towar.Masa.ToString();
-				JmBox.Text = towar.JM;
-				CreateDate.Text = towar.Data_Utworzenia.ToString();
-				EditDate.Text = DateTime.Now.ToString();
+				CodeAddBox.Text = towar.Kod;
+				WeightAddBox.Text = towar.Masa.ToString();
+				UnitWeightBox.Text = towar.JM;
+				CreateDateBox.Text = towar.Data_Utworzenia.ToString();
+				EditDateBox.Text = DateTime.Now.ToString();
 			}
 			else
 			{
@@ -53,15 +53,15 @@ namespace AplikacjaWindows.Forms
 			{
 				new ProductBLL().AddProduct(new Towary
 				{
-					Kod = KodAddBox.Text,
+					Kod = CodeAddBox.Text,
 					Nazwa = NameAddBox.Text,
-					Masa = decimal.Parse(MasaAddBox.Text),
-					JM = JmBox.Text,
+					Masa = decimal.Parse(WeightAddBox.Text),
+					JM = UnitWeightBox.Text,
 					Data_Utworzenia = DateTime.Now,
 					Data_Modyfikacji = null
 				});
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				MessageBox.Show("Zły format danych, Kod: XXX-XXX, Masa: Liczby powyżej 0, Pola nie mogą być puste",
 					"Błąd",
@@ -75,15 +75,15 @@ namespace AplikacjaWindows.Forms
 			{
 				//Zaktualizowanie wartości pól obiektu _towar
 				_towar.Nazwa = NameAddBox.Text;
-				_towar.Kod = KodAddBox.Text;
-				_towar.Masa = decimal.Parse(MasaAddBox.Text);
-				_towar.JM = JmBox.Text;
-				_towar.Data_Utworzenia = DateTime.Parse(CreateDate.Text);
-				_towar.Data_Modyfikacji = DateTime.Parse(EditDate.Text = DateTime.Now.ToString("d"));
+				_towar.Kod = CodeAddBox.Text;
+				_towar.Masa = decimal.Parse(WeightAddBox.Text);
+				_towar.JM = UnitWeightBox.Text;
+				_towar.Data_Utworzenia = DateTime.Parse(CreateDateBox.Text);
+				_towar.Data_Modyfikacji = DateTime.Parse(EditDateBox.Text = DateTime.Now.ToString());
 
 				new ProductBLL().EditProduct(_towar);
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				MessageBox.Show("Zły format danych, Kod: XXX-XXX, Masa: Liczby powyżej 0, Pola nie mogą być puste",
 					"Błąd",

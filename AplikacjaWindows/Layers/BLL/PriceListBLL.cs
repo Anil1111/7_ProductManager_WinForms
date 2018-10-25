@@ -33,7 +33,15 @@ namespace AplikacjaWindows.Layers.BLL
 		{
 			try
 			{
-				Adapter.CreateRecord(priceList);
+				if (priceList.Data_Od <= priceList.Data_Do)
+				{
+					Adapter.CreateRecord(priceList);
+				}
+				else
+				{
+					MessageBox.Show("Data rozpoczęcia nie może byc wcześniej niż data późniejsza", "Błąd",
+						MessageBoxButtons.OK);
+				}
 			}
 			catch (DbEntityValidationException exception)
 			{
@@ -45,10 +53,9 @@ namespace AplikacjaWindows.Layers.BLL
 					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
-
-				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
+				MessageBox.Show("Nierozpoznany Błąd", "Błąd", MessageBoxButtons.OK);
 			}
 		}
 
@@ -68,7 +75,7 @@ namespace AplikacjaWindows.Layers.BLL
 					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
 
@@ -81,7 +88,7 @@ namespace AplikacjaWindows.Layers.BLL
 			{
 				Adapter.DeleteRecord(priceList);
 			}
-			catch (System.Data.Entity.Infrastructure.DbUpdateException exception)
+			catch (System.Data.Entity.Infrastructure.DbUpdateException)
 			{
 				if (MessageBox.Show(
 						"Wybrany Cennik zawiera powiązanie w cenach. Kliknij OK, aby usunąć te powiązania i usunąć Cennik, Anuluj aby zakończyć proces usuwania",

@@ -34,8 +34,8 @@
 			this.label2 = new System.Windows.Forms.Label();
 			this.NameAddBox = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
-			this.DataOdPicker = new System.Windows.Forms.DateTimePicker();
-			this.DataDoPicker = new System.Windows.Forms.DateTimePicker();
+			this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
+			this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
 			this.SuspendLayout();
 			// 
 			// CancelAddButton
@@ -93,19 +93,19 @@
 			this.label1.TabIndex = 10;
 			this.label1.Text = "Nazwa";
 			// 
-			// DataOdPicker
+			// StartDatePicker
 			// 
-			this.DataOdPicker.Location = new System.Drawing.Point(15, 65);
-			this.DataOdPicker.Name = "DataOdPicker";
-			this.DataOdPicker.Size = new System.Drawing.Size(200, 20);
-			this.DataOdPicker.TabIndex = 15;
+			this.StartDatePicker.Location = new System.Drawing.Point(15, 65);
+			this.StartDatePicker.Name = "StartDatePicker";
+			this.StartDatePicker.Size = new System.Drawing.Size(200, 20);
+			this.StartDatePicker.TabIndex = 15;
 			// 
-			// DataDoPicker
+			// EndDatePicker
 			// 
-			this.DataDoPicker.Location = new System.Drawing.Point(15, 104);
-			this.DataDoPicker.Name = "DataDoPicker";
-			this.DataDoPicker.Size = new System.Drawing.Size(200, 20);
-			this.DataDoPicker.TabIndex = 16;
+			this.EndDatePicker.Location = new System.Drawing.Point(15, 104);
+			this.EndDatePicker.Name = "EndDatePicker";
+			this.EndDatePicker.Size = new System.Drawing.Size(200, 20);
+			this.EndDatePicker.TabIndex = 16;
 			// 
 			// AddEditCennikiForm
 			// 
@@ -115,8 +115,8 @@
 			this.CancelButton = this.CancelAddButton;
 			this.ClientSize = new System.Drawing.Size(244, 208);
 			this.ControlBox = false;
-			this.Controls.Add(this.DataDoPicker);
-			this.Controls.Add(this.DataOdPicker);
+			this.Controls.Add(this.EndDatePicker);
+			this.Controls.Add(this.StartDatePicker);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.NameAddBox);
@@ -141,7 +141,7 @@
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.TextBox NameAddBox;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.DateTimePicker DataOdPicker;
-		private System.Windows.Forms.DateTimePicker DataDoPicker;
+		private System.Windows.Forms.DateTimePicker StartDatePicker;
+		private System.Windows.Forms.DateTimePicker EndDatePicker;
 	}
 }

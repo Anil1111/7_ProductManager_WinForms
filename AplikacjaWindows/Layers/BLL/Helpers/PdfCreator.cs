@@ -4,11 +4,10 @@ using System.Windows.Forms;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 
-namespace AplikacjaWindows.Helpers
+namespace AplikacjaWindows.Layers.BLL.Helpers
 {
 	public class PdfCreator
 	{
-
 		public void CreatePdf(DataGridView dataGrid, string filename) 
 		{
 			BaseFont bf = BaseFont.CreateFont(BaseFont.TIMES_ROMAN, BaseFont.CP1250, BaseFont.EMBEDDED);
@@ -63,7 +62,7 @@ namespace AplikacjaWindows.Helpers
 						stream.Close();
 					}
 				}
-				catch (IOException exception)
+				catch (IOException)
 				{
 					MessageBox.Show("Plik jest obecnie w użyciu, zamknij plik i spróbuj ponownie", "Błąd",
 						MessageBoxButtons.OK);

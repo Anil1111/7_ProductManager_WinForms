@@ -14,23 +14,23 @@ namespace AplikacjaWindows.Forms
 
 			_cena = cena;
 
-			CennikAddBox.DataSource = new PriceListBLL().GetPriceLists();
-			CennikAddBox.DisplayMember = "Nazwa";
-			CennikAddBox.ValueMember = "Id";
+			PriceListAddBox.DataSource = new PriceListBLL().GetPriceLists();
+			PriceListAddBox.DisplayMember = "Nazwa";
+			PriceListAddBox.ValueMember = "Id";
 
-			TowarAddBox.DataSource = new ProductBLL().GetProducts();
-			TowarAddBox.DisplayMember = "Nazwa";
-			TowarAddBox.ValueMember = "Id";
+			ProductAddBox.DataSource = new ProductBLL().GetProducts();
+			ProductAddBox.DisplayMember = "Nazwa";
+			ProductAddBox.ValueMember = "Id";
 
 			if (cena != null)
 			{
 				AddButtonYes.Text = "Edytuj";
 
 				//Wypełnienie komórek danymi z edytowanego obiektu
-				CennikAddBox.SelectedValue = cena.CennikId;
-				TowarAddBox.SelectedValue = cena.TowarId;
-				CenaAddBox.Text = cena.Cena.ToString();
-				RabatAddBox.Text = cena.Rabat.ToString();
+				PriceListAddBox.SelectedValue = cena.CennikId;
+				ProductAddBox.SelectedValue = cena.TowarId;
+				PriceAddBox.Text = cena.Cena.ToString();
+				DiscountAddBox.Text = cena.Rabat.ToString();
 			}
 			else
 			{
@@ -54,34 +54,34 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
-				if (Decimal.Parse(RabatAddBox.Text) == 0)
+				if (Decimal.Parse(DiscountAddBox.Text) == 0)
 				{
 					MessageBox.Show("Ustawiono Rabat = 0", "Komunikat", MessageBoxButtons.OK);
 				}
 
 				new PriceBLL().AddPrice(new Ceny
 				{
-					Cena = Decimal.Parse(CenaAddBox.Text),
-					Rabat = Decimal.Parse(RabatAddBox.Text),
-					CennikId = Int32.Parse(CennikAddBox.SelectedValue.ToString()),
-					TowarId = Int32.Parse(TowarAddBox.SelectedValue.ToString())
+					Cena = Decimal.Parse(PriceAddBox.Text),
+					Rabat = Decimal.Parse(DiscountAddBox.Text),
+					CennikId = Int32.Parse(PriceListAddBox.SelectedValue.ToString()),
+					TowarId = Int32.Parse(ProductAddBox.SelectedValue.ToString())
 				});
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
-				MessageBox.Show("Zły format danych, Pola nie mogą być puste",
+				MessageBox.Show("Zły format wprowadzonych danych, lub nie wypełniono wszystkich pól",
 					"Błąd",
 					MessageBoxButtons.OK);
 			}
 		}
 		private void EditPrice()
 		{
-			_cena.CennikId = Int32.Parse(CennikAddBox.SelectedValue.ToString());
-			_cena.TowarId = Int32.Parse(TowarAddBox.SelectedValue.ToString());
-			_cena.Cena = Decimal.Parse(CenaAddBox.Text);
-			_cena.Rabat = Decimal.Parse(RabatAddBox.Text);
+			_cena.CennikId = Int32.Parse(PriceListAddBox.SelectedValue.ToString());
+			_cena.TowarId = Int32.Parse(ProductAddBox.SelectedValue.ToString());
+			_cena.Cena = Decimal.Parse(PriceAddBox.Text);
+			_cena.Rabat = Decimal.Parse(DiscountAddBox.Text);
 
-			if (Decimal.Parse(RabatAddBox.Text) == 0)
+			if (Decimal.Parse(DiscountAddBox.Text) == 0)
 			{
 				MessageBox.Show("Ustawiono Rabat = 0", "Komunikat", MessageBoxButtons.OK);
 			}

@@ -43,10 +43,10 @@ namespace AplikacjaWindows.Layers.BLL
 					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 
-				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd",
+				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby", "Błąd",
 					MessageBoxButtons.OK);
 			}
 		}
@@ -67,7 +67,7 @@ namespace AplikacjaWindows.Layers.BLL
 					}
 				}
 			}
-			catch (FormatException exception)
+			catch (FormatException)
 			{
 				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd", MessageBoxButtons.OK);
 
@@ -80,7 +80,7 @@ namespace AplikacjaWindows.Layers.BLL
 			{
 				Adapter.DeleteRecord(product);
 			}
-			catch (System.Data.Entity.Infrastructure.DbUpdateException exception)
+			catch (System.Data.Entity.Infrastructure.DbUpdateException)
 			{
 				if (MessageBox.Show(
 						"Wybrany towar zawiera powiązanie w cennikach lub cenach. Kliknij OK, aby usunąć te powiązania i usunąć towar, Anuluj aby zakończyć proces usuwania",

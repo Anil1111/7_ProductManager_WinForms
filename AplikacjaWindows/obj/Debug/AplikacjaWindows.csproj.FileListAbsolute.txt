@@ -11,7 +11,6 @@ C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.csp
 C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditCennikiForm.resources
 C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditCenyForm.resources
 C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.AddEditTowarForm.resources
-C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.Formularz.resources
 C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.Properties.Resources.resources
 C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.GenerateResource.cache
 C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CoreCompileInputs.cache
@@ -38,3 +37,4 @@ C:\Dev\ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.cspro
 C:\Dev\ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.csproj.CopyComplete
 C:\Dev\ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.exe
 C:\Dev\ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.pdb
+C:\Dev\7_ProductManager_WinForms\AplikacjaWindows\obj\Debug\AplikacjaWindows.Forms.MainForm.resources

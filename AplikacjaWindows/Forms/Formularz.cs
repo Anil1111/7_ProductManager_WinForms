@@ -8,52 +8,53 @@ using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
-using AplikacjaWindows.Helpers;
 using AplikacjaWindows.Layers.BLL;
+using AplikacjaWindows.Layers.BLL.Helpers;
 using iTextSharp.text;
 using iTextSharp.text.pdf;
 using Rectangle = System.Drawing.Rectangle;
 
 namespace AplikacjaWindows.Forms
 {
-	public partial class Formularz : Form
+	public partial class MainForm : Form
 	{
-		public Formularz(TowaryDBEntities context)
+		public Bitmap Bmp;
+		public MainForm()
 		{
 			InitializeComponent();
 		}
 
 		private void Formularz_Load(object sender, EventArgs e)
 		{
-			GridFiller.FillTowaryGrid(TowaryGrid);
-			GridFiller.FillCenyGrid(CenyGrid);
-			GridFiller.FillCennikiGrid(CennikiGrid);
+			GridFiller.FillProductsGrid(ProductsGrid);
+			GridFiller.FillPricesGrid(CenyGrid);
+			GridFiller.FillPriceListsGrid(CennikiGrid);
 			GridFiller.FillSummaryGrid(PodsumowanieGrid);
 		}
 
 
 		//@@@@@@@@ TOWARY @@@@@@@@@\\
 
-		private void DodajTowarBtn_Click(object sender, EventArgs e)
+		private void AddProductBtn_Click(object sender, EventArgs e)
 		{
 			using (var addform = new AddEditTowarForm(null))
 			{
 				if (addform.ShowDialog() == DialogResult.Yes)
 				{
-					GridFiller.FillTowaryGrid(TowaryGrid);
+					GridFiller.FillProductsGrid(ProductsGrid);
 				}
 			}
 		}
 
-		private void EdytujTowarBtn_Click(object sender, EventArgs e)
+		private void EditProductBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				using (var addform = new AddEditTowarForm((Towary)TowaryGrid.CurrentRow.DataBoundItem))
+				using (var addform = new AddEditTowarForm((Towary)ProductsGrid.CurrentRow.DataBoundItem))
 				{
 					if (addform.ShowDialog() == DialogResult.Yes)
 					{
-						GridFiller.FillTowaryGrid(TowaryGrid);
+						GridFiller.FillProductsGrid(ProductsGrid);
 					}
 				}
 			}
@@ -63,19 +64,19 @@ namespace AplikacjaWindows.Forms
 			}
 		}
 
-		private void UsunTowarBtn_Click(object sender, EventArgs e)
+		private void DeleteProductBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
-				var towarToDel = (Towary)TowaryGrid.CurrentRow.DataBoundItem;
+				var towarToDel = (Towary)ProductsGrid.CurrentRow.DataBoundItem;
 
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć towar: {towarToDel.Nazwa}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
 					new ProductBLL().DeleteProduct(towarToDel);
 
-					GridFiller.FillTowaryGrid(TowaryGrid);
-					GridFiller.FillCenyGrid(CenyGrid);
+					GridFiller.FillProductsGrid(ProductsGrid);
+					GridFiller.FillPricesGrid(CenyGrid);
 				}
 			}
 			catch (NullReferenceException exception)
@@ -87,18 +88,18 @@ namespace AplikacjaWindows.Forms
 
 		//@@@@@@@@@@@@@@@ CENY @@@@@@@@@@@@@@@@@\\
 
-		private void DodajCeneBtn_Click(object sender, EventArgs e)
+		private void AddPriceBtn_Click(object sender, EventArgs e)
 		{
 			using (var addform = new AddEditCenyForm(null))
 			{
 				if (addform.ShowDialog() == DialogResult.Yes)
 				{
-					GridFiller.FillCenyGrid(CenyGrid);
+					GridFiller.FillPricesGrid(CenyGrid);
 				}
 			}
 		}
 
-		private void EdytujCeneBtn_Click(object sender, EventArgs e)
+		private void EditPriceBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -108,7 +109,7 @@ namespace AplikacjaWindows.Forms
 				{
 					if (addform.ShowDialog() == DialogResult.Yes)
 					{
-						GridFiller.FillCenyGrid(CenyGrid);
+						GridFiller.FillPricesGrid(CenyGrid);
 					}
 				}
 			}
@@ -118,7 +119,7 @@ namespace AplikacjaWindows.Forms
 			}
 		}
 
-		private void UsunCeneBtn_Click(object sender, EventArgs e)
+		private void DeletePriceBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -128,7 +129,7 @@ namespace AplikacjaWindows.Forms
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
 					new PriceBLL().DeletePrice(cenaToDel);
-					GridFiller.FillCenyGrid(CenyGrid);
+					GridFiller.FillPricesGrid(CenyGrid);
 				}
 			}
 			catch (NullReferenceException exception)
@@ -139,18 +140,18 @@ namespace AplikacjaWindows.Forms
 
 		// @@@@@@ CENNIKI @@@@@@ \\
 
-		private void DodajCennikBtn_Click(object sender, EventArgs e)
+		private void AddPriceListBtn_Click(object sender, EventArgs e)
 		{
 			using (var addform = new AddEditCennikiForm(null))
 			{
 				if (addform.ShowDialog() == DialogResult.Yes)
 				{
-					GridFiller.FillCennikiGrid(CennikiGrid);
+					GridFiller.FillPriceListsGrid(CennikiGrid);
 				}
 			}
 		}
 
-		private void EdytujCennikBtn_Click(object sender, EventArgs e)
+		private void EditPriceListBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -158,7 +159,7 @@ namespace AplikacjaWindows.Forms
 				{
 					if (addform.ShowDialog() == DialogResult.Yes)
 					{
-						GridFiller.FillCennikiGrid(CennikiGrid);
+						GridFiller.FillPriceListsGrid(CennikiGrid);
 					}
 				}
 			}
@@ -168,7 +169,7 @@ namespace AplikacjaWindows.Forms
 			}
 		}
 
-		private void UsunCennikBtn_Click(object sender, EventArgs e)
+		private void DeletePriceListBtn_Click(object sender, EventArgs e)
 		{
 			try
 			{
@@ -179,8 +180,8 @@ namespace AplikacjaWindows.Forms
 				{
 					new PriceListBLL().DeletePriceList(cennikToDel);
 
-					GridFiller.FillCennikiGrid(CennikiGrid);
-					GridFiller.FillCenyGrid(CenyGrid);
+					GridFiller.FillPriceListsGrid(CennikiGrid);
+					GridFiller.FillPricesGrid(CenyGrid);
 				}
 			}
 			catch (NullReferenceException exception)
@@ -189,7 +190,7 @@ namespace AplikacjaWindows.Forms
 			}
 		}
 
-		private void Wydruk_Click(object sender, EventArgs e)
+		private void ExportPDF_Click(object sender, EventArgs e)
 		{
 			PdfCreator pdfCreator = new PdfCreator();
 
@@ -201,6 +202,8 @@ namespace AplikacjaWindows.Forms
 		}
 		private void TabControl_SelectedIndexChanged(object sender, EventArgs e)
 		{
+			GridFiller.FillPricesGrid(CenyGrid);
+			GridFiller.FillPriceListsGrid(CennikiGrid);
 			GridFiller.FillSummaryGrid(PodsumowanieGrid);
 		}
 
@@ -218,23 +221,19 @@ namespace AplikacjaWindows.Forms
 			}
 		}
 
-		public Bitmap bmp;
 		private void PrintSummary()
 		{
-			int height = PodsumowanieGrid.Height;
-			PodsumowanieGrid.Height = PodsumowanieGrid.RowCount * PodsumowanieGrid.RowTemplate.Height * 2;
-			bmp = new Bitmap(PodsumowanieGrid.Width, PodsumowanieGrid.Height);
-			PodsumowanieGrid.DrawToBitmap(bmp, new Rectangle(0, 0, PodsumowanieGrid.Width, PodsumowanieGrid.Height));
-			PodsumowanieGrid.Height = height;
+			Bmp = new Bitmap(PodsumowanieGrid.Width, PodsumowanieGrid.Height);
+			PodsumowanieGrid.DrawToBitmap(Bmp, new Rectangle(0, 0, PodsumowanieGrid.Width, PodsumowanieGrid.Height));
 
-			printDocument1.DefaultPageSettings.Landscape = true;
-			printPreviewDialog1.ShowDialog();
+			printSummaryGrid.DefaultPageSettings.Landscape = true;
+			printPreview.ShowDialog();
 
 		}
 
-		private void printDocument1_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
+		private void printSummaryGrid_PrintPage(object sender, System.Drawing.Printing.PrintPageEventArgs e)
 		{
-			e.Graphics.DrawImage(bmp, 0, 0);
+			e.Graphics.DrawImage(Bmp, 0, 0);
 		}
 	}
 }

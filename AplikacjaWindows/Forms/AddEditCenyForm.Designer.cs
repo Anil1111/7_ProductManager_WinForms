@@ -28,25 +28,25 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.CenaAddBox = new System.Windows.Forms.TextBox();
+			this.PriceAddBox = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label2 = new System.Windows.Forms.Label();
 			this.label1 = new System.Windows.Forms.Label();
-			this.CennikAddBox = new System.Windows.Forms.ComboBox();
-			this.TowarAddBox = new System.Windows.Forms.ComboBox();
+			this.PriceListAddBox = new System.Windows.Forms.ComboBox();
+			this.ProductAddBox = new System.Windows.Forms.ComboBox();
 			this.CancelAddButton = new System.Windows.Forms.Button();
 			this.AddButtonYes = new System.Windows.Forms.Button();
-			this.RabatAddBox = new System.Windows.Forms.NumericUpDown();
-			((System.ComponentModel.ISupportInitialize)(this.RabatAddBox)).BeginInit();
+			this.DiscountAddBox = new System.Windows.Forms.NumericUpDown();
+			((System.ComponentModel.ISupportInitialize)(this.DiscountAddBox)).BeginInit();
 			this.SuspendLayout();
 			// 
-			// CenaAddBox
+			// PriceAddBox
 			// 
-			this.CenaAddBox.Location = new System.Drawing.Point(15, 103);
-			this.CenaAddBox.Name = "CenaAddBox";
-			this.CenaAddBox.Size = new System.Drawing.Size(100, 20);
-			this.CenaAddBox.TabIndex = 18;
+			this.PriceAddBox.Location = new System.Drawing.Point(15, 103);
+			this.PriceAddBox.Name = "PriceAddBox";
+			this.PriceAddBox.Size = new System.Drawing.Size(100, 20);
+			this.PriceAddBox.TabIndex = 18;
 			// 
 			// label4
 			// 
@@ -84,25 +84,25 @@
 			this.label1.TabIndex = 12;
 			this.label1.Text = "Cennik";
 			// 
-			// CennikAddBox
+			// PriceListAddBox
 			// 
-			this.CennikAddBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-			this.CennikAddBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.CennikAddBox.FormattingEnabled = true;
-			this.CennikAddBox.Location = new System.Drawing.Point(15, 26);
-			this.CennikAddBox.Name = "CennikAddBox";
-			this.CennikAddBox.Size = new System.Drawing.Size(121, 21);
-			this.CennikAddBox.TabIndex = 20;
+			this.PriceListAddBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.PriceListAddBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.PriceListAddBox.FormattingEnabled = true;
+			this.PriceListAddBox.Location = new System.Drawing.Point(15, 26);
+			this.PriceListAddBox.Name = "PriceListAddBox";
+			this.PriceListAddBox.Size = new System.Drawing.Size(121, 21);
+			this.PriceListAddBox.TabIndex = 20;
 			// 
-			// TowarAddBox
+			// ProductAddBox
 			// 
-			this.TowarAddBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-			this.TowarAddBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
-			this.TowarAddBox.FormattingEnabled = true;
-			this.TowarAddBox.Location = new System.Drawing.Point(15, 64);
-			this.TowarAddBox.Name = "TowarAddBox";
-			this.TowarAddBox.Size = new System.Drawing.Size(121, 21);
-			this.TowarAddBox.TabIndex = 21;
+			this.ProductAddBox.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
+			this.ProductAddBox.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.ListItems;
+			this.ProductAddBox.FormattingEnabled = true;
+			this.ProductAddBox.Location = new System.Drawing.Point(15, 64);
+			this.ProductAddBox.Name = "ProductAddBox";
+			this.ProductAddBox.Size = new System.Drawing.Size(121, 21);
+			this.ProductAddBox.TabIndex = 21;
 			// 
 			// CancelAddButton
 			// 
@@ -125,12 +125,12 @@
 			this.AddButtonYes.UseVisualStyleBackColor = true;
 			this.AddButtonYes.Click += new System.EventHandler(this.AddButtonYes_Click);
 			// 
-			// RabatAddBox
+			// DiscountAddBox
 			// 
-			this.RabatAddBox.Location = new System.Drawing.Point(15, 142);
-			this.RabatAddBox.Name = "RabatAddBox";
-			this.RabatAddBox.Size = new System.Drawing.Size(120, 20);
-			this.RabatAddBox.TabIndex = 25;
+			this.DiscountAddBox.Location = new System.Drawing.Point(15, 142);
+			this.DiscountAddBox.Name = "DiscountAddBox";
+			this.DiscountAddBox.Size = new System.Drawing.Size(120, 20);
+			this.DiscountAddBox.TabIndex = 25;
 			// 
 			// AddEditCenyForm
 			// 
@@ -140,12 +140,12 @@
 			this.CancelButton = this.CancelAddButton;
 			this.ClientSize = new System.Drawing.Size(185, 225);
 			this.ControlBox = false;
-			this.Controls.Add(this.RabatAddBox);
+			this.Controls.Add(this.DiscountAddBox);
 			this.Controls.Add(this.CancelAddButton);
 			this.Controls.Add(this.AddButtonYes);
-			this.Controls.Add(this.TowarAddBox);
-			this.Controls.Add(this.CennikAddBox);
-			this.Controls.Add(this.CenaAddBox);
+			this.Controls.Add(this.ProductAddBox);
+			this.Controls.Add(this.PriceListAddBox);
+			this.Controls.Add(this.PriceAddBox);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
 			this.Controls.Add(this.label2);
@@ -155,22 +155,22 @@
 			this.Name = "AddEditCenyForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cena";
-			((System.ComponentModel.ISupportInitialize)(this.RabatAddBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.DiscountAddBox)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
 		}
 
 		#endregion
-		private System.Windows.Forms.TextBox CenaAddBox;
+		private System.Windows.Forms.TextBox PriceAddBox;
 		private System.Windows.Forms.Label label4;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label2;
 		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.ComboBox CennikAddBox;
-		private System.Windows.Forms.ComboBox TowarAddBox;
+		private System.Windows.Forms.ComboBox PriceListAddBox;
+		private System.Windows.Forms.ComboBox ProductAddBox;
 		private System.Windows.Forms.Button CancelAddButton;
 		private System.Windows.Forms.Button AddButtonYes;
-		private System.Windows.Forms.NumericUpDown RabatAddBox;
+		private System.Windows.Forms.NumericUpDown DiscountAddBox;
 	}
 }

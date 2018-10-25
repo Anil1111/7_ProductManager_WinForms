@@ -33,13 +33,13 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.NameAddBox = new System.Windows.Forms.TextBox();
 			this.label2 = new System.Windows.Forms.Label();
-			this.KodAddBox = new System.Windows.Forms.TextBox();
+			this.CodeAddBox = new System.Windows.Forms.TextBox();
 			this.label3 = new System.Windows.Forms.Label();
 			this.label4 = new System.Windows.Forms.Label();
-			this.MasaAddBox = new System.Windows.Forms.TextBox();
-			this.JmBox = new System.Windows.Forms.ComboBox();
-			this.CreateDate = new System.Windows.Forms.TextBox();
-			this.EditDate = new System.Windows.Forms.TextBox();
+			this.WeightAddBox = new System.Windows.Forms.TextBox();
+			this.UnitWeightBox = new System.Windows.Forms.ComboBox();
+			this.CreateDateBox = new System.Windows.Forms.TextBox();
+			this.EditDateBox = new System.Windows.Forms.TextBox();
 			this.SuspendLayout();
 			// 
 			// AddButtonYes
@@ -88,12 +88,12 @@
 			this.label2.TabIndex = 4;
 			this.label2.Text = "Kod";
 			// 
-			// KodAddBox
+			// CodeAddBox
 			// 
-			this.KodAddBox.Location = new System.Drawing.Point(12, 68);
-			this.KodAddBox.Name = "KodAddBox";
-			this.KodAddBox.Size = new System.Drawing.Size(100, 20);
-			this.KodAddBox.TabIndex = 5;
+			this.CodeAddBox.Location = new System.Drawing.Point(12, 68);
+			this.CodeAddBox.Name = "CodeAddBox";
+			this.CodeAddBox.Size = new System.Drawing.Size(100, 20);
+			this.CodeAddBox.TabIndex = 5;
 			// 
 			// label3
 			// 
@@ -113,37 +113,37 @@
 			this.label4.TabIndex = 7;
 			this.label4.Text = "JM";
 			// 
-			// MasaAddBox
+			// WeightAddBox
 			// 
-			this.MasaAddBox.Location = new System.Drawing.Point(12, 107);
-			this.MasaAddBox.Name = "MasaAddBox";
-			this.MasaAddBox.Size = new System.Drawing.Size(100, 20);
-			this.MasaAddBox.TabIndex = 9;
+			this.WeightAddBox.Location = new System.Drawing.Point(12, 107);
+			this.WeightAddBox.Name = "WeightAddBox";
+			this.WeightAddBox.Size = new System.Drawing.Size(100, 20);
+			this.WeightAddBox.TabIndex = 9;
 			// 
-			// JmBox
+			// UnitWeightBox
 			// 
-			this.JmBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-			this.JmBox.FormattingEnabled = true;
-			this.JmBox.Location = new System.Drawing.Point(12, 146);
-			this.JmBox.Name = "JmBox";
-			this.JmBox.Size = new System.Drawing.Size(121, 21);
-			this.JmBox.TabIndex = 11;
+			this.UnitWeightBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.UnitWeightBox.FormattingEnabled = true;
+			this.UnitWeightBox.Location = new System.Drawing.Point(12, 146);
+			this.UnitWeightBox.Name = "UnitWeightBox";
+			this.UnitWeightBox.Size = new System.Drawing.Size(121, 21);
+			this.UnitWeightBox.TabIndex = 11;
 			// 
-			// CreateDate
+			// CreateDateBox
 			// 
-			this.CreateDate.Location = new System.Drawing.Point(12, 223);
-			this.CreateDate.Name = "CreateDate";
-			this.CreateDate.Size = new System.Drawing.Size(23, 20);
-			this.CreateDate.TabIndex = 12;
-			this.CreateDate.Visible = false;
+			this.CreateDateBox.Location = new System.Drawing.Point(12, 223);
+			this.CreateDateBox.Name = "CreateDateBox";
+			this.CreateDateBox.Size = new System.Drawing.Size(23, 20);
+			this.CreateDateBox.TabIndex = 12;
+			this.CreateDateBox.Visible = false;
 			// 
-			// EditDate
+			// EditDateBox
 			// 
-			this.EditDate.Location = new System.Drawing.Point(41, 223);
-			this.EditDate.Name = "EditDate";
-			this.EditDate.Size = new System.Drawing.Size(21, 20);
-			this.EditDate.TabIndex = 13;
-			this.EditDate.Visible = false;
+			this.EditDateBox.Location = new System.Drawing.Point(41, 223);
+			this.EditDateBox.Name = "EditDateBox";
+			this.EditDateBox.Size = new System.Drawing.Size(21, 20);
+			this.EditDateBox.TabIndex = 13;
+			this.EditDateBox.Visible = false;
 			// 
 			// AddEditTowarForm
 			// 
@@ -153,13 +153,13 @@
 			this.CancelButton = this.CancelAddButton;
 			this.ClientSize = new System.Drawing.Size(213, 308);
 			this.ControlBox = false;
-			this.Controls.Add(this.EditDate);
-			this.Controls.Add(this.CreateDate);
-			this.Controls.Add(this.JmBox);
-			this.Controls.Add(this.MasaAddBox);
+			this.Controls.Add(this.EditDateBox);
+			this.Controls.Add(this.CreateDateBox);
+			this.Controls.Add(this.UnitWeightBox);
+			this.Controls.Add(this.WeightAddBox);
 			this.Controls.Add(this.label4);
 			this.Controls.Add(this.label3);
-			this.Controls.Add(this.KodAddBox);
+			this.Controls.Add(this.CodeAddBox);
 			this.Controls.Add(this.label2);
 			this.Controls.Add(this.NameAddBox);
 			this.Controls.Add(this.label1);
@@ -182,12 +182,12 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.TextBox NameAddBox;
 		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.TextBox KodAddBox;
+		private System.Windows.Forms.TextBox CodeAddBox;
 		private System.Windows.Forms.Label label3;
 		private System.Windows.Forms.Label label4;
-		private System.Windows.Forms.TextBox MasaAddBox;
-		private System.Windows.Forms.ComboBox JmBox;
-		private System.Windows.Forms.TextBox CreateDate;
-		private System.Windows.Forms.TextBox EditDate;
+		private System.Windows.Forms.TextBox WeightAddBox;
+		private System.Windows.Forms.ComboBox UnitWeightBox;
+		private System.Windows.Forms.TextBox CreateDateBox;
+		private System.Windows.Forms.TextBox EditDateBox;
 	}
 }

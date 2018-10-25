@@ -2,10 +2,10 @@
 {
 	public class PricesViewModel
 	{
-		public int CenaId { get; set; }
-		public decimal Cena { get; set; }
-		public decimal? Rabat { get; set; }
-		public string TowarNazwa { get; set; }
-		public string CennikNazwa { get; set; }
+		public int PriceId { get; set; }
+		public decimal Price { get; set; }
+		public decimal? Discount { get; set; }
+		public string ProductName { get; set; }
+		public string PriceListName { get; set; }
 	}
 }

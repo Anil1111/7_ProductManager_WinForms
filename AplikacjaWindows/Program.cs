@@ -17,7 +17,7 @@ namespace AplikacjaWindows
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new Formularz(new TowaryDBEntities()));
+			Application.Run(new MainForm());
 		}
 	}
 }

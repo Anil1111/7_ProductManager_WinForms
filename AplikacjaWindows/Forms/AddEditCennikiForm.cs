@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
+using System.Globalization;
 using System.Windows.Forms;
 using AplikacjaWindows.Layers.BLL;
 
@@ -22,8 +23,8 @@ namespace AplikacjaWindows.Forms
 
 				//Wypełnienie komórek edytowanym obiektem
 				NameAddBox.Text = cennik.Nazwa;
-				DataOdPicker.Value = DateTime.Parse(cennik.Data_Od.ToString());
-				DataDoPicker.Value = DateTime.Parse(cennik.Data_Do.ToString());
+				StartDatePicker.Value = DateTime.Parse(StartDatePicker.Value.ToShortDateString());
+				EndDatePicker.Value = DateTime.Parse(EndDatePicker.Value.ToShortDateString());
 			}
 			else
 			{
@@ -44,41 +45,38 @@ namespace AplikacjaWindows.Forms
 					EditPriceList();
 				}
 			}
-			catch (DbEntityValidationException exception)
-			{
-				MessageBox.Show("Nieprawidłowy format danych ", "Błąd", MessageBoxButtons.OK);
-			}
 			catch (FormatException exception)
 			{
-				MessageBox.Show("Zły format pola Danych" + exception.Message, "Błąd", MessageBoxButtons.OK);
+				MessageBox.Show("Zły format wprowadzonych danych" + exception.Message, "Błąd", MessageBoxButtons.OK);
 			}
 		}
 
 		private void AddPriceList()
 		{
-			if (DataOdPicker.Value < DataDoPicker.Value)
-			{
+			//if (StartDatePicker.Value <= EndDatePicker.Value)
+			//{
 				new PriceListBLL().AddPriceList(new Cenniki
 				{
 					Nazwa = NameAddBox.Text,
-					Data_Od = DataOdPicker.Value,
-					Data_Do = DataDoPicker.Value
+					Data_Od = DateTime.Parse(StartDatePicker.Value.ToString("d")),
+					Data_Do = DateTime.Parse(EndDatePicker.Value.ToString("d"))
 
 				});
-			}
-			else
-			{
-				MessageBox.Show("Data Rozpoczecia nie moze byc późniejsza od Daty Zakończenia", "Błąd",
-					MessageBoxButtons.OK);
-			}
+			//}
+			//else
+			//{
+			//	MessageBox.Show("Data Rozpoczecia nie moze byc późniejsza od Daty Zakończenia", "Błąd",
+			//		MessageBoxButtons.OK);
+			//}
 		}
 		private void EditPriceList()
 		{
+			//Aktualizacja tymczasowego obiektu
 			_cennik.Nazwa = NameAddBox.Text;
-			_cennik.Data_Od = DataOdPicker.Value;
-			_cennik.Data_Do = DataDoPicker.Value;
+			_cennik.Data_Od = StartDatePicker.Value;
+			_cennik.Data_Do = EndDatePicker.Value;
 
-			if (DataOdPicker.Value <= DataDoPicker.Value)
+			if (StartDatePicker.Value <= EndDatePicker.Value)
 			{
 				new PriceListBLL().EditPriceList(_cennik);
 			}
