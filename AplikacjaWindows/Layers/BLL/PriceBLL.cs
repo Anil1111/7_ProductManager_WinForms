@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using AplikacjaWindows.Layers.DAL;
 
 namespace AplikacjaWindows.Layers.BLL
@@ -34,12 +36,48 @@ namespace AplikacjaWindows.Layers.BLL
 
 		public void AddPrice(Ceny cena)
 		{
-			Adapter.CreateRecord(cena);
+			try
+			{
+				Adapter.CreateRecord(cena);
+			}
+			catch (DbEntityValidationException exception)
+			{
+				foreach (var e in exception.EntityValidationErrors)
+				{
+					foreach (var x in e.ValidationErrors)
+					{
+						MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+					}
+				}
+			}
+			catch (FormatException exception)
+			{
+
+				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
+			}
 		}
 
 		public void EditPrice(Ceny cena)
 		{
-			Adapter.UpdateRecord(cena);
+			try
+			{
+				Adapter.UpdateRecord(cena);
+			}
+			catch (DbEntityValidationException exception)
+			{
+				foreach (var e in exception.EntityValidationErrors)
+				{
+					foreach (var x in e.ValidationErrors)
+					{
+						MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+					}
+				}
+			}
+			catch (FormatException exception)
+			{
+				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
+
+			}
 		}
 
 		public void DeletePrice(Ceny cena)

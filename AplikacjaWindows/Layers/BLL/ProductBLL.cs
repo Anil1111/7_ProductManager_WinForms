@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Windows.Forms;
 using AplikacjaWindows.Layers.DAL;
@@ -27,12 +29,49 @@ namespace AplikacjaWindows.Layers.BLL
 
 		public void AddProduct(Towary product)
 		{
-			Adapter.CreateRecord(product);
+			try
+			{
+				Adapter.CreateRecord(product);
+			}
+			catch (DbEntityValidationException exception)
+			{
+				foreach (var e in exception.EntityValidationErrors)
+				{
+					foreach (var x in e.ValidationErrors)
+					{
+						MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+					}
+				}
+			}
+			catch (FormatException exception)
+			{
+
+				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd",
+					MessageBoxButtons.OK);
+			}
 		}
 
 		public void EditProduct(Towary product)
 		{
-			Adapter.UpdateRecord(product);
+			try
+			{
+				Adapter.UpdateRecord(product);
+			}
+			catch (DbEntityValidationException exception)
+			{
+				foreach (var e in exception.EntityValidationErrors)
+				{
+					foreach (var x in e.ValidationErrors)
+					{
+						MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+					}
+				}
+			}
+			catch (FormatException exception)
+			{
+				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby ", "Błąd", MessageBoxButtons.OK);
+
+			}
 		}
 
 		public void DeleteProduct(Towary product)

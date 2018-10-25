@@ -14,6 +14,7 @@ namespace AplikacjaWindows.Helpers
 		public static void FillTowaryGrid(DataGridView grid)
 		{
 			grid.AutoGenerateColumns = false;
+
 			grid.DataSource = new ProductBLL().GetProducts();
 
 			var index = 1;
@@ -41,12 +42,11 @@ namespace AplikacjaWindows.Helpers
 							  }).ToList();
 
 				grid.DataSource = prices;
-
-				var index = 1;
-				foreach (DataGridViewRow rows in grid.Rows)
-				{
-					rows.HeaderCell.Value = index++.ToString();
-				}
+			}
+			var index = 1;
+			foreach (DataGridViewRow rows in grid.Rows)
+			{
+				rows.HeaderCell.Value = index++.ToString();
 			}
 		}
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -30,12 +31,48 @@ namespace AplikacjaWindows.Layers.BLL
 
 		public void AddPriceList(Cenniki priceList)
 		{
-			Adapter.CreateRecord(priceList);
+			try
+			{
+				Adapter.CreateRecord(priceList);
+			}
+			catch (DbEntityValidationException exception)
+			{
+				foreach (var e in exception.EntityValidationErrors)
+				{
+					foreach (var x in e.ValidationErrors)
+					{
+						MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+					}
+				}
+			}
+			catch (FormatException exception)
+			{
+
+				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
+			}
 		}
 
 		public void EditPriceList(Cenniki priceList)
 		{
-			Adapter.UpdateRecord(priceList);
+			try
+			{
+				Adapter.UpdateRecord(priceList);
+			}
+			catch (DbEntityValidationException exception)
+			{
+				foreach (var e in exception.EntityValidationErrors)
+				{
+					foreach (var x in e.ValidationErrors)
+					{
+						MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
+					}
+				}
+			}
+			catch (FormatException exception)
+			{
+				MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
+
+			}
 		}
 
 		public void DeletePriceList(Cenniki priceList)

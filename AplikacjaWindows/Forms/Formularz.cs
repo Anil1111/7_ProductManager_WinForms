@@ -4,6 +4,7 @@ using System.Data.Entity;
 using System.Data.SqlClient;
 using System.Diagnostics.Tracing;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.IO;
 using System.Linq;
 using System.Windows.Forms;
@@ -126,8 +127,8 @@ namespace AplikacjaWindows.Forms
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć cenę: {cenaToDel.Cena}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
 				{
-						new PriceBLL().DeletePrice(cenaToDel);
-						GridFiller.FillCenyGrid(CenyGrid);
+					new PriceBLL().DeletePrice(cenaToDel);
+					GridFiller.FillCenyGrid(CenyGrid);
 				}
 			}
 			catch (NullReferenceException exception)
@@ -153,7 +154,7 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
-				using (var addform = new AddEditCennikiForm((Cenniki)CennikiGrid.CurrentRow.DataBoundItem/*, _context*/))
+				using (var addform = new AddEditCennikiForm((Cenniki)CennikiGrid.CurrentRow.DataBoundItem))
 				{
 					if (addform.ShowDialog() == DialogResult.Yes)
 					{
@@ -221,10 +222,11 @@ namespace AplikacjaWindows.Forms
 		private void PrintSummary()
 		{
 			int height = PodsumowanieGrid.Height;
-			PodsumowanieGrid.Height = PodsumowanieGrid.RowCount * PodsumowanieGrid.RowTemplate.Height *2;
+			PodsumowanieGrid.Height = PodsumowanieGrid.RowCount * PodsumowanieGrid.RowTemplate.Height * 2;
 			bmp = new Bitmap(PodsumowanieGrid.Width, PodsumowanieGrid.Height);
-			PodsumowanieGrid.DrawToBitmap(bmp, new Rectangle(0,0, PodsumowanieGrid.Width, PodsumowanieGrid.Height));
+			PodsumowanieGrid.DrawToBitmap(bmp, new Rectangle(0, 0, PodsumowanieGrid.Width, PodsumowanieGrid.Height));
 			PodsumowanieGrid.Height = height;
+
 			printDocument1.DefaultPageSettings.Landscape = true;
 			printPreviewDialog1.ShowDialog();
 

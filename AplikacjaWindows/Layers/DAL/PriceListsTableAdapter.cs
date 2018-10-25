@@ -23,26 +23,8 @@ namespace AplikacjaWindows.Layers.DAL
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				try
-				{
-					context.Cennikis.Add(priceList);
-					context.SaveChanges();
-				}
-				catch (DbEntityValidationException exception)
-				{
-					foreach (var e in exception.EntityValidationErrors)
-					{
-						foreach (var x in e.ValidationErrors)
-						{
-							MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
-						}
-					}
-				}
-				catch (FormatException exception)
-				{
-
-					MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
-				}
+				context.Cennikis.Add(priceList);
+				context.SaveChanges();
 			}
 		}
 
@@ -50,26 +32,8 @@ namespace AplikacjaWindows.Layers.DAL
 		{
 			using (TowaryDBEntities context = new TowaryDBEntities())
 			{
-				try
-				{
-					context.Cennikis.AddOrUpdate(priceList);
-					context.SaveChanges();
-				}
-				catch (DbEntityValidationException exception)
-				{
-					foreach (var e in exception.EntityValidationErrors)
-					{
-						foreach (var x in e.ValidationErrors)
-						{
-							MessageBox.Show(x.ErrorMessage, "Błąd", MessageBoxButtons.OK);
-						}
-					}
-				}
-				catch (FormatException exception)
-				{
-					MessageBox.Show("Błąd", "Błąd", MessageBoxButtons.OK);
-
-				}
+				context.Cennikis.AddOrUpdate(priceList);
+				context.SaveChanges();
 			}
 		}
 

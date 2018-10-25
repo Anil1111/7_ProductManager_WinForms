@@ -29,10 +29,6 @@
 			this.EdytujCennikBtn = new System.Windows.Forms.Button();
 			this.DodajCennikBtn = new System.Windows.Forms.Button();
 			this.CennikiGrid = new System.Windows.Forms.DataGridView();
-			this.CennikIDc = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.CennikNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Od = new System.Windows.Forms.DataGridViewTextBoxColumn();
-			this.Data_Do = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Ceny = new System.Windows.Forms.TabPage();
 			this.UsunCeneBtn = new System.Windows.Forms.Button();
 			this.EdytujCeneBtn = new System.Windows.Forms.Button();
@@ -71,6 +67,10 @@
 			this.PrintButton = new System.Windows.Forms.Button();
 			this.printPreviewDialog1 = new System.Windows.Forms.PrintPreviewDialog();
 			this.printDocument1 = new System.Drawing.Printing.PrintDocument();
+			this.CennikIDc = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.CennikNazwa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Od = new System.Windows.Forms.DataGridViewTextBoxColumn();
+			this.Data_Do = new System.Windows.Forms.DataGridViewTextBoxColumn();
 			this.Cenniki.SuspendLayout();
 			((System.ComponentModel.ISupportInitialize)(this.CennikiGrid)).BeginInit();
 			this.Ceny.SuspendLayout();
@@ -134,7 +134,8 @@
 			this.CennikiGrid.AllowUserToResizeRows = false;
 			this.CennikiGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.CennikiGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.CennikiGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.CennikiGrid.ColumnHeadersHeight = 30;
+			this.CennikiGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.CennikiGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CennikIDc,
             this.CennikNazwa,
@@ -146,34 +147,6 @@
 			this.CennikiGrid.ReadOnly = true;
 			this.CennikiGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CennikiGrid.TabIndex = 2;
-			// 
-			// CennikIDc
-			// 
-			this.CennikIDc.DataPropertyName = "Id";
-			this.CennikIDc.HeaderText = "CennikID";
-			this.CennikIDc.Name = "CennikIDc";
-			this.CennikIDc.ReadOnly = true;
-			// 
-			// CennikNazwa
-			// 
-			this.CennikNazwa.DataPropertyName = "Nazwa";
-			this.CennikNazwa.HeaderText = "Nazwa";
-			this.CennikNazwa.Name = "CennikNazwa";
-			this.CennikNazwa.ReadOnly = true;
-			// 
-			// Data_Od
-			// 
-			this.Data_Od.DataPropertyName = "Data_Od";
-			this.Data_Od.HeaderText = "Data od";
-			this.Data_Od.Name = "Data_Od";
-			this.Data_Od.ReadOnly = true;
-			// 
-			// Data_Do
-			// 
-			this.Data_Do.DataPropertyName = "Data_Do";
-			this.Data_Do.HeaderText = "Data Do";
-			this.Data_Do.Name = "Data_Do";
-			this.Data_Do.ReadOnly = true;
 			// 
 			// Ceny
 			// 
@@ -221,12 +194,14 @@
 			// 
 			// CenyGrid
 			// 
+			this.CenyGrid.AllowUserToAddRows = false;
 			this.CenyGrid.AllowUserToDeleteRows = false;
 			this.CenyGrid.AllowUserToResizeColumns = false;
 			this.CenyGrid.AllowUserToResizeRows = false;
 			this.CenyGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.CenyGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.CenyGrid.ColumnHeadersHeight = 30;
+			this.CenyGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.CenyGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.CenaID,
             this.Cena,
@@ -236,6 +211,7 @@
 			this.CenyGrid.Dock = System.Windows.Forms.DockStyle.Bottom;
 			this.CenyGrid.Location = new System.Drawing.Point(3, 93);
 			this.CenyGrid.Name = "CenyGrid";
+			this.CenyGrid.ReadOnly = true;
 			this.CenyGrid.RowHeadersWidth = 50;
 			this.CenyGrid.Size = new System.Drawing.Size(1045, 391);
 			this.CenyGrid.TabIndex = 1;
@@ -319,11 +295,13 @@
 			// 
 			this.TowaryGrid.AllowUserToAddRows = false;
 			this.TowaryGrid.AllowUserToDeleteRows = false;
+			this.TowaryGrid.AllowUserToOrderColumns = true;
 			this.TowaryGrid.AllowUserToResizeColumns = false;
 			this.TowaryGrid.AllowUserToResizeRows = false;
 			this.TowaryGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.TowaryGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.TowaryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.TowaryGrid.ColumnHeadersHeight = 30;
+			this.TowaryGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.TowaryGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Kod,
             this.Nazwa,
@@ -422,11 +400,13 @@
 			// 
 			this.PodsumowanieGrid.AllowUserToAddRows = false;
 			this.PodsumowanieGrid.AllowUserToDeleteRows = false;
+			this.PodsumowanieGrid.AllowUserToOrderColumns = true;
 			this.PodsumowanieGrid.AllowUserToResizeColumns = false;
 			this.PodsumowanieGrid.AllowUserToResizeRows = false;
 			this.PodsumowanieGrid.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
 			this.PodsumowanieGrid.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-			this.PodsumowanieGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+			this.PodsumowanieGrid.ColumnHeadersHeight = 30;
+			this.PodsumowanieGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
 			this.PodsumowanieGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.TowarNazwa,
             this.KodTowaru,
@@ -539,6 +519,35 @@
 			// 
 			this.printDocument1.PrintPage += new System.Drawing.Printing.PrintPageEventHandler(this.printDocument1_PrintPage);
 			// 
+			// CennikIDc
+			// 
+			this.CennikIDc.DataPropertyName = "Id";
+			this.CennikIDc.HeaderText = "CennikID";
+			this.CennikIDc.Name = "CennikIDc";
+			this.CennikIDc.ReadOnly = true;
+			this.CennikIDc.Visible = false;
+			// 
+			// CennikNazwa
+			// 
+			this.CennikNazwa.DataPropertyName = "Nazwa";
+			this.CennikNazwa.HeaderText = "Nazwa";
+			this.CennikNazwa.Name = "CennikNazwa";
+			this.CennikNazwa.ReadOnly = true;
+			// 
+			// Data_Od
+			// 
+			this.Data_Od.DataPropertyName = "Data_Od";
+			this.Data_Od.HeaderText = "Data od";
+			this.Data_Od.Name = "Data_Od";
+			this.Data_Od.ReadOnly = true;
+			// 
+			// Data_Do
+			// 
+			this.Data_Do.DataPropertyName = "Data_Do";
+			this.Data_Do.HeaderText = "Data Do";
+			this.Data_Do.Name = "Data_Do";
+			this.Data_Do.ReadOnly = true;
+			// 
 			// Formularz
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -582,10 +591,6 @@
 		private System.Windows.Forms.Button DodajTowarBtn;
 		private System.Windows.Forms.DataGridView TowaryGrid;
 		private System.Windows.Forms.TabControl TabControl;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CennikIDc;
-		private System.Windows.Forms.DataGridViewTextBoxColumn CennikNazwa;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Od;
-		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Do;
 		private System.Windows.Forms.TabPage Podsumowanie;
 		private System.Windows.Forms.DataGridView PodsumowanieGrid;
 		private System.Windows.Forms.Button ExportPDF;
@@ -613,6 +618,10 @@
 		private System.Windows.Forms.Button PrintButton;
 		private System.Windows.Forms.PrintPreviewDialog printPreviewDialog1;
 		private System.Drawing.Printing.PrintDocument printDocument1;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CennikIDc;
+		private System.Windows.Forms.DataGridViewTextBoxColumn CennikNazwa;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Od;
+		private System.Windows.Forms.DataGridViewTextBoxColumn Data_Do;
 	}
 }
 
