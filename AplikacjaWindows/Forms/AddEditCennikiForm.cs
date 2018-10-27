@@ -77,9 +77,8 @@ namespace AplikacjaWindows.Forms
 					MessageBoxButtons.OK);
 				DialogResult = DialogResult.None;
 			}
-
-
 		}
+
 		private void EditPriceList()
 		{
 			//Aktualizacja tymczasowego obiektu

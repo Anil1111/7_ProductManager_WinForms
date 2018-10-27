@@ -123,7 +123,7 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
-				var cenaToDel = (Ceny)CenyGrid.CurrentRow.DataBoundItem;
+				var cenaToDel = GetSelectedPrice();
 
 				if (MessageBox.Show($"Jesteś pewien że chcesz usunąć cenę: {cenaToDel.Cena}", "Formularz Towarowy",
 						MessageBoxButtons.YesNo) == DialogResult.Yes)
