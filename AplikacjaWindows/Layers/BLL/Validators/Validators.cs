@@ -65,9 +65,56 @@ namespace AplikacjaWindows.Layers.BLL.Validators
 				return false;
 			}
 
-			if (!decimal.TryParse(tB.Text, out d))
+			if (!decimal.TryParse(tB.Text, out d) || d < 0)
 			{
-				errorMsg = "Dopuszczalne liczby do dwóch miejsc po przecinku";
+				errorMsg = "Dopuszczalne liczby do dwóch miejsc po przecinku i wieksze/rowne 0";
+				eP.SetError(tB, errorMsg);
+				return false;
+			}
+
+			eP.SetError(tB, "");
+			return true;
+		}
+
+		public static bool PriceValidator(ErrorProvider eP, TextBox tB)
+		{
+			string errorMsg;
+			decimal d;
+
+			if (string.IsNullOrEmpty(tB.Text))
+			{
+				errorMsg = "Cena jest wymagana";
+				eP.SetError(tB, errorMsg);
+				return false;
+			}
+
+			if (!decimal.TryParse(tB.Text, out d) || d > 0)
+			{
+				errorMsg = "Dopuszczalne liczby do dwóch miejsc po przecinku i wyższe niż 0";
+				eP.SetError(tB, errorMsg);
+				return false;
+			}
+
+			eP.SetError(tB, "");
+			return true;
+		}
+
+		public static bool DiscountValidator(ErrorProvider eP, TextBox tB)
+		{
+			string errorMsg;
+			decimal d;
+
+
+			if (string.IsNullOrEmpty(tB.Text))
+			{
+				errorMsg = "Rabat jest wymagany";
+				eP.SetError(tB, errorMsg);
+				return false;
+			}
+
+			if (!decimal.TryParse(tB.Text, out d) || d < 0)
+			{
+				errorMsg = "Dopuszczalne liczby od 0 do 100";
 				eP.SetError(tB, errorMsg);
 				return false;
 			}

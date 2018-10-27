@@ -23,8 +23,12 @@ namespace AplikacjaWindows.Forms
 
 				//Wypełnienie komórek edytowanym obiektem
 				NameAddBox.Text = cennik.Nazwa;
-				StartDatePicker.Value = DateTime.Parse(StartDatePicker.Value.ToShortDateString());
-				EndDatePicker.Value = DateTime.Parse(EndDatePicker.Value.ToShortDateString());
+				if (cennik.Data_Od != null && cennik.Data_Do != null)
+				{
+					StartDatePicker.Value = cennik.Data_Od.Value;
+					EndDatePicker.Value = cennik.Data_Do.Value;
+				}
+				
 			}
 			else
 			{
@@ -34,40 +38,49 @@ namespace AplikacjaWindows.Forms
 
 		private void AddButtonYes_Click(object sender, EventArgs e)
 		{
-			try
+			foreach (Control control in Controls)
 			{
-				if (AddButtonYes.Text == "Dodaj")
+				control.Focus();
+
+				if (!Validate())
 				{
-					AddPriceList();
-				}
-				else if (AddButtonYes.Text == "Edytuj")
-				{
-					EditPriceList();
+					DialogResult = DialogResult.None;
 				}
 			}
-			catch (FormatException exception)
+
+			if (AddButtonYes.Text == "Dodaj")
 			{
-				MessageBox.Show("Zły format wprowadzonych danych" + exception.Message, "Błąd", MessageBoxButtons.OK);
+				AddPriceList();
+			}
+			else if (AddButtonYes.Text == "Edytuj")
+			{
+				EditPriceList();
 			}
 		}
 
 		private void AddPriceList()
 		{
-			//if (StartDatePicker.Value <= EndDatePicker.Value)
-			//{
+			var startDate = Convert.ToDateTime(StartDatePicker.Value.ToString("d"));
+			var endDate = Convert.ToDateTime(EndDatePicker.Value.ToString("d"));
+
+			if (startDate <= endDate)
+			{
 				new PriceListBLL().AddPriceList(new Cenniki
 				{
 					Nazwa = NameAddBox.Text,
-					Data_Od = DateTime.Parse(StartDatePicker.Value.ToString("d")),
-					Data_Do = DateTime.Parse(EndDatePicker.Value.ToString("d"))
+					Data_Od = startDate,
+					Data_Do = endDate
 
 				});
-			//}
-			//else
-			//{
-			//	MessageBox.Show("Data Rozpoczecia nie moze byc późniejsza od Daty Zakończenia", "Błąd",
-			//		MessageBoxButtons.OK);
-			//}
+			}
+			else
+			{
+				MessageBox.Show("Data Rozpoczecia nie moze byc poźniejsza od Daty Zakończenia", "Błąd",
+					MessageBoxButtons.OK);
+				DialogResult = DialogResult.None;
+			}
+
+
 		}
 		private void EditPriceList()
 		{
@@ -82,8 +95,9 @@ namespace AplikacjaWindows.Forms
 			}
 			else
 			{
-				MessageBox.Show("Data Rozpoczecia nie moze byc późniejsza od Daty Zakończenia", "Błąd",
+				MessageBox.Show("Data Rozpoczecia nie moze byc poźniejsza od Daty Zakończenia", "Błąd",
 					MessageBoxButtons.OK);
+				DialogResult = DialogResult.None;
 			}
 		}
 	}

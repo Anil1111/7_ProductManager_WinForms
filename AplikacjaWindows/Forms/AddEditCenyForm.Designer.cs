@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.PriceAddBox = new System.Windows.Forms.TextBox();
 			this.label4 = new System.Windows.Forms.Label();
 			this.label3 = new System.Windows.Forms.Label();
@@ -38,7 +39,9 @@
 			this.CancelAddButton = new System.Windows.Forms.Button();
 			this.AddButtonYes = new System.Windows.Forms.Button();
 			this.DiscountAddBox = new System.Windows.Forms.NumericUpDown();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
 			((System.ComponentModel.ISupportInitialize)(this.DiscountAddBox)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// PriceAddBox
@@ -47,6 +50,7 @@
 			this.PriceAddBox.Name = "PriceAddBox";
 			this.PriceAddBox.Size = new System.Drawing.Size(100, 20);
 			this.PriceAddBox.TabIndex = 18;
+			this.PriceAddBox.Validating += new System.ComponentModel.CancelEventHandler(this.PriceAddBox_Validating);
 			// 
 			// label4
 			// 
@@ -132,6 +136,10 @@
 			this.DiscountAddBox.Size = new System.Drawing.Size(120, 20);
 			this.DiscountAddBox.TabIndex = 25;
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
 			// AddEditCenyForm
 			// 
 			this.AcceptButton = this.AddButtonYes;
@@ -156,6 +164,7 @@
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cena";
 			((System.ComponentModel.ISupportInitialize)(this.DiscountAddBox)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -172,5 +181,6 @@
 		private System.Windows.Forms.Button CancelAddButton;
 		private System.Windows.Forms.Button AddButtonYes;
 		private System.Windows.Forms.NumericUpDown DiscountAddBox;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }

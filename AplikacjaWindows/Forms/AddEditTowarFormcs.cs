@@ -1,8 +1,10 @@
 ﻿using System;
+using System.Data.Entity.Validation;
 using System.Windows.Forms;
 using AplikacjaWindows.Layers.BLL;
 using AplikacjaWindows.Layers.BLL.Helpers;
 using AplikacjaWindows.Layers.BLL.Validators;
+using MessageBox = System.Windows.Forms.MessageBox;
 
 namespace AplikacjaWindows.Forms
 {
@@ -38,15 +40,11 @@ namespace AplikacjaWindows.Forms
 
 		private void AddButtonYes_Click(object sender, EventArgs e)
 		{
-		
+			// Wyswietlenie informacji o bledzie walidacji dotyczących poszczegolnych pol
 			foreach (Control control in Controls)
 			{
 				control.Focus();
-
-				if (!Validate())
-				{
-					DialogResult = DialogResult.None;
-				}
+				Validate();
 			}
 
 			if (AddButtonYes.Text == "Dodaj")
@@ -63,7 +61,7 @@ namespace AplikacjaWindows.Forms
 		//Eventy Walidacji
 		private void NameAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			Validators.NameValidator(errorProvider1,NameAddBox);
+			Validators.NameValidator(errorProvider1, NameAddBox);
 		}
 
 		private void CodeAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
@@ -73,14 +71,24 @@ namespace AplikacjaWindows.Forms
 
 		private void WeightAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			Validators.WeightValidator(errorProvider1,WeightAddBox);
+			Validators.WeightValidator(errorProvider1, WeightAddBox);
 		}
 
 		//Metody Logiki korzystające z obecnego formularza
 		private void AddProduct()
 		{
+
 			try
 			{
+				if (decimal.Parse(WeightAddBox.Text) < 0)
+				{
+					throw new FormatException();
+				}
+				if (!Validators.CodeValidator(errorProvider1,CodeAddBox))
+				{
+					throw new FormatException();
+				}
+
 				new ProductBLL().AddProduct(new Towary
 				{
 					Kod = CodeAddBox.Text,
@@ -104,6 +112,15 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
+				if (decimal.Parse(WeightAddBox.Text) < 0)
+				{
+					throw new FormatException();
+				}
+				if (!Validators.CodeValidator(errorProvider1, CodeAddBox))
+				{
+					throw new FormatException();
+				}
+
 				//Zaktualizowanie wartości pól obiektu _towar
 				_towar.Nazwa = NameAddBox.Text;
 				_towar.Kod = CodeAddBox.Text;
@@ -122,6 +139,5 @@ namespace AplikacjaWindows.Forms
 				DialogResult = DialogResult.None;
 			}
 		}
-
 	}
 }
