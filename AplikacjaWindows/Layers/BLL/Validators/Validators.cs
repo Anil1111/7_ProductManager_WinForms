@@ -88,7 +88,7 @@ namespace AplikacjaWindows.Layers.BLL.Validators
 				return false;
 			}
 
-			if (!decimal.TryParse(tB.Text, out d) || d > 0)
+			if (!decimal.TryParse(tB.Text, out d) || d < 0)
 			{
 				errorMsg = "Dopuszczalne liczby do dwóch miejsc po przecinku i wyższe niż 0";
 				eP.SetError(tB, errorMsg);
@@ -122,5 +122,6 @@ namespace AplikacjaWindows.Layers.BLL.Validators
 			eP.SetError(tB, "");
 			return true;
 		}
+
 	}
 }

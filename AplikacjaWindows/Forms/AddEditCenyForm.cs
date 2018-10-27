@@ -41,7 +41,7 @@ namespace AplikacjaWindows.Forms
 
 		private void AddButtonYes_Click(object sender, EventArgs e)
 		{
-
+			// Wyswietlenie informacji o bledzie walidacji dotyczących poszczegolnych pol
 			foreach (Control control in Controls)
 			{
 				control.Focus();
@@ -63,6 +63,11 @@ namespace AplikacjaWindows.Forms
 		{
 			try
 			{
+				if (decimal.Parse(PriceAddBox.Text) < 0)
+				{
+					throw new FormatException();
+				}
+
 				if (Decimal.Parse(DiscountAddBox.Text) == 0)
 				{
 					MessageBox.Show("Ustawiono Rabat = 0", "Komunikat", MessageBoxButtons.OK);

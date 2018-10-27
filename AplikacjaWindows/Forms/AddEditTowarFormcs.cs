@@ -61,30 +61,38 @@ namespace AplikacjaWindows.Forms
 		//Eventy Walidacji
 		private void NameAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			Validators.NameValidator(errorProvider1, NameAddBox);
+			if (!Validators.NameValidator(errorProvider1, NameAddBox))
+			{
+				DialogResult = DialogResult.None;
+			}
 		}
 
 		private void CodeAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			Validators.CodeValidator(errorProvider1, CodeAddBox);
+			if (!Validators.CodeValidator(errorProvider1, CodeAddBox))
+			{
+				DialogResult = DialogResult.None;
+			}
 		}
 
 		private void WeightAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
 		{
-			Validators.WeightValidator(errorProvider1, WeightAddBox);
+			if (!Validators.WeightValidator(errorProvider1, WeightAddBox))
+			{
+				DialogResult = DialogResult.None;
+			}
 		}
 
 		//Metody Logiki korzystające z obecnego formularza
 		private void AddProduct()
 		{
-
 			try
 			{
 				if (decimal.Parse(WeightAddBox.Text) < 0)
 				{
 					throw new FormatException();
 				}
-				if (!Validators.CodeValidator(errorProvider1,CodeAddBox))
+				if (!Validators.CodeValidator(errorProvider1, CodeAddBox))
 				{
 					throw new FormatException();
 				}

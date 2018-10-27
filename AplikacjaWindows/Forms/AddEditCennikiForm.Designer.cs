@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.CancelAddButton = new System.Windows.Forms.Button();
 			this.AddButtonYes = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
@@ -36,6 +37,8 @@
 			this.label1 = new System.Windows.Forms.Label();
 			this.StartDatePicker = new System.Windows.Forms.DateTimePicker();
 			this.EndDatePicker = new System.Windows.Forms.DateTimePicker();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// CancelAddButton
@@ -83,6 +86,7 @@
 			this.NameAddBox.Name = "NameAddBox";
 			this.NameAddBox.Size = new System.Drawing.Size(100, 20);
 			this.NameAddBox.TabIndex = 11;
+			this.NameAddBox.Validating += new System.ComponentModel.CancelEventHandler(this.NameAddBox_Validating);
 			// 
 			// label1
 			// 
@@ -107,6 +111,10 @@
 			this.EndDatePicker.Size = new System.Drawing.Size(200, 20);
 			this.EndDatePicker.TabIndex = 16;
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
 			// AddEditCennikiForm
 			// 
 			this.AcceptButton = this.AddButtonYes;
@@ -128,6 +136,7 @@
 			this.Name = "AddEditCennikiForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Cennik";
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -143,5 +152,6 @@
 		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.DateTimePicker StartDatePicker;
 		private System.Windows.Forms.DateTimePicker EndDatePicker;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
 	}
 }

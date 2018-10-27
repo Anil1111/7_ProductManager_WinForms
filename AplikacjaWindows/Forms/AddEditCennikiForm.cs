@@ -1,9 +1,11 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.Validation;
 using System.Globalization;
 using System.Windows.Forms;
 using AplikacjaWindows.Layers.BLL;
+using AplikacjaWindows.Layers.BLL.Validators;
 
 namespace AplikacjaWindows.Forms
 {
@@ -28,7 +30,7 @@ namespace AplikacjaWindows.Forms
 					StartDatePicker.Value = cennik.Data_Od.Value;
 					EndDatePicker.Value = cennik.Data_Do.Value;
 				}
-				
+
 			}
 			else
 			{
@@ -41,11 +43,7 @@ namespace AplikacjaWindows.Forms
 			foreach (Control control in Controls)
 			{
 				control.Focus();
-
-				if (!Validate())
-				{
-					DialogResult = DialogResult.None;
-				}
+				Validate();
 			}
 
 			if (AddButtonYes.Text == "Dodaj")
@@ -97,6 +95,14 @@ namespace AplikacjaWindows.Forms
 			{
 				MessageBox.Show("Data Rozpoczecia nie moze byc poźniejsza od Daty Zakończenia", "Błąd",
 					MessageBoxButtons.OK);
+				DialogResult = DialogResult.None;
+			}
+		}
+
+		private void NameAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			if (!Validators.NameValidator(errorProvider1, NameAddBox))
+			{
 				DialogResult = DialogResult.None;
 			}
 		}
