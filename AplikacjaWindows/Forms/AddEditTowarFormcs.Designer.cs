@@ -28,6 +28,7 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+			this.components = new System.ComponentModel.Container();
 			this.AddButtonYes = new System.Windows.Forms.Button();
 			this.CancelAddButton = new System.Windows.Forms.Button();
 			this.label1 = new System.Windows.Forms.Label();
@@ -40,6 +41,12 @@
 			this.UnitWeightBox = new System.Windows.Forms.ComboBox();
 			this.CreateDateBox = new System.Windows.Forms.TextBox();
 			this.EditDateBox = new System.Windows.Forms.TextBox();
+			this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+			this.errorProvider2 = new System.Windows.Forms.ErrorProvider(this.components);
+			this.errorProvider3 = new System.Windows.Forms.ErrorProvider(this.components);
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).BeginInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).BeginInit();
 			this.SuspendLayout();
 			// 
 			// AddButtonYes
@@ -148,6 +155,18 @@
 			this.EditDateBox.TabIndex = 13;
 			this.EditDateBox.Visible = false;
 			// 
+			// errorProvider1
+			// 
+			this.errorProvider1.ContainerControl = this;
+			// 
+			// errorProvider2
+			// 
+			this.errorProvider2.ContainerControl = this;
+			// 
+			// errorProvider3
+			// 
+			this.errorProvider3.ContainerControl = this;
+			// 
 			// AddEditTowarForm
 			// 
 			this.AcceptButton = this.AddButtonYes;
@@ -173,6 +192,9 @@
 			this.Name = "AddEditTowarForm";
 			this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
 			this.Text = "Towar";
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider2)).EndInit();
+			((System.ComponentModel.ISupportInitialize)(this.errorProvider3)).EndInit();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -192,5 +214,8 @@
 		private System.Windows.Forms.ComboBox UnitWeightBox;
 		private System.Windows.Forms.TextBox CreateDateBox;
 		private System.Windows.Forms.TextBox EditDateBox;
+		private System.Windows.Forms.ErrorProvider errorProvider1;
+		private System.Windows.Forms.ErrorProvider errorProvider2;
+		private System.Windows.Forms.ErrorProvider errorProvider3;
 	}
 }

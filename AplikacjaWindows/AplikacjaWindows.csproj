@@ -77,6 +77,7 @@
     <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Layers\BLL\Validators\Validators.cs" />
     <Compile Include="ViewModels\PricesViewModel.cs" />
     <Compile Include="Layers\BLL\Helpers\PdfCreator.cs" />
     <Compile Include="Forms\AddEditCennikiForm.cs">

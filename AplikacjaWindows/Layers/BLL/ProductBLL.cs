@@ -45,7 +45,6 @@ namespace AplikacjaWindows.Layers.BLL
 			}
 			catch (FormatException)
 			{
-
 				MessageBox.Show("Nieprawidłowy format pola Masa. Dopuszczalne tylko liczby", "Błąd",
 					MessageBoxButtons.OK);
 			}

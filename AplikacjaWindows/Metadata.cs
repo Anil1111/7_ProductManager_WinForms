@@ -10,7 +10,7 @@ namespace AplikacjaWindows
 	public class TowaryMetadata
 	{
 		[Required(ErrorMessage = "Kod jest wymagany")]
-		[RegularExpression("[0-9][0-9][0-9]-[0-9][0-9][0-9]", ErrorMessage = "Zły kod. Prawidłowy Format kodu: XXX-XXX")]
+		[RegularExpression("^[0-9][0-9][0-9]-[0-9][0-9][0-9]$", ErrorMessage = "Zły kod. Prawidłowy Format kodu: XXX-XXX")]
 		[MaxLength(7, ErrorMessage = "Maksymalna długość kodu: 7")]
 		public string Kod { get; set; }
 		[Required(ErrorMessage = "Nazwa jest wymagana")]
@@ -32,10 +32,10 @@ namespace AplikacjaWindows
 		[Required(ErrorMessage = "Towar jest wymagany")]
 		public Nullable<int> TowarId { get; set; }
 		[Required(ErrorMessage = "Cena jest wymagana")]
-		[Range(0.01, 10000000000000000000)]
+		[Range(0.01, 10000000000000000000,ErrorMessage = "Cena musi być wyższa od 0 (Min 0.01)")]
 		public decimal Cena { get; set; }
 		[Required(ErrorMessage = "Rabat jest wymagany")]
-		[Range(0, 100)]
+		[Range(0, 100, ErrorMessage = "Rabat musi być dodatni")]
 		public Nullable<decimal> Rabat { get; set; }
 	}
 

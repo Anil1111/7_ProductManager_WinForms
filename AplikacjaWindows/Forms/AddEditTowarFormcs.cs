@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using AplikacjaWindows.Layers.BLL;
 using AplikacjaWindows.Layers.BLL.Helpers;
+using AplikacjaWindows.Layers.BLL.Validators;
 
 namespace AplikacjaWindows.Forms
 {
@@ -38,6 +38,17 @@ namespace AplikacjaWindows.Forms
 
 		private void AddButtonYes_Click(object sender, EventArgs e)
 		{
+		
+			foreach (Control control in Controls)
+			{
+				control.Focus();
+
+				if (!Validate())
+				{
+					DialogResult = DialogResult.None;
+				}
+			}
+
 			if (AddButtonYes.Text == "Dodaj")
 			{
 				AddProduct();
@@ -48,6 +59,24 @@ namespace AplikacjaWindows.Forms
 			}
 		}
 
+
+		//Eventy Walidacji
+		private void NameAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			Validators.NameValidator(errorProvider1,NameAddBox);
+		}
+
+		private void CodeAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			Validators.CodeValidator(errorProvider1, CodeAddBox);
+		}
+
+		private void WeightAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+		{
+			Validators.WeightValidator(errorProvider1,WeightAddBox);
+		}
+
+		//Metody Logiki korzystające z obecnego formularza
 		private void AddProduct()
 		{
 			try
@@ -67,6 +96,7 @@ namespace AplikacjaWindows.Forms
 				MessageBox.Show("Zły format danych, Kod: XXX-XXX, Masa: Liczby powyżej 0, Pola nie mogą być puste",
 					"Błąd",
 					MessageBoxButtons.OK);
+				DialogResult = DialogResult.None;
 			}
 		}
 
@@ -89,43 +119,9 @@ namespace AplikacjaWindows.Forms
 				MessageBox.Show("Zły format danych, Kod: XXX-XXX, Masa: Liczby powyżej 0, Pola nie mogą być puste",
 					"Błąd",
 					MessageBoxButtons.OK);
+				DialogResult = DialogResult.None;
 			}
 		}
 
-		private void NameAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			if (string.IsNullOrEmpty(NameAddBox.Text))
-			{
-				MessageBox.Show("Nazwa jest wymagana", "Błąd", MessageBoxButtons.OK);
-			}
-
-			if (NameAddBox.Text.Length > 255)
-			{
-				MessageBox.Show("Nazwa jest za długa - dopuszczalny limit 255 znakow", "Błąd", MessageBoxButtons.OK);
-			}
-		}
-
-		private void CodeAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			if (string.IsNullOrEmpty(CodeAddBox.Text))
-			{
-				MessageBox.Show("Kod jest wymagany", "Błąd", MessageBoxButtons.OK);
-			}
-
-			var regexPatern = "[0-9][0-9][0-9]-[0-9]";
-			if (!Regex.IsMatch(CodeAddBox.Text, regexPatern))
-			{
-				MessageBox.Show("Format kodu: XXX-XXX, gdzie X-liczby od 0 do 9", "Błąd", MessageBoxButtons.OK);
-			}
-		}
-
-		private void WeightAddBox_Validating(object sender, System.ComponentModel.CancelEventArgs e)
-		{
-			decimal d;
-			if (!decimal.TryParse(WeightAddBox.Text,out d))
-			{
-				MessageBox.Show("Dopuszczalne liczby zmiennoprzecinkowe", "Błąd", MessageBoxButtons.OK);
-			}
-		}
 	}
 }
